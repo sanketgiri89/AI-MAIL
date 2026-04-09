@@ -1,0 +1,376 @@
+================================================================================
+                        ECLATRECON AI MAIL - FEATURES LIST
+                              Version 1.0.0
+                         Production Ready Overview
+================================================================================
+
+
+================================================================================
+1. CORE EMAIL FEATURES
+================================================================================
+
+1.1  Inbox Management
+     - Receive, read, and organize emails
+     - Unread/read status tracking with visual indicators
+     - Star/favorite important emails
+     - Email search across all folders
+     - Email threading (conversation view)
+     - Outlook-style date grouping (Today, Yesterday, This Week, Older)
+     - Smart date formatting (8:32 AM for today, Yesterday, Mon, Mar 18)
+     - Filter tabs: All / Unread / Starred
+
+1.2  Email Folders
+     - Inbox
+     - Sent
+     - Drafts
+     - Spam
+     - Trash
+     - Starred
+
+1.3  Compose & Send
+     - Rich text email composition
+     - To, CC, BCC recipient fields
+     - Subject line
+     - File attachments (via multer)
+     - Draft saving
+     - Send email via SMTP (nodemailer)
+
+1.4  Email Sync
+     - IMAP email sync (via imapflow)
+     - Manual sync button
+     - Auto-sync with status display
+     - Multi-account sync support
+     - Last sync time display
+
+1.5  Email Actions
+     - Reply / Reply All / Forward
+     - Archive
+     - Delete
+     - Mark as read/unread
+     - Star/unstar
+     - Move to folder
+
+
+================================================================================
+2. MULTI-ACCOUNT SUPPORT
+================================================================================
+
+2.1  Account Management
+     - Connect multiple email accounts (IMAP/SMTP)
+     - Switch between accounts
+     - Per-account mailbox filtering
+     - Account setup wizard (setup.html)
+     - Edit/unlink connected accounts
+
+2.2  Mailbox Selection
+     - "All Accounts" unified inbox
+     - Per-account inbox filtering
+     - Sidebar mailbox list
+
+
+================================================================================
+3. AI-POWERED FEATURES
+================================================================================
+
+3.1  AI Insights Sidebar
+     - AI-powered email analysis
+     - Smart action suggestions
+     - Draft reply generation
+     - Meeting scheduling suggestions
+     - Action item extraction
+
+3.2  AI Labels
+     - Automatic email categorization
+     - High Priority label
+     - Newsletters label
+     - Work label
+     - Custom AI-generated labels
+
+
+================================================================================
+4. PRODUCTIVITY TOOLS
+================================================================================
+
+4.1  Calendar
+     - Event management
+     - iCal integration (VCALENDAR/VEVENT)
+     - Create/edit/delete events
+     - Event scheduling
+
+4.2  Tasks
+     - Create and manage tasks
+     - Task status tracking
+     - Task organization
+
+4.3  Notes
+     - Create and organize notes
+     - Quick note-taking
+
+4.4  Reminders
+     - Set reminders
+     - Reminder notifications
+
+4.5  Email Signatures
+     - Create multiple signatures
+     - Per-account signatures
+     - Rich text signatures
+
+4.6  Email Templates
+     - Create reusable email templates
+     - Quick template insertion
+
+4.7  Scheduled Emails
+     - Schedule emails for later sending
+     - View/manage scheduled queue
+
+4.8  Email Forwarding Rules
+     - Auto-forwarding rules
+     - Conditional forwarding
+
+
+================================================================================
+5. MARKETING & CAMPAIGNS
+================================================================================
+
+5.1  Marketing Dashboard (marketing.html)
+     - Email marketing campaigns
+     - Campaign creation and management
+     - Subscriber list management
+     - Campaign analytics
+
+5.2  Lead Scraper (Apify Integration)
+     - Lead generation via Apify actors
+     - Keyword-based lead search
+     - Lead data extraction (email, company, name)
+     - Job management
+     - Lead database
+     - Subscriber list management
+
+
+================================================================================
+6. TEAM & COLLABORATION
+================================================================================
+
+6.1  Team Management
+     - Add/remove team members
+     - Role-based permissions
+     - Team member listing
+
+6.2  Shared Mailboxes
+     - Shared mailbox access
+     - Delegation settings
+
+6.3  Delegation
+     - Delegate email access
+     - Permission management
+
+
+================================================================================
+7. SECURITY & COMPLIANCE
+================================================================================
+
+7.1  Authentication
+     - User registration (signup.html)
+     - Email/password login (login.html)
+     - JWT-based session management
+     - Password reset (forgot-password.html)
+     - Two-Factor Authentication (2FA) via TOTP
+     - QR code generation for 2FA setup (speakeasy + qrcode)
+
+7.2  Security Features
+     - DLP (Data Loss Prevention) rules
+     - IP whitelisting
+     - GDPR compliance requests
+     - Security dashboard
+
+7.3  Admin Panel (admin.html)
+     - User management
+     - System administration
+     - Admin-only access control
+     - DNS/domain configuration examples
+
+
+================================================================================
+8. DEVELOPER TOOLS
+================================================================================
+
+8.1  API Keys
+     - Generate API keys
+     - Key management (create/revoke)
+     - API authentication
+
+8.2  Webhooks
+     - Create webhook endpoints
+     - Event-based webhook triggers
+     - Webhook management
+
+8.3  Public API
+     - RESTful API endpoints
+     - API documentation (docs.html)
+     - Programmatic email access
+
+8.4  Data Management
+     - Database backup
+     - Data export
+     - Backup/restore functionality
+
+
+================================================================================
+9. ANALYTICS & INSIGHTS
+================================================================================
+
+9.1  Email Analytics
+     - Send/receive statistics
+     - Email volume tracking
+     - Response time metrics
+     - Dashboard with visual data
+
+9.2  Billing & Plans
+     - Subscription plans
+     - Plan comparison
+     - Usage tracking
+
+
+================================================================================
+10. INTEGRATIONS
+================================================================================
+
+10.1 Third-Party Integrations
+     - Apify (lead scraping)
+     - IMAP/SMTP (email protocols)
+     - External webhook integrations
+     - Integration management dashboard
+
+
+================================================================================
+11. UI/UX FEATURES
+================================================================================
+
+11.1 Design System
+     - Dark mode (default) with premium aesthetic
+     - Light mode support via theme toggle
+     - Orange primary color (#ec5b13)
+     - Public Sans typography
+     - Material Symbols icons
+     - Glassmorphism effects
+     - Glow animations
+     - Dot-matrix styled headers
+
+11.2 Mobile-Responsive UI (Outlook-style)
+     - Single-line header (menu + brand + avatar)
+     - Bottom navigation bar with 5 tabs:
+       * Mail, Compose, Search, Marketing, Account
+     - Active tab indicator bar (orange)
+     - Filled icons for active state
+     - Slide-out sidebar via hamburger menu
+     - Sidebar overlay with backdrop
+     - Touch-friendly email list (large tap targets)
+     - Full-screen compose on mobile
+     - Responsive settings cards
+     - Single-column grids on mobile
+     - Safe-area support for notched phones
+     - iOS zoom prevention (16px font inputs)
+     - Momentum scrolling (-webkit-overflow-scrolling)
+
+11.3 Desktop UI
+     - Three-column layout (Sidebar + Content + AI Panel)
+     - Collapsible sidebar
+     - Search bar in header
+     - Full icon toolbar (settings, theme, notifications, docs, admin, avatar, logout)
+     - Email hover actions (archive, delete)
+     - Keyboard shortcuts support
+
+
+================================================================================
+12. PAGES & SCREENS
+================================================================================
+
+     - index.html      → Main email client (SPA with hash routing)
+     - login.html       → User login
+     - signup.html      → User registration
+     - setup.html       → Email account setup wizard
+     - marketing.html   → Marketing campaigns dashboard
+     - admin.html       → Admin panel
+     - docs.html        → API documentation
+     - forgot-password.html → Password recovery
+
+
+================================================================================
+13. TECHNICAL STACK
+================================================================================
+
+13.1 Frontend
+     - HTML5 + Vanilla JavaScript (SPA)
+     - TailwindCSS (via CDN)
+     - Custom CSS (styles.css)
+     - Material Symbols (Google Icons)
+     - Public Sans font (Google Fonts)
+     - Hash-based routing (Router.js)
+     - Component-based page renderers (Pages.js)
+
+13.2 Backend
+     - Node.js + Express.js
+     - SQLite database (better-sqlite3)
+     - JWT authentication (jsonwebtoken)
+     - IMAP sync (imapflow)
+     - SMTP sending (nodemailer)
+     - Email parsing (mailparser)
+     - File uploads (multer)
+     - CORS enabled
+     - Real-time updates (Socket.IO)
+     - 2FA support (speakeasy + qrcode)
+     - Password hashing (bcryptjs)
+     - Environment config (dotenv)
+
+13.3 Server Architecture
+     - REST API on port 3001
+     - Static frontend served on port 3001
+     - SQLite database (eclatrecon-mail.db)
+     - Route modules:
+       * auth.js         - Authentication & 2FA
+       * emails.js       - Email CRUD & sync
+       * campaigns.js    - Marketing campaigns
+       * productivity.js - Calendar, tasks, notes, reminders
+       * features.js     - Signatures, templates, scheduled, forwarding
+       * security.js     - DLP, IP whitelist, GDPR
+       * billing.js      - Plans & subscriptions
+       * integrations.js - Third-party integrations
+       * teams.js        - Team & shared mailboxes
+       * analytics.js    - Email analytics
+       * admin.js        - Admin panel
+       * manage.js       - Account management
+       * dataManagement.js - Backup & export
+       * publicApi.js    - Public API endpoints
+       * apify.js        - Apify lead scraper integration
+
+
+================================================================================
+14. BRANDING
+================================================================================
+
+     - Product Name:    Eclatrecon AI Mail
+     - Primary Color:   #ec5b13 (Orange)
+     - Dark Background: #0a0a0a
+     - Font:            Public Sans
+     - Logo Icon:       blur_on (Material Symbol)
+     - Tagline:         AI-powered email client with premium aesthetic
+
+
+================================================================================
+15. DEPLOYMENT
+================================================================================
+
+     - Self-hosted (Node.js server)
+     - Single command start: npm start
+     - Development mode: npm run dev (with --watch)
+     - Database initialization: npm run db:init
+     - Environment variables via .env file
+     - Compatible with Hostinger and similar hosting providers
+     - Frontend: Static files (HTML/CSS/JS)
+     - Backend: Express.js API server
+
+
+================================================================================
+                         © 2026 Eclatrecon AI Mail
+                           All Rights Reserved
+================================================================================

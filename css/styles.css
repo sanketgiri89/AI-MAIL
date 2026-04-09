@@ -1,0 +1,1573 @@
+/* ===== Eclatrecon AI Mail - Global Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Dark Form Override — prevents Tailwind Forms white backgrounds */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="date"],
+input[type="datetime-local"],
+textarea,
+select {
+    background-color: rgba(26, 26, 26, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #e2e8f0 !important;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+}
+
+.form-select-custom {
+    background-color: rgba(26, 26, 26, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #e2e8f0 !important;
+    border-radius: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="url"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+    border-color: rgba(236, 91, 19, 0.5) !important;
+    box-shadow: 0 0 0 2px rgba(236, 91, 19, 0.1) !important;
+    outline: none !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #475569 !important;
+}
+
+/* Rich text compose body placeholder */
+.compose-body-rich:empty::before {
+    content: attr(data-placeholder);
+    color: #475569;
+    pointer-events: none;
+}
+.compose-body-rich:focus {
+    outline: none;
+}
+
+input[type="checkbox"] {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Dot Matrix Typography */
+.dot-matrix {
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+}
+
+/* Glows */
+.glyph-glow {
+    box-shadow: 0 0 10px rgba(236, 91, 19, 0.4), 0 0 30px rgba(236, 91, 19, 0.15);
+}
+
+.red-glow {
+    box-shadow: 0 0 8px rgba(255, 59, 48, 0.5);
+    animation: pulse-red 2s ease-in-out infinite;
+}
+
+@keyframes pulse-red {
+
+    0%,
+    100% {
+        box-shadow: 0 0 8px rgba(255, 59, 48, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 14px rgba(255, 59, 48, 0.8);
+    }
+}
+
+@keyframes glow-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(236, 91, 19, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(236, 91, 19, 0.7);
+    }
+}
+
+/* Glass & Borders */
+.frosted-glass {
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(26, 26, 26, 0.6);
+}
+
+.border-glyph {
+    border-color: rgba(255, 255, 255, 0.07);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Transitions */
+.email-item {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.email-item:hover .email-actions {
+    opacity: 1;
+}
+
+.sidebar-link {
+    transition: all 0.2s ease;
+}
+
+.sidebar-link:hover {
+    transform: translateX(4px);
+}
+
+/* Compose Button */
+.compose-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.compose-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(236, 91, 19, 0.5), 0 0 40px rgba(236, 91, 19, 0.2);
+}
+
+.compose-btn:active {
+    transform: scale(0.98);
+}
+
+/* AI Shimmer */
+.ai-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(236, 91, 19, 0.05), transparent);
+    animation: shimmer 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 200%;
+    }
+}
+
+/* Particles */
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(236, 91, 19, 0.6);
+    border-radius: 50%;
+    animation: float-particle 3s ease-in-out infinite;
+}
+
+.particle:nth-child(1) {
+    top: 20%;
+    left: 15%;
+    animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+    top: 60%;
+    left: 75%;
+    animation-delay: 0.8s;
+}
+
+.particle:nth-child(3) {
+    top: 40%;
+    left: 50%;
+    animation-delay: 1.6s;
+}
+
+.particle:nth-child(4) {
+    top: 80%;
+    left: 30%;
+    animation-delay: 2.4s;
+}
+
+.particle:nth-child(5) {
+    top: 30%;
+    left: 85%;
+    animation-delay: 1.2s;
+}
+
+@keyframes float-particle {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translateY(-12px) scale(1.5);
+        opacity: 1;
+    }
+}
+
+/* Smart Actions */
+.smart-action {
+    transition: all 0.25s ease;
+}
+
+.smart-action:hover {
+    transform: translateY(-2px);
+    background-color: rgba(236, 91, 19, 0.08);
+}
+
+/* Avatar */
+.avatar-ring {
+    transition: all 0.3s ease;
+}
+
+.avatar-ring:hover {
+    border-color: rgba(236, 91, 19, 0.6);
+    box-shadow: 0 0 12px rgba(236, 91, 19, 0.3);
+}
+
+/* Fade In */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.4s ease-out forwards;
+}
+
+.fade-in-delay-1 {
+    animation-delay: 0.1s;
+    opacity: 0;
+}
+
+.fade-in-delay-2 {
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+.fade-in-delay-3 {
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+.fade-in-delay-4 {
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+.fade-in-left {
+    animation: fadeInLeft 0.5s ease-out forwards;
+}
+
+.fade-in-right {
+    animation: fadeInRight 0.5s ease-out forwards;
+}
+
+.scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+}
+
+/* Search */
+.search-box:focus-within {
+    box-shadow: 0 0 0 1px rgba(236, 91, 19, 0.3), 0 0 15px rgba(236, 91, 19, 0.1);
+}
+
+/* Notification Badge */
+.notif-badge {
+    animation: bounce-notif 2s ease-in-out infinite;
+}
+
+@keyframes bounce-notif {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+/* ===== Page-specific Styles ===== */
+
+/* Settings & Account */
+.settings-card {
+    background: rgba(26, 26, 26, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.settings-card:hover {
+    border-color: rgba(236, 91, 19, 0.3);
+}
+
+.toggle-switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background: #333;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+    flex-shrink: 0;
+}
+
+.toggle-switch.active {
+    background: #ec5b13;
+}
+
+.toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    transition: transform 0.3s;
+}
+
+.toggle-switch.active::after {
+    transform: translateX(20px);
+}
+
+/* Tabs */
+.tab-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    background: transparent;
+}
+
+.tab-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+}
+
+.tab-btn.active {
+    background: rgba(236, 91, 19, 0.15);
+    color: #ec5b13;
+    border-color: rgba(236, 91, 19, 0.3);
+}
+
+/* Page Transition */
+.page-content {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+/* Email Detail */
+.email-body {
+    line-height: 1.75;
+    color: #cbd5e1;
+    overflow: hidden;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.email-body img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.email-body table {
+    max-width: 100% !important;
+    width: auto !important;
+    table-layout: fixed;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+.email-body td, .email-body th {
+    max-width: 100% !important;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.email-body iframe, .email-body video, .email-body object, .email-body embed {
+    max-width: 100% !important;
+}
+
+.email-body div {
+    max-width: 100% !important;
+    overflow: hidden;
+}
+
+.email-body a {
+    color: #ec5b13;
+    text-decoration: underline;
+}
+
+.email-body p {
+    margin-bottom: 1rem;
+}
+
+.email-body pre, .email-body code {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.email-body blockquote {
+    border-left: 3px solid rgba(236, 91, 19, 0.5);
+    padding-left: 1rem;
+    margin: 0.5rem 0;
+    color: #94a3b8;
+}
+
+/* Compose & Form Inputs */
+.compose-input {
+    background: rgba(26, 26, 26, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 0.5rem;
+    color: #e2e8f0;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    width: 100%;
+    outline: none;
+    font-family: 'Public Sans', sans-serif;
+    transition: all 0.2s;
+}
+
+.compose-input:focus {
+    border-color: rgba(236, 91, 19, 0.5) !important;
+    box-shadow: 0 0 0 2px rgba(236, 91, 19, 0.1);
+}
+
+.compose-input::placeholder {
+    color: #475569;
+}
+
+.compose-body {
+    background: rgba(26, 26, 26, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 0.5rem;
+    color: #e2e8f0;
+    padding: 1rem;
+    font-size: 0.875rem;
+    width: 100%;
+    min-height: 250px;
+    outline: none;
+    resize: vertical;
+    font-family: 'Public Sans', sans-serif;
+    transition: all 0.2s;
+}
+
+.compose-body:focus {
+    border-color: rgba(236, 91, 19, 0.5) !important;
+    box-shadow: 0 0 0 2px rgba(236, 91, 19, 0.1);
+}
+
+.toolbar-btn {
+    padding: 0.4rem;
+    border-radius: 0.375rem;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+    border: none;
+}
+
+.toolbar-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+}
+
+.form-select-custom {
+    background: rgba(26, 26, 26, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Public Sans', sans-serif;
+}
+
+.form-select-custom:focus {
+    border-color: rgba(236, 91, 19, 0.5);
+}
+
+/* Buttons */
+.btn-primary {
+    background: #ec5b13;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Public Sans', sans-serif;
+}
+
+.btn-primary:hover {
+    background: #d44f0e;
+    box-shadow: 0 0 15px rgba(236, 91, 19, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #94a3b8;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Public Sans', sans-serif;
+}
+
+.btn-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #e2e8f0;
+}
+
+.btn-danger {
+    background: transparent;
+    color: #ff3b30;
+    border: 1px solid rgba(255, 59, 48, 0.3);
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Public Sans', sans-serif;
+}
+
+.btn-danger:hover {
+    background: rgba(255, 59, 48, 0.1);
+}
+
+/* ===== Auth Pages ===== */
+.auth-bg {
+    background: #0a0a0a;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Floating orbs background */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    animation: orb-float 8s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: #ec5b13;
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    background: #ff3b30;
+    bottom: -50px;
+    right: -50px;
+    animation-delay: 3s;
+}
+
+.orb-3 {
+    width: 200px;
+    height: 200px;
+    background: #ec5b13;
+    top: 50%;
+    left: 60%;
+    animation-delay: 5s;
+}
+
+@keyframes orb-float {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -30px) scale(1.05);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.95);
+    }
+}
+
+.auth-card {
+    background: rgba(26, 26, 26, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    z-index: 10;
+    animation: scaleIn 0.5s ease-out;
+}
+
+.auth-input {
+    background: rgba(26, 26, 26, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 0.5rem;
+    color: #e2e8f0 !important;
+    padding: 0.75rem 1rem 0.75rem 2.75rem !important;
+    font-size: 0.875rem;
+    width: 100%;
+    outline: none;
+    font-family: 'Public Sans', sans-serif;
+    transition: all 0.2s;
+}
+
+.auth-input:focus {
+    border-color: #ec5b13;
+    box-shadow: 0 0 0 3px rgba(236, 91, 19, 0.1);
+}
+
+.auth-input::placeholder {
+    color: #475569;
+}
+
+.auth-input-wrapper {
+    position: relative;
+}
+
+.auth-input-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #475569;
+    font-size: 1.1rem;
+    pointer-events: none;
+    transition: color 0.2s;
+}
+
+.auth-input-wrapper:focus-within .auth-input-icon {
+    color: #ec5b13;
+}
+
+.auth-btn {
+    width: 100%;
+    background: #ec5b13;
+    color: white;
+    border: none;
+    padding: 0.85rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Public Sans', sans-serif;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-btn:hover {
+    background: #d44f0e;
+    box-shadow: 0 0 25px rgba(236, 91, 19, 0.4);
+    transform: translateY(-1px);
+}
+
+.auth-btn:active {
+    transform: translateY(0);
+}
+
+/* Ripple effect */
+.auth-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.auth-btn:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+.social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: #94a3b8;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Public Sans', sans-serif;
+}
+
+.social-btn:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Password strength */
+.strength-bar {
+    height: 3px;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+/* Setup Wizard */
+.wizard-step {
+    display: none;
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+.step-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.step-dot {
+    width: 32px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+}
+
+.step-dot.active {
+    background: #ec5b13;
+    width: 48px;
+}
+
+.step-dot.completed {
+    background: rgba(236, 91, 19, 0.4);
+}
+
+/* ===== Email Row — Outlook-style layout (global) ===== */
+.email-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+}
+
+.email-row > .flex-1 {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    text-align: left !important;
+}
+
+.email-row > .flex-1 > div:first-child {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+}
+
+.email-row > .flex-1 > div:first-child > span:first-child {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    text-align: left !important;
+}
+
+.email-row > .flex-1 p {
+    text-align: left !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+/* ===== Date Group Headers (Outlook-style) ===== */
+.date-group-header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    backdrop-filter: blur(12px);
+    background: rgba(10, 10, 10, 0.85) !important;
+}
+
+/* ===== Responsive Design ===== */
+
+/* Mobile sidebar overlay */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 40;
+    animation: fadeIn 0.2s ease;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+.mobile-menu-btn {
+    display: none;
+}
+
+/* Bottom Navigation Bar (mobile only) */
+.mobile-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 50;
+    padding: 0.25rem 0;
+    padding-bottom: env(safe-area-inset-bottom, 0.25rem);
+}
+
+.mobile-bottom-nav .nav-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.mobile-bottom-nav .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+    cursor: pointer;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-bottom-nav .nav-item.active {
+    color: #ec5b13;
+}
+
+/* Active indicator bar — Outlook style */
+.mobile-bottom-nav .nav-item.active::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 3px;
+    background: #ec5b13;
+    border-radius: 0 0 3px 3px;
+    animation: fadeIn 0.2s ease;
+}
+
+.mobile-bottom-nav .nav-item .material-symbols-outlined {
+    font-size: 24px;
+    transition: font-variation-settings 0.2s;
+}
+
+.mobile-bottom-nav .nav-item.active .material-symbols-outlined {
+    font-variation-settings: 'FILL' 1;
+}
+
+.mobile-bottom-nav .nav-item .nav-badge {
+    position: absolute;
+    top: 2px;
+    right: 8px;
+    background: #ec5b13;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+}
+
+/* Mobile Search Bar (togglable) */
+.mobile-search-bar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 55;
+    background: rgba(15, 15, 15, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 0.75rem 1rem;
+    animation: fadeInDown 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-search-bar.active {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Tablet: < 1024px */
+@media (max-width: 1023px) {
+    #right-sidebar {
+        display: none !important;
+    }
+}
+
+/* Mobile: < 768px */
+@media (max-width: 767px) {
+    /* Show mobile controls */
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .mobile-bottom-nav {
+        display: block;
+    }
+
+    /* Add bottom padding for bottom nav */
+    body {
+        padding-bottom: 60px;
+    }
+
+    main.flex {
+        padding-bottom: 60px;
+    }
+
+    /* ===== HEADER — force single line, THIN ===== */
+    header {
+        padding: 0.35rem 0.5rem 0.35rem 0.25rem !important;
+        position: sticky;
+        top: 0;
+        flex-wrap: nowrap !important;
+        min-height: 36px !important;
+        max-height: 44px !important;
+    }
+
+    /* Left section: menu + brand — compact, no gap */
+    header > div:first-child {
+        gap: 0.25rem !important;
+        flex-shrink: 0;
+        min-width: 0;
+    }
+
+    /* Hamburger button — flush left */
+    .mobile-menu-btn {
+        padding: 0.35rem !important;
+        margin-left: 0 !important;
+    }
+
+    /* Hide inbox/folder heading on mobile */
+    #main-content h2.text-lg {
+        display: none !important;
+    }
+    /* Remove top padding of email list header since heading is gone */
+    #main-content .px-4.pt-3.pb-2 {
+        padding-top: 0.35rem !important;
+    }
+
+    /* Right section: just avatar on mobile */
+    header > div:last-child {
+        gap: 0.35rem !important;
+        flex-shrink: 0;
+    }
+
+    header h1 {
+        font-size: 0.85rem !important;
+    }
+
+    /* Hide desktop-only controls on mobile */
+    .hide-on-mobile {
+        display: none !important;
+    }
+
+    /* Smart brand name — show short version on mobile */
+    .brand-full {
+        display: none !important;
+    }
+    .brand-short {
+        display: inline !important;
+    }
+
+    .header-search {
+        display: none !important;
+    }
+
+    .header-divider {
+        display: none !important;
+    }
+
+    header .size-8 {
+        width: 26px !important;
+        height: 26px !important;
+    }
+
+    header .size-9 {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    /* Header logo icon smaller */
+    header .glyph-glow {
+        width: 26px !important;
+        height: 26px !important;
+    }
+    header .glyph-glow .material-symbols-outlined {
+        font-size: 14px !important;
+    }
+
+    /* ===== EMAIL LIST - Outlook-style ===== */
+    .email-row {
+        padding: 0.75rem 1rem !important;
+        gap: 0.75rem !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        min-height: 72px;
+    }
+
+    .email-row:active {
+        background: rgba(236, 91, 19, 0.06) !important;
+    }
+
+    /* Unread indicator — left orange border like Outlook */
+    .email-row.bg-white\/\[0\.03\] {
+        border-left: 3px solid #ec5b13 !important;
+    }
+
+    /* Avatar — slightly smaller on mobile */
+    .email-row .size-10 {
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* Email content — ensure proper flex layout */
+    .email-row .flex-1 {
+        overflow: hidden !important;
+    }
+
+    /* Sender name row */
+    .email-row .flex-1 > div:first-child {
+        margin-bottom: 2px !important;
+    }
+
+    /* Subject line */
+    .email-row .flex-1 > p:first-of-type {
+        font-size: 0.8rem !important;
+    }
+
+    /* Preview text */
+    .email-row .flex-1 > p:last-of-type {
+        font-size: 0.7rem !important;
+        color: #64748b !important;
+    }
+
+    /* Email hover actions — hidden on mobile */
+    .email-actions {
+        display: none !important;
+    }
+
+    /* Email detail toolbar — compact */
+    .email-detail-toolbar {
+        padding: 0.35rem 0.75rem !important;
+        min-height: 36px !important;
+    }
+
+    /* Email detail – full width, better reading */
+    .email-body {
+        padding: 0.5rem 0 !important;
+        font-size: 0.9rem !important;
+        line-height: 1.7 !important;
+    }
+
+    /* Email iframe — full width on mobile */
+    .email-iframe {
+        width: 100% !important;
+        min-height: 300px !important;
+        border-radius: 4px !important;
+    }
+
+    /* Sidebar - slide-out overlay */
+    #left-sidebar {
+        position: fixed;
+        left: -300px;
+        top: 0;
+        bottom: 0;
+        z-index: 45;
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 280px;
+        padding-top: 0.5rem;
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
+        background: #0a0a0a !important;
+    }
+
+    #left-sidebar.open {
+        left: 0;
+    }
+
+    /* Compose button in sidebar — smaller on mobile */
+    #left-sidebar .compose-btn {
+        padding: 0.6rem 1rem !important;
+        font-size: 0.8rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    #right-sidebar {
+        display: none !important;
+    }
+
+    /* Main content - full width */
+    #main-content {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Compose page — full-screen Gmail-like */
+    .compose-page-wrapper {
+        padding: 0.75rem !important;
+    }
+    .compose-page-wrapper .compose-input {
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+        padding: 0.75rem 0 !important;
+        background: transparent !important;
+        font-size: 15px !important;
+    }
+    .compose-page-wrapper textarea.compose-input {
+        min-height: 45vh !important;
+        padding: 0.75rem 0 !important;
+        border: none !important;
+        background: transparent !important;
+        font-size: 15px !important;
+    }
+
+
+    /* Compose - optimized for mobile */
+    .compose-input {
+        font-size: 16px !important; /* Prevents iOS zoom */
+        padding: 0.875rem 1rem !important;
+    }
+
+    .compose-body {
+        font-size: 16px !important; /* Prevents iOS zoom */
+        min-height: 200px !important;
+        padding: 0.875rem !important;
+    }
+
+    /* Auth pages */
+    .auth-card {
+        margin: 0.75rem;
+        padding: 1.5rem;
+        border-radius: 1rem;
+    }
+
+    .auth-card h2 {
+        font-size: 1.25rem !important;
+    }
+
+    /* Settings - stack vertically */
+    .settings-card {
+        padding: 1rem;
+        border-radius: 0.75rem;
+    }
+
+    /* Force single column for grids */
+    .grid-cols-2,
+    .md\\:grid-cols-2,
+    .lg\\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+    }
+
+    .grid-cols-3,
+    .md\\:grid-cols-3,
+    .lg\\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+    }
+
+    .grid-cols-4,
+    .md\\:grid-cols-4,
+    .lg\\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Buttons - touch-friendly sizes */
+    .btn-primary,
+    .btn-secondary,
+    .btn-danger {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.85rem;
+        min-height: 44px; /* Apple's minimum tap target */
+    }
+
+    /* Tab buttons - scrollable on mobile */
+    .tab-btn {
+        padding: 0.5rem 0.875rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+
+    /* Toggle switch - larger on mobile */
+    .toggle-switch {
+        width: 48px;
+        height: 26px;
+    }
+
+    .toggle-switch::after {
+        width: 22px;
+        height: 22px;
+    }
+
+    .toggle-switch.active::after {
+        transform: translateX(22px);
+    }
+
+    /* Modals - full screen on mobile */
+    .fixed.inset-0 > div[class*="max-w"] {
+        max-width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0.75rem 0.75rem 0 0 !important;
+        max-height: 90vh !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        animation: slideUp 0.3s ease-out !important;
+    }
+
+    /* Scrollable containers - momentum scroll */
+    .overflow-y-auto,
+    .overflow-auto {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Compose toolbar - wrap on mobile */
+    .flex.gap-1.items-center {
+        flex-wrap: wrap;
+    }
+
+    /* Pagination - compact */
+    .flex.items-center.justify-between {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    /* Tables - horizontal scroll */
+    table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+
+    /* Text sizes - larger for readability */
+    .text-xs {
+        font-size: 0.7rem !important;
+    }
+
+    .text-\\[10px\\] {
+        font-size: 0.65rem !important;
+    }
+
+    /* Flex gap adjustments */
+    .gap-6 {
+        gap: 1rem !important;
+    }
+
+    .gap-8 {
+        gap: 1.25rem !important;
+    }
+
+    /* Padding adjustments for main content */
+    .p-6, .p-8 {
+        padding: 1rem !important;
+    }
+
+    .px-6, .px-8 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .py-6, .py-8 {
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }
+
+    /* Orbs - smaller on mobile */
+    .orb-1 { width: 200px; height: 200px; }
+    .orb-2 { width: 150px; height: 150px; }
+    .orb-3 { width: 100px; height: 100px; }
+}
+
+/* Small mobile: < 480px */
+@media (max-width: 479px) {
+    header h1 {
+        font-size: 0.8rem !important;
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .auth-card {
+        margin: 0.5rem;
+        padding: 1.25rem;
+    }
+
+    .compose-input,
+    .compose-body {
+        font-size: 16px !important;
+    }
+
+    /* Bottom nav - slightly larger */
+    .mobile-bottom-nav .nav-item {
+        padding: 0.5rem 0.5rem;
+    }
+
+    .mobile-bottom-nav .nav-item .material-symbols-outlined {
+        font-size: 24px;
+    }
+
+    .mobile-bottom-nav .nav-item span:last-child {
+        font-size: 0.55rem;
+    }
+
+    /* 4-col stats grids → 2 cols */
+    .grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Header buttons spacing */
+    header > div:last-child {
+        gap: 0.25rem !important;
+    }
+
+    header > div:last-child > button,
+    header > div:last-child > a {
+        padding: 0.35rem !important;
+    }
+
+    /* Sidebar nav items */
+    .sidebar-link {
+        padding: 0.625rem 1rem !important;
+    }
+
+    .sidebar-link .text-sm {
+        font-size: 0.875rem !important;
+    }
+}
+
+/* Landscape phones */
+@media (max-height: 500px) and (orientation: landscape) {
+    .mobile-bottom-nav {
+        padding: 0.15rem 0;
+    }
+
+    .mobile-bottom-nav .nav-item span:last-child {
+        display: none;
+    }
+
+    .mobile-bottom-nav .nav-item .material-symbols-outlined {
+        font-size: 20px;
+    }
+}
+
+/* Safe area support for notched phones */
+@supports (padding: env(safe-area-inset-bottom)) {
+    .mobile-bottom-nav {
+        padding-bottom: calc(env(safe-area-inset-bottom) + 0.25rem);
+    }
+
+    @media (max-width: 767px) {
+        body {
+            padding-bottom: calc(60px + env(safe-area-inset-bottom));
+        }
+    }
+}
+
+/* Print styles */
+@media print {
+    header, #left-sidebar, #right-sidebar, .mobile-bottom-nav,
+    .compose-btn, .mobile-menu-btn, .sidebar-overlay {
+        display: none !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+    }
+
+    .email-body {
+        color: #000 !important;
+    }
+}

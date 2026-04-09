@@ -1,0 +1,1393 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <title>Eclatrecon AI Mail - API Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script>tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#ec5b13", "bg-dark": "#0a0a0a", "card-dark": "#111111", "border-dark": "rgba(255,255,255,0.07)" }, fontFamily: { display: ["Public Sans", "sans-serif"], mono: ["JetBrains Mono", "monospace"] } } } }</script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+        .doc-nav {
+            transition: all .15s ease
+        }
+
+        .doc-nav:hover,
+        .doc-nav.active {
+            background: rgba(236, 91, 19, .08);
+            color: #ec5b13
+        }
+
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: .5rem;
+            padding: 1rem;
+            overflow-x: auto;
+            font-size: .8rem;
+            line-height: 1.6
+        }
+
+        .method-badge {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            font-family: "JetBrains Mono", monospace;
+            letter-spacing: .5px
+        }
+
+        .get {
+            background: rgba(34, 197, 94, .12);
+            color: #22c55e
+        }
+
+        .post {
+            background: rgba(59, 130, 246, .12);
+            color: #3b82f6
+        }
+
+        .put {
+            background: rgba(234, 179, 8, .12);
+            color: #eab308
+        }
+
+        .delete {
+            background: rgba(239, 68, 68, .12);
+            color: #ef4444
+        }
+
+        .endpoint-card {
+            background: rgba(17, 17, 17, .6);
+            border: 1px solid rgba(255, 255, 255, .05);
+            border-radius: .75rem;
+            padding: 1.25rem;
+            transition: border-color .2s
+        }
+
+        .endpoint-card:hover {
+            border-color: rgba(236, 91, 19, .2)
+        }
+
+        .param-table td,
+        .param-table th {
+            padding: 6px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, .04);
+            text-align: left;
+            font-size: .8rem
+        }
+
+        .tag {
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            font-family: "JetBrains Mono", monospace
+        }
+
+        .section-title {
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+            padding-bottom: .75rem;
+            margin-bottom: 1.5rem
+        }
+
+        .copy-btn {
+            cursor: pointer;
+            transition: color .2s
+        }
+
+        .copy-btn:hover {
+            color: #ec5b13
+        }
+
+        #content {
+            scroll-behavior: smooth
+        }
+    </style>
+</head>
+
+<body class="bg-bg-dark font-display text-slate-200 h-screen overflow-hidden">
+    <div class="flex h-full">
+        <!-- Sidebar Nav -->
+        <aside class="w-64 border-r border-border-dark flex flex-col bg-bg-dark overflow-y-auto flex-shrink-0">
+            <div class="p-5 border-b border-border-dark">
+                <div class="flex items-center gap-2 mb-1">
+                    <div class="size-7 flex items-center justify-center bg-primary rounded-full"><span
+                            class="material-symbols-outlined text-white text-base">blur_on</span></div><span
+                        class="font-bold tracking-tight text-sm">Eclatrecon AI Mail</span>
+                </div>
+                <p class="text-[10px] text-slate-500 font-mono mt-1">API DOCUMENTATION v2.0</p>
+            </div>
+            <nav class="p-3 flex flex-col gap-0.5 text-[13px]">
+                <p class="text-[10px] font-mono text-slate-500 px-3 pt-3 pb-1">GETTING STARTED</p>
+                <a href="#overview" class="doc-nav active px-3 py-2 rounded-lg text-slate-400">Overview</a>
+                <a href="#auth" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Authentication</a>
+                <a href="#api-keys" class="doc-nav px-3 py-2 rounded-lg text-slate-400">API Keys</a>
+                <a href="#rate-limits" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Rate Limits</a>
+                <p class="text-[10px] font-mono text-slate-500 px-3 pt-4 pb-1">PUBLIC API (v1)</p>
+                <a href="#api-emails" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Emails</a>
+                <a href="#api-contacts" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Contacts</a>
+                <a href="#api-folders" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Folders & Labels</a>
+                <a href="#api-search" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Search</a>
+                <a href="#api-account" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Account</a>
+                <p class="text-[10px] font-mono text-slate-500 px-3 pt-4 pb-1">FEATURES API</p>
+                <a href="#signatures" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Signatures</a>
+                <a href="#templates" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Templates</a>
+                <a href="#scheduled" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Scheduled Send</a>
+                <a href="#contact-groups" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Contact Groups</a>
+                <a href="#forwarding" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Forwarding</a>
+                <a href="#export" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Export</a>
+                <p class="text-[10px] font-mono text-slate-500 px-3 pt-4 pb-1">WEBHOOKS</p>
+                <a href="#webhooks" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Webhook Setup</a>
+                <a href="#webhook-events" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Events</a>
+                <a href="#webhook-verify" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Verification</a>
+                <p class="text-[10px] font-mono text-slate-500 px-3 pt-4 pb-1">LEAD SCRAPER</p>
+                <a href="#lead-scraper" class="doc-nav px-3 py-2 rounded-lg text-slate-400">How to Use</a>
+                <a href="#scraper-types" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Scraper Types</a>
+                <a href="#lead-api" class="doc-nav px-3 py-2 rounded-lg text-slate-400">API Reference</a>
+                <a href="#lead-workflow" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Workflow</a>
+                <p class="text-[10px] font-mono text-slate-500 px-3 pt-4 pb-1">ADMIN API</p>
+                <a href="#admin" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Admin Endpoints</a>
+                <p class="text-[10px] font-mono text-slate-500 px-3 pt-4 pb-1">FEATURES</p>
+                <a href="#keyboard" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Keyboard Shortcuts</a>
+                <a href="#theme" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Theme Toggle</a>
+                <a href="#security-features" class="doc-nav px-3 py-2 rounded-lg text-slate-400">Security</a>
+            </nav>
+            <div class="mt-auto p-4 border-t border-border-dark">
+                <a href="index.html" class="text-xs text-slate-500 hover:text-primary flex items-center gap-1"><span
+                        class="material-symbols-outlined text-sm">arrow_back</span> Back to Mail</a>
+            </div>
+        </aside>
+
+        <!-- Content -->
+        <main id="content" class="flex-1 overflow-y-auto p-8 max-w-4xl">
+
+            <!-- OVERVIEW -->
+            <section id="overview" class="mb-16">
+                <h1 class="text-3xl font-bold tracking-tight mb-2">Eclatrecon AI Mail API</h1>
+                <p class="text-slate-400 text-sm mb-6">Complete REST API for programmatic email management, webhooks,
+                    and automation.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <div class="endpoint-card">
+                        <p class="text-xs text-slate-500 font-mono">BASE URL</p>
+                        <p class="text-sm font-mono text-primary mt-1">http://localhost:3001/api</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <p class="text-xs text-slate-500 font-mono">PUBLIC API</p>
+                        <p class="text-sm font-mono text-primary mt-1">/api/v1/*</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <p class="text-xs text-slate-500 font-mono">FORMAT</p>
+                        <p class="text-sm font-mono text-slate-300 mt-1">JSON (application/json)</p>
+                    </div>
+                </div>
+                <div class="endpoint-card">
+                    <h3 class="text-sm font-bold text-slate-200 mb-3">Quick Start</h3>
+                    <div class="code-block font-mono text-slate-300"><span class="text-slate-500"># 1. Generate an API
+                            key (use your JWT token)</span>
+                        curl -X POST http://localhost:3001/api/v1/keys \
+                        -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+                        -H "Content-Type: application/json" \
+                        -d '{"name":"My App","permissions":"full"}'
+
+                        <span class="text-slate-500"># 2. Use the API key</span>
+                        curl http://localhost:3001/api/v1/emails \
+                        -H "X-API-Key: nm_your_api_key_here"
+
+                        <span class="text-slate-500"># 3. Send an email</span>
+                        curl -X POST http://localhost:3001/api/v1/emails/send \
+                        -H "X-API-Key: nm_your_api_key_here" \
+                        -H "Content-Type: application/json" \
+                        -d '{"to":"user@example.com","subject":"Hello","bodyText":"Hi!"}'
+                    </div>
+                </div>
+            </section>
+
+            <!-- AUTHENTICATION -->
+            <section id="auth" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Authentication</h2>
+                <p class="text-sm text-slate-400 mb-4">Eclatrecon AI Mail supports two authentication methods:</p>
+                <div class="flex flex-col gap-4">
+                    <div class="endpoint-card">
+                        <h4 class="text-sm font-bold text-slate-200 mb-2">1. JWT Token <span
+                                class="tag bg-blue-500/10 text-blue-400">Internal</span></h4>
+                        <p class="text-xs text-slate-400 mb-3">Used by the frontend. Obtain via login/signup endpoints.
+                        </p>
+                        <div class="code-block font-mono text-slate-300">POST /api/auth/login
+                            { "email": "user@example.com", "password": "secret" }
+                            → { "token": "eyJ...", "user": { ... } }
+
+                            <span class="text-slate-500"># Use in requests:</span>
+                            Authorization: Bearer eyJ...
+                        </div>
+                    </div>
+                    <div class="endpoint-card">
+                        <h4 class="text-sm font-bold text-slate-200 mb-2">2. API Key <span
+                                class="tag bg-primary/10 text-primary">Public API</span></h4>
+                        <p class="text-xs text-slate-400 mb-3">For external integrations. Generate via the API or
+                            Settings page.</p>
+                        <div class="code-block font-mono text-slate-300"><span class="text-slate-500"># Via header
+                                (recommended):</span>
+                            X-API-Key: nm_abc123def456...
+
+                            <span class="text-slate-500"># Via query parameter:</span>
+                            GET /api/v1/emails?api_key=nm_abc123def456...
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- API KEYS -->
+            <section id="api-keys" class="mb-16">
+                <h2 class="text-xl font-bold section-title">API Keys</h2>
+                <p class="text-sm text-slate-400 mb-4">Manage API keys for programmatic access. Requires JWT
+                    authentication.</p>
+                <div class="flex flex-col gap-4">
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge post">POST</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/keys</code></div>
+                        <p class="text-xs text-slate-400 mb-3">Generate a new API key</p>
+                        <table class="param-table w-full">
+                            <thead>
+                                <tr class="text-xs text-slate-500 font-mono">
+                                    <th>Param</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-slate-300">name</td>
+                                    <td>string</td>
+                                    <td>✓</td>
+                                    <td class="text-slate-400">Key name</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-slate-300">permissions</td>
+                                    <td>string</td>
+                                    <td></td>
+                                    <td class="text-slate-400"><code>read</code> / <code>write</code> /
+                                        <code>send</code> / <code>full</code> (comma-separated)</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-slate-300">expiresInDays</td>
+                                    <td>number</td>
+                                    <td></td>
+                                    <td class="text-slate-400">Key expires after N days (null = never)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="code-block font-mono text-slate-300 mt-3"><span
+                                class="text-emerald-400">Response:</span>
+                            { "id": "uuid", "key": "nm_abc123...", "prefix": "nm_abc123",
+                            "permissions": "full", "expiresAt": null }</div>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/keys</code></div>
+                        <p class="text-xs text-slate-400">List your API keys (keys are masked)</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge delete">DELETE</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/keys/:id</code></div>
+                        <p class="text-xs text-slate-400">Revoke an API key</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RATE LIMITS -->
+            <section id="rate-limits" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Rate Limits</h2>
+                <div class="endpoint-card">
+                    <p class="text-sm text-slate-400">API keys have a default rate limit of <strong
+                            class="text-slate-200">100 requests/hour</strong>. Admin can configure per-key limits. The
+                        response headers include:</p>
+                    <div class="code-block font-mono text-slate-300 mt-3">X-RateLimit-Limit: 100
+                        X-RateLimit-Remaining: 97
+                        X-RateLimit-Reset: 1699999999</div>
+                </div>
+            </section>
+
+            <!-- EMAILS API -->
+            <section id="api-emails" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Emails <span class="tag bg-primary/10 text-primary">API
+                        Key</span></h2>
+                <div class="flex flex-col gap-4">
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/emails</code></div>
+                        <p class="text-xs text-slate-400 mb-3">List emails in a folder. Permission: <code>read</code>
+                        </p>
+                        <table class="param-table w-full">
+                            <thead>
+                                <tr class="text-xs text-slate-500 font-mono">
+                                    <th>Query Param</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-slate-300">folder</td>
+                                    <td>inbox</td>
+                                    <td class="text-slate-400">inbox, sent, drafts, spam, trash</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-slate-300">page</td>
+                                    <td>1</td>
+                                    <td class="text-slate-400">Page number</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-slate-300">limit</td>
+                                    <td>50</td>
+                                    <td class="text-slate-400">Results per page</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-slate-300">unread</td>
+                                    <td></td>
+                                    <td class="text-slate-400">Set <code>true</code> for unread only</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-slate-300">search</td>
+                                    <td></td>
+                                    <td class="text-slate-400">Search in subject/from</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/emails/:id</code></div>
+                        <p class="text-xs text-slate-400">Get full email details with attachments. Permission:
+                            <code>read</code></p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge post">POST</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/emails/send</code></div>
+                        <p class="text-xs text-slate-400 mb-3">Send an email via SMTP. Permission: <code>send</code></p>
+                        <table class="param-table w-full">
+                            <thead>
+                                <tr class="text-xs text-slate-500 font-mono">
+                                    <th>Body</th>
+                                    <th>Required</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-slate-300">to</td>
+                                    <td>✓</td>
+                                    <td class="text-slate-400">Recipient email(s)</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-slate-300">subject</td>
+                                    <td>✓</td>
+                                    <td class="text-slate-400">Email subject</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-slate-300">bodyText</td>
+                                    <td></td>
+                                    <td class="text-slate-400">Plain text body</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-slate-300">bodyHtml</td>
+                                    <td></td>
+                                    <td class="text-slate-400">HTML body</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-slate-300">cc, bcc</td>
+                                    <td></td>
+                                    <td class="text-slate-400">CC/BCC addresses</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge put">PUT</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/emails/:id</code></div>
+                        <p class="text-xs text-slate-400 mb-3">Update email (read/star/move). Permission:
+                            <code>write</code></p>
+                        <table class="param-table w-full">
+                            <thead>
+                                <tr class="text-xs text-slate-500 font-mono">
+                                    <th>Body</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-slate-300">isRead</td>
+                                    <td class="text-slate-400">true/false</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-slate-300">isStarred</td>
+                                    <td class="text-slate-400">true/false</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-slate-300">folder</td>
+                                    <td class="text-slate-400">Move to folder: inbox, spam, trash</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge delete">DELETE</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/emails/:id</code></div>
+                        <p class="text-xs text-slate-400">Permanently delete an email. Permission: <code>write</code>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACTS API -->
+            <section id="api-contacts" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Contacts <span class="tag bg-primary/10 text-primary">API
+                        Key</span></h2>
+                <div class="flex flex-col gap-4">
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/contacts</code></div>
+                        <p class="text-xs text-slate-400">List all contacts</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge post">POST</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/contacts</code></div>
+                        <p class="text-xs text-slate-400 mb-2">Create a contact. Body: <code>name</code>,
+                            <code>email</code>, <code>phone</code>, <code>company</code>, <code>notes</code></p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge delete">DELETE</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/contacts/:id</code></div>
+                        <p class="text-xs text-slate-400">Delete a contact</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOLDERS & LABELS -->
+            <section id="api-folders" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Folders & Labels <span
+                        class="tag bg-primary/10 text-primary">API Key</span></h2>
+                <div class="flex flex-col gap-4">
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/folders</code></div>
+                        <p class="text-xs text-slate-400">List folders with email counts and unread counts</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/labels</code></div>
+                        <p class="text-xs text-slate-400">List all labels</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEARCH -->
+            <section id="api-search" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Search <span class="tag bg-primary/10 text-primary">API
+                        Key</span></h2>
+                <div class="endpoint-card">
+                    <div class="flex items-center gap-3 mb-3"><span class="method-badge get">GET</span><code
+                            class="text-sm font-mono text-slate-200">/api/v1/search?q=keyword</code></div>
+                    <p class="text-xs text-slate-400 mb-2">Full-text search across emails (subject, body, sender). Uses
+                        FTS5 index.</p>
+                    <table class="param-table w-full">
+                        <thead>
+                            <tr class="text-xs text-slate-500 font-mono">
+                                <th>Query</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-slate-300">q</td>
+                                <td class="text-slate-400">Search query (required)</td>
+                            </tr>
+                            <tr>
+                                <td class="text-slate-300">limit</td>
+                                <td class="text-slate-400">Max results (default: 20)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ACCOUNT -->
+            <section id="api-account" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Account <span class="tag bg-primary/10 text-primary">API
+                        Key</span></h2>
+                <div class="flex flex-col gap-4">
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/me</code></div>
+                        <p class="text-xs text-slate-400">Get your account info</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/account/stats</code></div>
+                        <p class="text-xs text-slate-400">Get storage, email count, unread count, contact count</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SIGNATURES -->
+            <section id="signatures" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Signatures <span
+                        class="tag bg-emerald-500/10 text-emerald-400">JWT</span></h2>
+                <div class="flex flex-col gap-4">
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/signatures</code></div>
+                        <p class="text-xs text-slate-400">List your email signatures</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge post">POST</span><code
+                                class="text-sm font-mono text-slate-200">/api/signatures</code></div>
+                        <p class="text-xs text-slate-400 mb-2">Create a signature. Body: <code>name</code>,
+                            <code>bodyHtml</code>, <code>bodyText</code>, <code>isDefault</code></p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge put">PUT</span><code
+                                class="text-sm font-mono text-slate-200">/api/signatures/:id</code></div>
+                        <p class="text-xs text-slate-400">Update a signature</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge delete">DELETE</span><code
+                                class="text-sm font-mono text-slate-200">/api/signatures/:id</code></div>
+                        <p class="text-xs text-slate-400">Delete a signature</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TEMPLATES -->
+            <section id="templates" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Email Templates <span
+                        class="tag bg-emerald-500/10 text-emerald-400">JWT</span></h2>
+                <div class="flex flex-col gap-4">
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/templates</code></div>
+                        <p class="text-xs text-slate-400">List templates</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge post">POST</span><code
+                                class="text-sm font-mono text-slate-200">/api/templates</code></div>
+                        <p class="text-xs text-slate-400 mb-2">Create template. Body: <code>name</code>,
+                            <code>subject</code>, <code>bodyHtml</code>, <code>bodyText</code>, <code>category</code>
+                        </p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge put">PUT</span><code
+                                class="text-sm font-mono text-slate-200">/api/templates/:id</code></div>
+                        <p class="text-xs text-slate-400">Update template</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge delete">DELETE</span><code
+                                class="text-sm font-mono text-slate-200">/api/templates/:id</code></div>
+                        <p class="text-xs text-slate-400">Delete template</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCHEDULED SEND -->
+            <section id="scheduled" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Scheduled Send <span
+                        class="tag bg-emerald-500/10 text-emerald-400">JWT</span></h2>
+                <p class="text-xs text-slate-400 mb-4">Schedule emails to be sent at a future date/time. A background
+                    worker checks every 60 seconds.</p>
+                <div class="flex flex-col gap-4">
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/scheduled</code></div>
+                        <p class="text-xs text-slate-400">List scheduled emails</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge post">POST</span><code
+                                class="text-sm font-mono text-slate-200">/api/scheduled</code></div>
+                        <p class="text-xs text-slate-400 mb-2">Schedule an email</p>
+                        <div class="code-block font-mono text-slate-300">{ "to": "user@example.com", "subject":
+                            "Reminder",
+                            "bodyText": "Don't forget!", "sendAt": "2026-03-15T09:00:00Z" }</div>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge delete">DELETE</span><code
+                                class="text-sm font-mono text-slate-200">/api/scheduled/:id</code></div>
+                        <p class="text-xs text-slate-400">Cancel a pending scheduled email</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT GROUPS -->
+            <section id="contact-groups" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Contact Groups <span
+                        class="tag bg-emerald-500/10 text-emerald-400">JWT</span></h2>
+                <div class="flex flex-col gap-4">
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/contact-groups</code></div>
+                        <p class="text-xs text-slate-400">List groups with member counts</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge post">POST</span><code
+                                class="text-sm font-mono text-slate-200">/api/contact-groups</code></div>
+                        <p class="text-xs text-slate-400">Create group. Body: <code>name</code>,
+                            <code>description</code></p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/contact-groups/:id/members</code></div>
+                        <p class="text-xs text-slate-400">List group members</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge post">POST</span><code
+                                class="text-sm font-mono text-slate-200">/api/contact-groups/:id/members</code></div>
+                        <p class="text-xs text-slate-400">Add member. Body: <code>contactId</code></p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge delete">DELETE</span><code
+                                class="text-sm font-mono text-slate-200">/api/contact-groups/:id/members/:contactId</code>
+                        </div>
+                        <p class="text-xs text-slate-400">Remove member</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge delete">DELETE</span><code
+                                class="text-sm font-mono text-slate-200">/api/contact-groups/:id</code></div>
+                        <p class="text-xs text-slate-400">Delete group</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FORWARDING -->
+            <section id="forwarding" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Forwarding Rules <span
+                        class="tag bg-emerald-500/10 text-emerald-400">JWT</span></h2>
+                <div class="flex flex-col gap-4">
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/forwarding</code></div>
+                        <p class="text-xs text-slate-400">List forwarding rules</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge post">POST</span><code
+                                class="text-sm font-mono text-slate-200">/api/forwarding</code></div>
+                        <p class="text-xs text-slate-400 mb-2">Create rule. Body: <code>forwardTo</code>,
+                            <code>keepCopy</code>, <code>conditionFrom</code>, <code>conditionSubject</code></p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge put">PUT</span><code
+                                class="text-sm font-mono text-slate-200">/api/forwarding/:id/toggle</code></div>
+                        <p class="text-xs text-slate-400">Toggle rule on/off</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge delete">DELETE</span><code
+                                class="text-sm font-mono text-slate-200">/api/forwarding/:id</code></div>
+                        <p class="text-xs text-slate-400">Delete rule</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EXPORT -->
+            <section id="export" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Export <span
+                        class="tag bg-emerald-500/10 text-emerald-400">JWT</span></h2>
+                <div class="endpoint-card">
+                    <div class="flex items-center gap-3 mb-3"><span class="method-badge get">GET</span><code
+                            class="text-sm font-mono text-slate-200">/api/export/emails?folder=inbox&format=json</code>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-2">Export emails as JSON or EML file download</p>
+                    <table class="param-table w-full">
+                        <thead>
+                            <tr class="text-xs text-slate-500 font-mono">
+                                <th>Param</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-slate-300">folder</td>
+                                <td class="text-slate-400">inbox, sent, drafts, spam, trash</td>
+                            </tr>
+                            <tr>
+                                <td class="text-slate-300">format</td>
+                                <td class="text-slate-400"><code>json</code> or <code>eml</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- WEBHOOKS -->
+            <section id="webhooks" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Webhooks</h2>
+                <p class="text-sm text-slate-400 mb-4">Receive real-time notifications when events happen in Nothing
+                    Mail.</p>
+                <div class="flex flex-col gap-4">
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge post">POST</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/webhooks</code></div>
+                        <p class="text-xs text-slate-400 mb-3">Register a webhook endpoint</p>
+                        <div class="code-block font-mono text-slate-300">{ "url": "https://myapp.com/webhook",
+                            "events": ["email.received", "email.sent"] }
+
+                            <span class="text-emerald-400">Response:</span>
+                            { "id": "uuid", "secret": "whsec_abc123...",
+                            "message": "Save the secret — used to verify signatures" }
+                        </div>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/webhooks</code></div>
+                        <p class="text-xs text-slate-400">List webhooks</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/webhooks/:id/logs</code></div>
+                        <p class="text-xs text-slate-400">View delivery logs (last 50)</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge put">PUT</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/webhooks/:id/toggle</code></div>
+                        <p class="text-xs text-slate-400">Enable/disable webhook</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge delete">DELETE</span><code
+                                class="text-sm font-mono text-slate-200">/api/v1/webhooks/:id</code></div>
+                        <p class="text-xs text-slate-400">Delete webhook</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WEBHOOK EVENTS -->
+            <section id="webhook-events" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Webhook Events</h2>
+                <div class="endpoint-card">
+                    <table class="param-table w-full">
+                        <thead>
+                            <tr class="text-xs text-slate-500 font-mono">
+                                <th>Event</th>
+                                <th>Triggered When</th>
+                                <th>Payload</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-primary font-mono">email.received</td>
+                                <td class="text-slate-400">New email arrives via IMAP</td>
+                                <td class="text-slate-500">emailId, from, subject</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono">email.sent</td>
+                                <td class="text-slate-400">Email sent via SMTP or API</td>
+                                <td class="text-slate-500">emailId, to, subject</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono">email.deleted</td>
+                                <td class="text-slate-400">Email permanently deleted</td>
+                                <td class="text-slate-500">emailId</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono">email.read</td>
+                                <td class="text-slate-400">Email marked as read</td>
+                                <td class="text-slate-500">emailId</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono">email.starred</td>
+                                <td class="text-slate-400">Email starred/unstarred</td>
+                                <td class="text-slate-500">emailId, isStarred</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono">email.scheduled_sent</td>
+                                <td class="text-slate-400">Scheduled email was sent</td>
+                                <td class="text-slate-500">emailId, subject</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono">contact.created</td>
+                                <td class="text-slate-400">New contact added</td>
+                                <td class="text-slate-500">contactId, name, email</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono">contact.deleted</td>
+                                <td class="text-slate-400">Contact deleted</td>
+                                <td class="text-slate-500">contactId</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono">*</td>
+                                <td class="text-slate-400">All events (wildcard)</td>
+                                <td class="text-slate-500">varies</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- WEBHOOK VERIFY -->
+            <section id="webhook-verify" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Webhook Verification</h2>
+                <div class="endpoint-card">
+                    <p class="text-sm text-slate-400 mb-3">Each webhook delivery includes an HMAC-SHA256 signature.
+                        Verify it to ensure authenticity:</p>
+                    <div class="code-block font-mono text-slate-300"><span class="text-slate-500">// Headers sent with
+                            each webhook:</span>
+                        X-Webhook-Signature: &lt;hmac_sha256_hex&gt;
+                        X-Webhook-Event: email.received
+
+                        <span class="text-slate-500">// Node.js verification example:</span>
+                        const crypto = require('crypto');
+                        const signature = req.headers['x-webhook-signature'];
+                        const expected = crypto
+                        .createHmac('sha256', YOUR_WEBHOOK_SECRET)
+                        .update(JSON.stringify(req.body))
+                        .digest('hex');
+
+                        if (signature === expected) {
+                        console.log('✓ Webhook verified');
+                        }
+                    </div>
+                </div>
+            </section>
+
+            <!-- ADMIN API -->
+            <section id="admin" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Admin API <span class="tag bg-red-500/10 text-red-400">Admin
+                        Only</span></h2>
+                <p class="text-xs text-slate-400 mb-4">All admin endpoints require JWT auth + admin role. Base:
+                    <code>/api/admin</code></p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="endpoint-card"><span class="method-badge get text-[10px]">GET</span> <code
+                            class="text-xs font-mono text-slate-300">/stats</code>
+                        <p class="text-[11px] text-slate-500 mt-1">Dashboard statistics</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge get text-[10px]">GET</span> <code
+                            class="text-xs font-mono text-slate-300">/users</code>
+                        <p class="text-[11px] text-slate-500 mt-1">List all users</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge post text-[10px]">POST</span> <code
+                            class="text-xs font-mono text-slate-300">/users</code>
+                        <p class="text-[11px] text-slate-500 mt-1">Create user</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge put text-[10px]">PUT</span> <code
+                            class="text-xs font-mono text-slate-300">/users/:id</code>
+                        <p class="text-[11px] text-slate-500 mt-1">Update user</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge delete text-[10px]">DELETE</span> <code
+                            class="text-xs font-mono text-slate-300">/users/:id</code>
+                        <p class="text-[11px] text-slate-500 mt-1">Delete user</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge put text-[10px]">PUT</span> <code
+                            class="text-xs font-mono text-slate-300">/users/:id/reset-password</code>
+                        <p class="text-[11px] text-slate-500 mt-1">Reset password</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge put text-[10px]">PUT</span> <code
+                            class="text-xs font-mono text-slate-300">/users/:id/toggle-admin</code>
+                        <p class="text-[11px] text-slate-500 mt-1">Toggle admin role</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge get text-[10px]">GET</span> <code
+                            class="text-xs font-mono text-slate-300">/emails</code>
+                        <p class="text-[11px] text-slate-500 mt-1">Browse all emails</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge get text-[10px]">GET</span> <code
+                            class="text-xs font-mono text-slate-300">/accounts</code>
+                        <p class="text-[11px] text-slate-500 mt-1">All mail accounts</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge get text-[10px]">GET</span> <code
+                            class="text-xs font-mono text-slate-300">/sessions</code>
+                        <p class="text-[11px] text-slate-500 mt-1">All sessions</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge get text-[10px]">GET</span> <code
+                            class="text-xs font-mono text-slate-300">/storage</code>
+                        <p class="text-[11px] text-slate-500 mt-1">Storage breakdown</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge get text-[10px]">GET</span> <code
+                            class="text-xs font-mono text-slate-300">/logs</code>
+                        <p class="text-[11px] text-slate-500 mt-1">Audit logs</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge get text-[10px]">GET</span> <code
+                            class="text-xs font-mono text-slate-300">/health</code>
+                        <p class="text-[11px] text-slate-500 mt-1">Server health</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge post text-[10px]">POST</span> <code
+                            class="text-xs font-mono text-slate-300">/broadcast</code>
+                        <p class="text-[11px] text-slate-500 mt-1">Message all users</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge post text-[10px]">POST</span> <code
+                            class="text-xs font-mono text-slate-300">/block-sender</code>
+                        <p class="text-[11px] text-slate-500 mt-1">Block sender</p>
+                    </div>
+                    <div class="endpoint-card"><span class="method-badge post text-[10px]">POST</span> <code
+                            class="text-xs font-mono text-slate-300">/bootstrap</code>
+                        <p class="text-[11px] text-slate-500 mt-1">First admin setup</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== LEAD SCRAPER DOCUMENTATION ===== -->
+            <section id="lead-scraper" class="mb-16">
+                <h2 class="text-xl font-bold section-title flex items-center gap-2">Lead Scraper <span class="tag bg-emerald-500/10 text-emerald-400">APIFY</span></h2>
+                <p class="text-sm text-slate-400 mb-6">Scrape leads from any website, Google Maps, LinkedIn, and more using Apify — then import them directly into your subscriber lists for email campaigns.</p>
+
+                <!-- How-to Guide -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <div class="endpoint-card border-l-2 border-primary">
+                        <div class="flex items-center gap-2 mb-2"><span class="text-primary font-bold text-lg">1</span><h4 class="text-sm font-bold text-slate-200">Get Your Apify API Token</h4></div>
+                        <p class="text-xs text-slate-400">Sign up for free at <a href="https://apify.com" target="_blank" class="text-primary hover:underline">apify.com</a>, then go to <strong>Settings → Integrations</strong> to copy your API token.</p>
+                    </div>
+                    <div class="endpoint-card border-l-2 border-blue-500">
+                        <div class="flex items-center gap-2 mb-2"><span class="text-blue-400 font-bold text-lg">2</span><h4 class="text-sm font-bold text-slate-200">Save Token in Settings</h4></div>
+                        <p class="text-xs text-slate-400">Navigate to <strong>Lead Scraper</strong> in the sidebar, click <strong>⚙ Settings</strong>, paste your token, and click <strong>Save Settings</strong>.</p>
+                    </div>
+                    <div class="endpoint-card border-l-2 border-emerald-500">
+                        <div class="flex items-center gap-2 mb-2"><span class="text-emerald-400 font-bold text-lg">3</span><h4 class="text-sm font-bold text-slate-200">Start a Scrape</h4></div>
+                        <p class="text-xs text-slate-400">Click <strong>🔍 New Scrape</strong>, pick a scraper type (e.g., Website Contacts or Google Maps), enter a URL or keyword, select a target list or create a new one, and hit <strong>Start Scraping</strong>.</p>
+                    </div>
+                    <div class="endpoint-card border-l-2 border-violet-500">
+                        <div class="flex items-center gap-2 mb-2"><span class="text-violet-400 font-bold text-lg">4</span><h4 class="text-sm font-bold text-slate-200">Use Leads in Campaigns</h4></div>
+                        <p class="text-xs text-slate-400">Once the scrape completes, leads are auto-imported (if enabled). Or use <strong>Import</strong> or <strong>Quick Campaign</strong> to instantly create an email campaign with merge tags like <code>{{first_name}}</code>.</p>
+                    </div>
+                </div>
+
+                <!-- Settings API -->
+                <h3 class="text-sm font-bold text-slate-300 mb-3">Settings Configuration</h3>
+                <div class="endpoint-card mb-4">
+                    <table class="param-table w-full">
+                        <thead>
+                            <tr class="text-xs text-slate-500 font-mono">
+                                <th>Setting</th>
+                                <th>Description</th>
+                                <th>Default</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="text-slate-300">apify_token</td><td class="text-slate-400">Your personal Apify API token from <a href="https://console.apify.com/account/integrations" target="_blank" class="text-primary hover:underline">console.apify.com</a></td><td class="text-slate-500">empty</td></tr>
+                            <tr><td class="text-slate-300">auto_import</td><td class="text-slate-400">Automatically import scraped leads into the target subscriber list</td><td class="text-slate-500">On</td></tr>
+                            <tr><td class="text-slate-300">default_actor</td><td class="text-slate-400">Default scraper type when opening the scrape form</td><td class="text-slate-500">website-contacts</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Features Overview -->
+                <h3 class="text-sm font-bold text-slate-300 mb-3">Key Features</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+                    <div class="endpoint-card"><span class="material-symbols-outlined text-primary text-lg mb-2">person_search</span><h4 class="text-sm font-bold text-slate-200 mb-1">8 Scrapers</h4><p class="text-[11px] text-slate-400">Website contacts, Google Maps, LinkedIn, Yellow Pages, Instagram, Twitter, and custom actors.</p></div>
+                    <div class="endpoint-card"><span class="material-symbols-outlined text-emerald-400 text-lg mb-2">upload</span><h4 class="text-sm font-bold text-slate-200 mb-1">Auto Import</h4><p class="text-[11px] text-slate-400">Leads auto-import into subscriber lists with email, name, company, phone data.</p></div>
+                    <div class="endpoint-card"><span class="material-symbols-outlined text-violet-400 text-lg mb-2">campaign</span><h4 class="text-sm font-bold text-slate-200 mb-1">Quick Campaign</h4><p class="text-[11px] text-slate-400">One-click campaign creation from any scrape job — with merge tag support.</p></div>
+                    <div class="endpoint-card"><span class="material-symbols-outlined text-blue-400 text-lg mb-2">download</span><h4 class="text-sm font-bold text-slate-200 mb-1">CSV Export</h4><p class="text-[11px] text-slate-400">Export all leads to CSV with email, name, company, phone, website, LinkedIn URL.</p></div>
+                    <div class="endpoint-card"><span class="material-symbols-outlined text-yellow-400 text-lg mb-2">insert_chart</span><h4 class="text-sm font-bold text-slate-200 mb-1">Stats Dashboard</h4><p class="text-[11px] text-slate-400">Track total jobs, leads scraped, leads with emails, and imported counts.</p></div>
+                    <div class="endpoint-card"><span class="material-symbols-outlined text-red-400 text-lg mb-2">extension</span><h4 class="text-sm font-bold text-slate-200 mb-1">Custom Actors</h4><p class="text-[11px] text-slate-400">Use any Apify actor by providing actor ID and custom JSON input.</p></div>
+                </div>
+            </section>
+
+            <!-- SCRAPER TYPES -->
+            <section id="scraper-types" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Available Scrapers</h2>
+                <p class="text-sm text-slate-400 mb-4">The following scraper types are available out of the box. You can also use any custom Apify actor.</p>
+                <div class="endpoint-card">
+                    <table class="param-table w-full">
+                        <thead>
+                            <tr class="text-xs text-slate-500 font-mono">
+                                <th>Scraper</th>
+                                <th>Input</th>
+                                <th>Output</th>
+                                <th>Apify Actor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-slate-200 font-medium"><span class="material-symbols-outlined text-sm align-middle text-primary mr-1">language</span> Website Contacts</td>
+                                <td class="text-slate-400">URL</td>
+                                <td class="text-slate-400">Emails, phones, social links</td>
+                                <td class="text-slate-500 font-mono text-[11px]">apify/contact-info-scraper</td>
+                            </tr>
+                            <tr>
+                                <td class="text-slate-200 font-medium"><span class="material-symbols-outlined text-sm align-middle text-primary mr-1">map</span> Google Maps</td>
+                                <td class="text-slate-400">Keyword + Location</td>
+                                <td class="text-slate-400">Business name, email, phone, address, website</td>
+                                <td class="text-slate-500 font-mono text-[11px]">compass/crawler-google-places</td>
+                            </tr>
+                            <tr>
+                                <td class="text-slate-200 font-medium"><span class="material-symbols-outlined text-sm align-middle text-primary mr-1">work</span> LinkedIn Profiles</td>
+                                <td class="text-slate-400">Profile URL</td>
+                                <td class="text-slate-400">Name, title, company, skills</td>
+                                <td class="text-slate-500 font-mono text-[11px]">anchor/linkedin-profile-scraper</td>
+                            </tr>
+                            <tr>
+                                <td class="text-slate-200 font-medium"><span class="material-symbols-outlined text-sm align-middle text-primary mr-1">person_search</span> LinkedIn Search</td>
+                                <td class="text-slate-400">Keyword + Location</td>
+                                <td class="text-slate-400">Name, title, company, profile URL</td>
+                                <td class="text-slate-500 font-mono text-[11px]">anchor/linkedin-search-scraper</td>
+                            </tr>
+                            <tr>
+                                <td class="text-slate-200 font-medium"><span class="material-symbols-outlined text-sm align-middle text-primary mr-1">menu_book</span> Yellow Pages</td>
+                                <td class="text-slate-400">Keyword + Location</td>
+                                <td class="text-slate-400">Business name, phone, address, website</td>
+                                <td class="text-slate-500 font-mono text-[11px]">apify/yellow-pages-scraper</td>
+                            </tr>
+                            <tr>
+                                <td class="text-slate-200 font-medium"><span class="material-symbols-outlined text-sm align-middle text-primary mr-1">photo_camera</span> Instagram</td>
+                                <td class="text-slate-400">Profile URL</td>
+                                <td class="text-slate-400">Bio, contact info, follower count</td>
+                                <td class="text-slate-500 font-mono text-[11px]">apify/instagram-profile-scraper</td>
+                            </tr>
+                            <tr>
+                                <td class="text-slate-200 font-medium"><span class="material-symbols-outlined text-sm align-middle text-primary mr-1">tag</span> Twitter / X</td>
+                                <td class="text-slate-400">Profile URL</td>
+                                <td class="text-slate-400">Bio, links, contact info</td>
+                                <td class="text-slate-500 font-mono text-[11px]">apify/twitter-scraper</td>
+                            </tr>
+                            <tr>
+                                <td class="text-slate-200 font-medium"><span class="material-symbols-outlined text-sm align-middle text-primary mr-1">extension</span> Custom Actor</td>
+                                <td class="text-slate-400">Actor ID + JSON input</td>
+                                <td class="text-slate-400">Varies by actor</td>
+                                <td class="text-slate-500 font-mono text-[11px]">any Apify actor</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- LEAD SCRAPER API -->
+            <section id="lead-api" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Lead Scraper API <span class="tag bg-emerald-500/10 text-emerald-400">JWT</span></h2>
+                <p class="text-xs text-slate-400 mb-4">All endpoints require JWT authentication. Base: <code>/api/apify</code></p>
+                <div class="flex flex-col gap-4">
+
+                    <h3 class="text-sm font-bold text-slate-300 mt-2">Settings</h3>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code class="text-sm font-mono text-slate-200">/api/apify/settings</code></div>
+                        <p class="text-xs text-slate-400">Get your Apify settings (token, default actor, auto-import)</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge post">POST</span><code class="text-sm font-mono text-slate-200">/api/apify/settings</code></div>
+                        <p class="text-xs text-slate-400 mb-2">Save settings. Body: <code>apify_token</code>, <code>default_actor</code>, <code>auto_import</code></p>
+                    </div>
+
+                    <h3 class="text-sm font-bold text-slate-300 mt-2">Scraping</h3>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code class="text-sm font-mono text-slate-200">/api/apify/actors</code></div>
+                        <p class="text-xs text-slate-400">List all available scraper types with their fields and Apify actor IDs</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge post">POST</span><code class="text-sm font-mono text-slate-200">/api/apify/scrape</code></div>
+                        <p class="text-xs text-slate-400 mb-3">Start a new scrape job</p>
+                        <table class="param-table w-full">
+                            <thead><tr class="text-xs text-slate-500 font-mono"><th>Body</th><th>Required</th><th>Description</th></tr></thead>
+                            <tbody>
+                                <tr><td class="text-slate-300">actor_type</td><td>✓</td><td class="text-slate-400">Scraper type: <code>website-contacts</code>, <code>google-maps</code>, <code>linkedin-profiles</code>, <code>linkedin-search</code>, <code>yellow-pages</code>, <code>instagram</code>, <code>twitter</code>, <code>custom</code></td></tr>
+                                <tr><td class="text-slate-300">source</td><td></td><td class="text-slate-400">URL for URL-based scrapers</td></tr>
+                                <tr><td class="text-slate-300">keyword</td><td></td><td class="text-slate-400">Search keyword for keyword-based scrapers</td></tr>
+                                <tr><td class="text-slate-300">location</td><td></td><td class="text-slate-400">Location filter (e.g. "New York, USA")</td></tr>
+                                <tr><td class="text-slate-300">max_results</td><td></td><td class="text-slate-400">Max results to scrape (default: 50)</td></tr>
+                                <tr><td class="text-slate-300">list_id</td><td></td><td class="text-slate-400">Import leads to existing subscriber list ID</td></tr>
+                                <tr><td class="text-slate-300">create_list_name</td><td></td><td class="text-slate-400">Create new list with this name and import there</td></tr>
+                                <tr><td class="text-slate-300">custom_actor_id</td><td></td><td class="text-slate-400">For <code>custom</code> type: Apify actor ID (e.g. <code>user/my-actor</code>)</td></tr>
+                                <tr><td class="text-slate-300">custom_input</td><td></td><td class="text-slate-400">For <code>custom</code> type: JSON input string</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="code-block font-mono text-slate-300 mt-3"><span class="text-slate-500">// Example: Scrape a website for contacts</span>
+POST /api/apify/scrape
+{ "actor_type": "website-contacts",
+  "source": "https://example.com",
+  "max_results": 100,
+  "create_list_name": "Example.com Leads" }
+
+<span class="text-emerald-400">Response:</span>
+{ "success": true, "jobId": "uuid", "targetListId": "uuid" }
+
+<span class="text-slate-500">// Example: Scrape Google Maps</span>
+POST /api/apify/scrape
+{ "actor_type": "google-maps",
+  "keyword": "web design agencies",
+  "location": "New York",
+  "max_results": 50,
+  "create_list_name": "NYC Web Agencies" }</div>
+                    </div>
+
+                    <h3 class="text-sm font-bold text-slate-300 mt-2">Job Management</h3>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code class="text-sm font-mono text-slate-200">/api/apify/jobs</code></div>
+                        <p class="text-xs text-slate-400">List all scrape jobs with status, lead counts, and list names</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code class="text-sm font-mono text-slate-200">/api/apify/jobs/:id</code></div>
+                        <p class="text-xs text-slate-400">Get job details + all leads found by this job</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge post">POST</span><code class="text-sm font-mono text-slate-200">/api/apify/jobs/:id/refresh</code></div>
+                        <p class="text-xs text-slate-400">Check Apify for updated run status (for running jobs)</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge delete">DELETE</span><code class="text-sm font-mono text-slate-200">/api/apify/jobs/:id</code></div>
+                        <p class="text-xs text-slate-400">Delete a scrape job and all its associated leads</p>
+                    </div>
+
+                    <h3 class="text-sm font-bold text-slate-300 mt-2">Leads</h3>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge get">GET</span><code class="text-sm font-mono text-slate-200">/api/apify/leads</code></div>
+                        <p class="text-xs text-slate-400 mb-2">List all scraped leads (across all jobs)</p>
+                        <table class="param-table w-full">
+                            <thead><tr class="text-xs text-slate-500 font-mono"><th>Query Param</th><th>Description</th></tr></thead>
+                            <tbody>
+                                <tr><td class="text-slate-300">search</td><td class="text-slate-400">Search in email, name, company</td></tr>
+                                <tr><td class="text-slate-300">job_id</td><td class="text-slate-400">Filter by job ID</td></tr>
+                                <tr><td class="text-slate-300">has_email</td><td class="text-slate-400">Set <code>1</code> to only show leads with email</td></tr>
+                                <tr><td class="text-slate-300">limit</td><td class="text-slate-400">Max results (default: 100)</td></tr>
+                                <tr><td class="text-slate-300">offset</td><td class="text-slate-400">Pagination offset</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge delete">DELETE</span><code class="text-sm font-mono text-slate-200">/api/apify/leads/:id</code></div>
+                        <p class="text-xs text-slate-400">Delete a single lead</p>
+                    </div>
+
+                    <h3 class="text-sm font-bold text-slate-300 mt-2">Import & Campaigns</h3>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge post">POST</span><code class="text-sm font-mono text-slate-200">/api/apify/import</code></div>
+                        <p class="text-xs text-slate-400 mb-2">Import leads into a subscriber list</p>
+                        <table class="param-table w-full">
+                            <thead><tr class="text-xs text-slate-500 font-mono"><th>Body</th><th>Description</th></tr></thead>
+                            <tbody>
+                                <tr><td class="text-slate-300">job_id</td><td class="text-slate-400">Import all leads from this job</td></tr>
+                                <tr><td class="text-slate-300">lead_ids</td><td class="text-slate-400">Array of specific lead IDs to import</td></tr>
+                                <tr><td class="text-slate-300">list_id</td><td class="text-slate-400">Target subscriber list ID</td></tr>
+                                <tr><td class="text-slate-300">create_list_name</td><td class="text-slate-400">Create new list with this name</td></tr>
+                                <tr><td class="text-slate-300">filter_has_email</td><td class="text-slate-400">Only import leads with email addresses</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="code-block font-mono text-slate-300 mt-3"><span class="text-emerald-400">Response:</span>
+{ "success": true, "imported": 47, "skipped": 3,
+  "totalInList": 47, "listId": "uuid" }</div>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge post">POST</span><code class="text-sm font-mono text-slate-200">/api/apify/quick-campaign</code></div>
+                        <p class="text-xs text-slate-400 mb-2">Create a campaign directly from scraped leads</p>
+                        <table class="param-table w-full">
+                            <thead><tr class="text-xs text-slate-500 font-mono"><th>Body</th><th>Required</th><th>Description</th></tr></thead>
+                            <tbody>
+                                <tr><td class="text-slate-300">job_id</td><td></td><td class="text-slate-400">Source job for leads</td></tr>
+                                <tr><td class="text-slate-300">campaign_name</td><td>✓</td><td class="text-slate-400">Campaign name</td></tr>
+                                <tr><td class="text-slate-300">subject</td><td>✓</td><td class="text-slate-400">Email subject line</td></tr>
+                                <tr><td class="text-slate-300">body_html</td><td></td><td class="text-slate-400">Email HTML body — supports merge tags: <code>{{first_name}}</code>, <code>{{last_name}}</code>, <code>{{company}}</code>, <code>{{email}}</code></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="text-sm font-bold text-slate-300 mt-2">Stats & Export</h3>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-2"><span class="method-badge get">GET</span><code class="text-sm font-mono text-slate-200">/api/apify/stats</code></div>
+                        <p class="text-xs text-slate-400">Dashboard stats: total jobs, total leads, leads with email, imported jobs, recent jobs</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <div class="flex items-center gap-3 mb-3"><span class="method-badge get">GET</span><code class="text-sm font-mono text-slate-200">/api/apify/export</code></div>
+                        <p class="text-xs text-slate-400 mb-2">Download leads as CSV file</p>
+                        <table class="param-table w-full">
+                            <thead><tr class="text-xs text-slate-500 font-mono"><th>Query</th><th>Description</th></tr></thead>
+                            <tbody>
+                                <tr><td class="text-slate-300">job_id</td><td class="text-slate-400">Export leads from a specific job only</td></tr>
+                                <tr><td class="text-slate-300">has_email</td><td class="text-slate-400">Set <code>1</code> to export only leads with emails</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LEAD WORKFLOW -->
+            <section id="lead-workflow" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Lead Scraper Workflow</h2>
+                <p class="text-sm text-slate-400 mb-4">Complete pipeline from scraping to sending email campaigns:</p>
+                <div class="endpoint-card">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="size-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"><span class="text-primary font-bold text-sm">1</span></div>
+                            <div class="flex-1"><p class="text-sm text-slate-200 font-medium">Configure Apify Token</p><p class="text-[11px] text-slate-500">Lead Scraper → Settings → Paste API token → Save</p></div>
+                            <span class="material-symbols-outlined text-slate-600">arrow_forward</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="size-8 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0"><span class="text-blue-400 font-bold text-sm">2</span></div>
+                            <div class="flex-1"><p class="text-sm text-slate-200 font-medium">Start a Scrape Job</p><p class="text-[11px] text-slate-500">New Scrape → Pick type → Enter URL/keyword → Choose target list → Start</p></div>
+                            <span class="material-symbols-outlined text-slate-600">arrow_forward</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="size-8 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0"><span class="text-emerald-400 font-bold text-sm">3</span></div>
+                            <div class="flex-1"><p class="text-sm text-slate-200 font-medium">Leads Extracted & Imported</p><p class="text-[11px] text-slate-500">Apify scrapes the target → Leads (email, name, company, phone) saved → Auto-imported to subscriber list</p></div>
+                            <span class="material-symbols-outlined text-slate-600">arrow_forward</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="size-8 rounded-full bg-violet-500/10 flex items-center justify-center flex-shrink-0"><span class="text-violet-400 font-bold text-sm">4</span></div>
+                            <div class="flex-1"><p class="text-sm text-slate-200 font-medium">Create Email Campaign</p><p class="text-[11px] text-slate-500">Quick Campaign from leads → Write email with {{merge_tags}} → Campaign created as draft → Send via Marketing page</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="endpoint-card mt-4">
+                    <h4 class="text-sm font-bold text-slate-200 mb-3">Merge Tags for Campaigns</h4>
+                    <p class="text-xs text-slate-400 mb-3">When creating campaigns from scraped leads, use these merge tags in your email body for personalization:</p>
+                    <table class="param-table w-full">
+                        <thead><tr class="text-xs text-slate-500 font-mono"><th>Tag</th><th>Replaced With</th><th>Example</th></tr></thead>
+                        <tbody>
+                            <tr><td class="text-primary font-mono">{{first_name}}</td><td class="text-slate-400">Lead's first name</td><td class="text-slate-500">John</td></tr>
+                            <tr><td class="text-primary font-mono">{{last_name}}</td><td class="text-slate-400">Lead's last name</td><td class="text-slate-500">Doe</td></tr>
+                            <tr><td class="text-primary font-mono">{{company}}</td><td class="text-slate-400">Company name</td><td class="text-slate-500">Acme Inc</td></tr>
+                            <tr><td class="text-primary font-mono">{{email}}</td><td class="text-slate-400">Lead's email address</td><td class="text-slate-500">john@acme.com</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="code-block font-mono text-slate-300 mt-3"><span class="text-slate-500">// Example campaign email body:</span>
+Hi {{first_name}},
+
+I noticed {{company}} might benefit from our services.
+Would you be open to a quick 15-minute call this week?
+
+Best regards,
+Your Name</div>
+                </div>
+
+                <div class="endpoint-card mt-4 border-primary/20">
+                    <h4 class="text-sm font-bold text-slate-200 mb-2 flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">tips_and_updates</span> Pro Tips</h4>
+                    <ul class="text-xs text-slate-400 space-y-2">
+                        <li>• <strong>Google Maps</strong> is the best scraper for local businesses — try "restaurants", "plumbers", "web agencies" + city name</li>
+                        <li>• Enable <strong>Auto-Import</strong> in settings to skip the manual import step — leads go straight to your list</li>
+                        <li>• Use <strong>Quick Campaign</strong> on completed jobs to create a draft campaign in one click</li>
+                        <li>• Export leads as <strong>CSV</strong> to use in other tools (Mailchimp, HubSpot, etc.)</li>
+                        <li>• The <strong>Custom Actor</strong> option lets you use any of the 2,000+ scrapers on the Apify marketplace</li>
+                        <li>• Leads are <strong>deduplicated</strong> by email when importing — no duplicate subscribers</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- KEYBOARD SHORTCUTS -->
+            <section id="keyboard" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Keyboard Shortcuts</h2>
+                <div class="endpoint-card">
+                    <table class="param-table w-full">
+                        <thead>
+                            <tr class="text-xs text-slate-500 font-mono">
+                                <th>Key</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-primary font-mono font-bold">c</td>
+                                <td class="text-slate-400">Compose new email</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono font-bold">r</td>
+                                <td class="text-slate-400">Reply to email</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono font-bold">j / k</td>
+                                <td class="text-slate-400">Navigate down / up in email list</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono font-bold">Enter</td>
+                                <td class="text-slate-400">Open selected email</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono font-bold">e</td>
+                                <td class="text-slate-400">Archive email</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono font-bold">#</td>
+                                <td class="text-slate-400">Delete email</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono font-bold">s</td>
+                                <td class="text-slate-400">Star / unstar email</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono font-bold">/</td>
+                                <td class="text-slate-400">Focus search</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono font-bold">Esc</td>
+                                <td class="text-slate-400">Close compose / go back</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary font-mono font-bold">?</td>
+                                <td class="text-slate-400">Show shortcuts help</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- THEME -->
+            <section id="theme" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Theme Toggle</h2>
+                <div class="endpoint-card">
+                    <p class="text-sm text-slate-400">Eclatrecon AI Mail supports Dark and Light themes. Toggle via
+                        <strong>Settings → Appearance</strong> or the theme button in the header. Your preference is
+                        saved per-account and synced via the API.</p>
+                </div>
+            </section>
+
+            <!-- SECURITY -->
+            <section id="security-features" class="mb-16">
+                <h2 class="text-xl font-bold section-title">Security Features</h2>
+                <div class="flex flex-col gap-4">
+                    <div class="endpoint-card">
+                        <h4 class="text-sm font-bold text-slate-200 mb-2">Two-Factor Authentication (2FA)</h4>
+                        <p class="text-xs text-slate-400">TOTP-based 2FA via authenticator apps. Enable in Settings →
+                            Security.</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <h4 class="text-sm font-bold text-slate-200 mb-2">Login History</h4>
+                        <p class="text-xs text-slate-400">Track all login attempts with IP address, device, and
+                            timestamp. <code>GET /api/login-history</code></p>
+                    </div>
+                    <div class="endpoint-card">
+                        <h4 class="text-sm font-bold text-slate-200 mb-2">Session Management</h4>
+                        <p class="text-xs text-slate-400">View and revoke active sessions. Admin can revoke any user's
+                            sessions.</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <h4 class="text-sm font-bold text-slate-200 mb-2">API Key Permissions</h4>
+                        <p class="text-xs text-slate-400">Granular permissions: <code>read</code>, <code>write</code>,
+                            <code>send</code>, <code>full</code>. Keys can have expiration dates.</p>
+                    </div>
+                    <div class="endpoint-card">
+                        <h4 class="text-sm font-bold text-slate-200 mb-2">Webhook Signatures</h4>
+                        <p class="text-xs text-slate-400">HMAC-SHA256 signatures on all webhook deliveries for
+                            authenticity verification.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="text-center py-12 text-slate-600 text-xs font-mono">
+                <p>Eclatrecon AI Mail v2.0 · Built with Node.js, Express, SQLite, Socket.IO</p>
+                <p class="mt-1">© 2026 Eclatrecon AI Mail. All rights reserved.</p>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // Active nav highlighting
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    document.querySelectorAll('.doc-nav').forEach(n => n.classList.remove('active'));
+                    const link = document.querySelector(`.doc-nav[href="#${e.target.id}"]`);
+                    if (link) link.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-20% 0px -60% 0px' });
+        document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+
+        // Smooth scroll
+        document.querySelectorAll('.doc-nav').forEach(a => {
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                const id = a.getAttribute('href').slice(1);
+                document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+
+</html>

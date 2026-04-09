@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eclatrecon AI Mail — AI Email Platform | Lead Gen, Bulk Email, Cold Outreach</title>
+    <meta name="description" content="Eclatrecon AI Mail is an AI-powered email platform for founders and growth teams. Features lead generation, bulk email campaigns, cold email outreach, campaign analytics, and enterprise security." />
+    <meta name="keywords" content="AI email, email client, lead generation, bulk email, cold email, email marketing, campaign automation, IMAP, SMTP, Apify, lead scraper, email outreach, Eclatrecon" />
+    <meta name="author" content="Eclatrecon AI Mail" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://eclatrecon.com/landing" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://eclatrecon.com/landing" />
+    <meta property="og:title" content="Eclatrecon AI Mail — AI Email Platform" />
+    <meta property="og:description" content="AI-powered email with lead generation, bulk email, cold outreach, and campaign automation. Built for founders." />
+    <meta property="og:image" content="https://eclatrecon.com/og-image.png" />
+    <meta property="og:site_name" content="Eclatrecon AI Mail" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://eclatrecon.com/landing" />
+    <meta name="twitter:title" content="Eclatrecon AI Mail — AI Email Platform" />
+    <meta name="twitter:description" content="AI-powered email with lead generation, bulk email, cold outreach, and campaign automation." />
+    <meta name="twitter:image" content="https://eclatrecon.com/og-image.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="favicon.svg" />
+
+    <!-- Preconnect for speed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Fonts — display swap for fast render -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0..1&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind (CDN for dev — replace with build for prod) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ffb599",
+                        "primary-container": "#f5611b",
+                        "surface": "#131313",
+                        "surface-dim": "#111",
+                        "surface-container": "#1a1a1a",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-high": "#222",
+                        "on-surface": "#e5e2e1",
+                        "on-surface-variant": "#bba99e",
+                        "outline-variant": "#5a4138",
+                    },
+                    fontFamily: {
+                        "headline": ["Public Sans", "sans-serif"],
+                        "body": ["Public Sans", "sans-serif"],
+                        "label": ["Space Grotesk", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Eclatrecon AI Mail",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "AI-powered email platform with lead generation, bulk email, cold outreach, and campaign automation.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <style>
+        /* ===== Minimal critical CSS — no heavy filters ===== */
+        html { scroll-behavior: smooth; }
+        ::selection { background: rgba(245,97,27,0.3); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+        /* ===== Scroll reveal — GPU-accelerated, no repaints ===== */
+        .reveal {
+            opacity: 0;
+            transform: translate3d(0, 40px, 0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+        .reveal.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translate3d(-50px, 0, 0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+        .reveal-left.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translate3d(50px, 0, 0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+        .reveal-right.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+
+        .s1 { transition-delay: .08s; }
+        .s2 { transition-delay: .16s; }
+        .s3 { transition-delay: .24s; }
+        .s4 { transition-delay: .32s; }
+        .s5 { transition-delay: .4s; }
+        .s6 { transition-delay: .48s; }
+
+        /* ===== Hero — lightweight animations ===== */
+        @keyframes heroIn { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+        .hero-1 { animation: heroIn .7s ease-out both; }
+        .hero-2 { animation: heroIn .7s ease-out .15s both; }
+        .hero-3 { animation: heroIn .7s ease-out .3s both; }
+        .hero-4 { animation: heroIn .7s ease-out .45s both; }
+
+        /* ===== Gradient text — no animation to save CPU ===== */
+        .gradient-text {
+            background: linear-gradient(135deg, #f5611b, #ffb599);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ===== Cards — simple transform, no box-shadow animation ===== */
+        .fcard {
+            transition: transform .25s ease, border-color .25s ease;
+        }
+        .fcard:hover {
+            transform: translateY(-4px);
+            border-color: rgba(245,97,27,0.3);
+        }
+
+        /* ===== Glass panel — solid bg, NO backdrop-filter ===== */
+        .glass {
+            background: rgba(26, 26, 26, 0.95);
+        }
+
+        /* ===== Nav ===== */
+        #nav { transition: background .3s ease; }
+        #nav.scrolled { background: rgba(10,10,10,0.97); border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+        /* ===== Dot pattern — lightweight ===== */
+        .dots {
+            background-image: radial-gradient(rgba(245,97,27,0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* ===== Glow dot — pure CSS, no filter ===== */
+        .glow-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #f5611b;
+            box-shadow: 0 0 8px #f5611b;
+        }
+
+        /* ===== Mobile ===== */
+        @media (max-width: 767px) {
+            .hero-title { font-size: 2.5rem !important; }
+            .section-title { font-size: 2rem !important; }
+        }
+
+        /* ===== Content visibility for off-screen perf ===== */
+        section { content-visibility: auto; contain-intrinsic-size: auto 600px; }
+    </style>
+</head>
+
+<body class="bg-surface-container-lowest text-on-surface font-body">
+
+    <!-- ===== NAV ===== -->
+    <nav id="nav" class="fixed top-0 w-full z-50 bg-black/50">
+        <div class="flex justify-between items-center px-5 md:px-8 py-3 max-w-7xl mx-auto">
+            <a href="#" class="flex items-center gap-2">
+                <img src="favicon.svg" alt="Eclatrecon" width="28" height="28" />
+                <span class="text-lg font-bold tracking-tighter text-white uppercase font-headline">Eclatrecon AI Mail</span>
+            </a>
+            <div class="hidden lg:flex items-center gap-7">
+                <a class="text-neutral-400 hover:text-[#ec5b13] transition-colors font-label text-sm font-semibold" href="#features">Features</a>
+                <a class="text-neutral-400 hover:text-[#ec5b13] transition-colors font-label text-sm font-semibold" href="#ai-engine">AI Engine</a>
+                <a class="text-neutral-400 hover:text-[#ec5b13] transition-colors font-label text-sm font-semibold" href="#lead-gen">Lead Gen</a>
+                <a class="text-neutral-400 hover:text-[#ec5b13] transition-colors font-label text-sm font-semibold" href="#cold-email">Cold Email</a>
+                <a class="text-neutral-400 hover:text-[#ec5b13] transition-colors font-label text-sm font-semibold" href="#security">Security</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="/login" class="text-neutral-400 hover:text-white transition-colors font-label text-sm font-semibold hidden md:block">Log In</a>
+                <a href="/signup" class="bg-primary-container text-white px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold hover:brightness-110 transition-all">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <header class="relative min-h-screen flex flex-col justify-center items-center pt-20 pb-12 overflow-hidden">
+        <div class="absolute inset-0 dots opacity-40"></div>
+        <!-- Lightweight decorative orb — solid gradient, no blur -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full" style="background:radial-gradient(circle,rgba(245,97,27,0.06) 0%,transparent 70%);"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-5 text-center">
+            <span class="font-label text-primary-container text-xs uppercase tracking-[0.3em] mb-5 block hero-1">AI-Powered Email Intelligence</span>
+            <h1 class="font-headline text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.95] mb-7 text-white hero-title hero-2">
+                Your Inbox,<br/><span class="gradient-text italic">Re-engineered</span> by AI
+            </h1>
+            <p class="text-on-surface-variant max-w-2xl mx-auto text-lg md:text-xl font-light mb-10 leading-relaxed hero-3">
+                All-in-one with <strong class="text-white">AI insights</strong>, <strong class="text-white">lead generation</strong>, <strong class="text-white">bulk email</strong>, <strong class="text-white">cold outreach</strong>, and <strong class="text-white">campaign automation</strong>.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 hero-4">
+                <a href="/signup" class="bg-[#ec5b13] text-white px-10 py-4 rounded-lg font-label text-sm uppercase tracking-widest font-bold hover:brightness-110 transition-all w-full sm:w-auto text-center">Start Free Trial</a>
+                <a href="#features" class="border border-outline-variant hover:bg-white/5 text-on-surface px-10 py-4 rounded-lg font-label text-sm uppercase tracking-widest font-bold transition-all w-full sm:w-auto text-center">Explore Features</a>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="relative z-10 mt-16 w-full max-w-4xl mx-auto px-5 hero-4">
+            <div class="glass border border-white/10 rounded-2xl p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div><div class="text-3xl md:text-4xl font-black text-white font-headline">50K+</div><div class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest mt-1">Emails Daily</div></div>
+                <div><div class="text-3xl md:text-4xl font-black text-white font-headline">99.9%</div><div class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest mt-1">Deliverability</div></div>
+                <div><div class="text-3xl md:text-4xl font-black text-white font-headline">10x</div><div class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest mt-1">Faster Outreach</div></div>
+                <div><div class="text-3xl md:text-4xl font-black text-primary-container font-headline">AI</div><div class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest mt-1">Powered Engine</div></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== FEATURES GRID ===== -->
+    <section id="features" class="py-20 md:py-28 bg-surface">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="text-center mb-14 reveal">
+                <span class="font-label text-primary-container text-xs uppercase tracking-[0.2em] mb-3 block">Everything You Need</span>
+                <h2 class="font-headline text-4xl md:text-5xl font-black text-white tracking-tight section-title">One Platform. Unlimited Power.</h2>
+                <p class="text-on-surface-variant max-w-xl mx-auto mt-3">From inbox management to lead generation — every tool your business needs.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <article class="fcard glass p-7 rounded-xl border border-white/5 reveal s1">
+                    <div class="w-11 h-11 rounded-lg bg-primary-container/10 flex items-center justify-center mb-5"><span class="material-symbols-outlined text-primary-container text-xl">mail</span></div>
+                    <h3 class="font-headline text-lg font-bold text-white mb-2">Smart Email Client</h3>
+                    <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">Full-featured email with threading, search, folders, star/archive, and multi-account IMAP/SMTP sync.</p>
+                    <div class="flex flex-wrap gap-1.5"><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Threads</span><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Search</span><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Multi-Account</span></div>
+                </article>
+                <article class="fcard glass p-7 rounded-xl border border-white/5 reveal s2">
+                    <div class="w-11 h-11 rounded-lg bg-primary-container/10 flex items-center justify-center mb-5"><span class="material-symbols-outlined text-primary-container text-xl">campaign</span></div>
+                    <h3 class="font-headline text-lg font-bold text-white mb-2">Bulk Email Campaigns</h3>
+                    <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">Send thousands of personalized emails with campaign tracking, open rates, and subscriber management.</p>
+                    <div class="flex flex-wrap gap-1.5"><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Campaigns</span><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Analytics</span><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Templates</span></div>
+                </article>
+                <article class="fcard glass p-7 rounded-xl border border-white/5 reveal s3">
+                    <div class="w-11 h-11 rounded-lg bg-primary-container/10 flex items-center justify-center mb-5"><span class="material-symbols-outlined text-primary-container text-xl">outgoing_mail</span></div>
+                    <h3 class="font-headline text-lg font-bold text-white mb-2">Cold Email Outreach</h3>
+                    <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">Automated cold email sequences with scheduling, follow-ups, personalization, and delivery optimization.</p>
+                    <div class="flex flex-wrap gap-1.5"><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Sequences</span><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Schedule</span><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Follow-ups</span></div>
+                </article>
+                <article class="fcard glass p-7 rounded-xl border border-white/5 reveal s1">
+                    <div class="w-11 h-11 rounded-lg bg-primary-container/10 flex items-center justify-center mb-5"><span class="material-symbols-outlined text-primary-container text-xl">person_search</span></div>
+                    <h3 class="font-headline text-lg font-bold text-white mb-2">AI Lead Generation</h3>
+                    <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">Keyword-based lead scraping powered by Apify. Extract emails, company data, and contacts at scale.</p>
+                    <div class="flex flex-wrap gap-1.5"><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Apify</span><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Scraper</span><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Export</span></div>
+                </article>
+                <article class="fcard glass p-7 rounded-xl border border-white/5 reveal s2">
+                    <div class="w-11 h-11 rounded-lg bg-primary-container/10 flex items-center justify-center mb-5"><span class="material-symbols-outlined text-primary-container text-xl">bolt</span></div>
+                    <h3 class="font-headline text-lg font-bold text-white mb-2">Productivity Suite</h3>
+                    <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">Built-in calendar, task manager, notes, reminders, email signatures, and reusable templates.</p>
+                    <div class="flex flex-wrap gap-1.5"><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Calendar</span><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Tasks</span><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Notes</span></div>
+                </article>
+                <article class="fcard glass p-7 rounded-xl border border-white/5 reveal s3">
+                    <div class="w-11 h-11 rounded-lg bg-primary-container/10 flex items-center justify-center mb-5"><span class="material-symbols-outlined text-primary-container text-xl">groups</span></div>
+                    <h3 class="font-headline text-lg font-bold text-white mb-2">Team Collaboration</h3>
+                    <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">Shared mailboxes, team management, delegation, and role-based access control for your team.</p>
+                    <div class="flex flex-wrap gap-1.5"><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Teams</span><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Shared</span><span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-label text-on-surface-variant uppercase">Roles</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== AI ENGINE ===== -->
+    <section id="ai-engine" class="py-20 md:py-28 bg-surface-dim">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+                <div class="space-y-7 reveal-left">
+                    <div class="inline-flex items-center gap-2 bg-primary-container/10 border border-primary-container/20 px-3 py-1 rounded-full">
+                        <span class="glow-dot"></span>
+                        <span class="font-label text-primary-container text-[10px] uppercase tracking-wider font-bold">Neural Engine Active</span>
+                    </div>
+                    <h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight text-white section-title">AI That Thinks For You</h2>
+                    <p class="text-on-surface-variant text-lg leading-relaxed">Smart prioritization, auto-drafted replies, meeting scheduling, and action item extraction — all in real-time.</p>
+                    <ul class="space-y-5">
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-primary-container p-2 bg-primary-container/10 rounded-lg shrink-0 text-lg">auto_awesome</span>
+                            <div><h4 class="font-bold text-white text-sm font-label uppercase tracking-wide">Smart Reply Drafts</h4><p class="text-on-surface-variant text-sm">Context-aware replies matching your writing style.</p></div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-primary-container p-2 bg-primary-container/10 rounded-lg shrink-0 text-lg">calendar_month</span>
+                            <div><h4 class="font-bold text-white text-sm font-label uppercase tracking-wide">Auto Meeting Schedule</h4><p class="text-on-surface-variant text-sm">Detects meetings and suggests optimal time slots.</p></div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-primary-container p-2 bg-primary-container/10 rounded-lg shrink-0 text-lg">label_important</span>
+                            <div><h4 class="font-bold text-white text-sm font-label uppercase tracking-wide">Neural Labeling</h4><p class="text-on-surface-variant text-sm">Auto-categorize: Priority, Newsletters, Work, Personal.</p></div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-primary-container p-2 bg-primary-container/10 rounded-lg shrink-0 text-lg">checklist</span>
+                            <div><h4 class="font-bold text-white text-sm font-label uppercase tracking-wide">Action Item Extraction</h4><p class="text-on-surface-variant text-sm">AI surfaces tasks you need to complete from emails.</p></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="reveal-right">
+                    <div class="glass p-7 rounded-2xl border border-white/5">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center"><span class="material-symbols-outlined text-primary-container text-base">psychology</span></div>
+                                <div><div class="text-[10px] font-label text-on-surface-variant uppercase">AI Assistant</div><div class="text-sm font-bold text-white">Neural Insights</div></div>
+                            </div>
+                            <span class="glow-dot"></span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="p-3.5 bg-surface-container rounded-lg border-l-2 border-primary-container"><div class="text-[10px] font-label text-primary-container mb-1">🔴 URGENT</div><p class="text-sm text-on-surface">3 emails require immediate response. Client deadline in 2 hours.</p></div>
+                            <div class="p-3.5 bg-white/5 rounded-lg"><div class="text-[10px] font-label text-blue-400 mb-1">📋 ACTION ITEMS</div><p class="text-sm text-on-surface-variant">Extracted 5 tasks from today's emails. 2 meetings auto-scheduled.</p></div>
+                            <div class="p-3.5 bg-white/5 rounded-lg"><div class="text-[10px] font-label text-emerald-400 mb-1">✅ SMART REPLY READY</div><p class="text-sm text-on-surface-variant">AI drafted 3 replies for your review. Tap to send.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LEAD GEN ===== -->
+    <section id="lead-gen" class="py-20 md:py-28 bg-surface-container-lowest">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+                <div class="reveal-left order-2 lg:order-1">
+                    <div class="glass p-6 rounded-2xl border border-white/5">
+                        <div class="flex items-center gap-3 mb-5 pb-3 border-b border-white/5">
+                            <span class="material-symbols-outlined text-primary-container text-lg">person_search</span>
+                            <span class="text-sm font-bold text-white font-headline">Lead Scraper — Apify</span>
+                            <span class="ml-auto px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-[10px] font-label rounded-full uppercase">Active</span>
+                        </div>
+                        <div class="space-y-2.5">
+                            <div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg"><div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-xs font-bold text-blue-400">JD</div><div class="flex-1 min-w-0"><div class="text-sm font-semibold text-white truncate">John Doe — CEO</div><div class="text-[11px] text-on-surface-variant truncate">john@techstartup.com • TechStartup Inc</div></div><span class="text-[10px] font-label text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Verified</span></div>
+                            <div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg"><div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-xs font-bold text-purple-400">SA</div><div class="flex-1 min-w-0"><div class="text-sm font-semibold text-white truncate">Sarah Ahmed — VP Marketing</div><div class="text-[11px] text-on-surface-variant truncate">sarah@growthco.io • GrowthCo</div></div><span class="text-[10px] font-label text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Verified</span></div>
+                            <div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg"><div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-xs font-bold text-amber-400">MK</div><div class="flex-1 min-w-0"><div class="text-sm font-semibold text-white truncate">Mike Kim — Founder</div><div class="text-[11px] text-on-surface-variant truncate">mike@saasbuilders.dev • SaaS Builders</div></div><span class="text-[10px] font-label text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Verified</span></div>
+                        </div>
+                        <div class="mt-3 pt-3 border-t border-white/5 flex items-center justify-between"><span class="text-xs text-on-surface-variant">247 leads • "SaaS founders"</span><span class="text-xs font-label text-primary-container cursor-pointer">Export CSV →</span></div>
+                    </div>
+                </div>
+                <div class="space-y-7 reveal-right order-1 lg:order-2">
+                    <div class="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 px-3 py-1 rounded-full">
+                        <span class="glow-dot" style="background:#a855f7;box-shadow:0 0 8px #a855f7;"></span>
+                        <span class="font-label text-purple-400 text-[10px] uppercase tracking-wider font-bold">Lead Engine</span>
+                    </div>
+                    <h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight text-white section-title">Find Leads. Close Deals.</h2>
+                    <p class="text-on-surface-variant text-lg leading-relaxed">Integrated <strong class="text-white">Apify-powered lead scraper</strong> finds verified contacts by keyword. Push directly to cold email campaigns.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2.5"><span class="material-symbols-outlined text-primary-container text-base">check_circle</span><span class="text-sm">Keyword search by industry, role, location</span></li>
+                        <li class="flex items-center gap-2.5"><span class="material-symbols-outlined text-primary-container text-base">check_circle</span><span class="text-sm">Extract email, name, title, company, phone</span></li>
+                        <li class="flex items-center gap-2.5"><span class="material-symbols-outlined text-primary-container text-base">check_circle</span><span class="text-sm">Email verification & bounce detection</span></li>
+                        <li class="flex items-center gap-2.5"><span class="material-symbols-outlined text-primary-container text-base">check_circle</span><span class="text-sm">Export CSV or push to campaign</span></li>
+                        <li class="flex items-center gap-2.5"><span class="material-symbols-outlined text-primary-container text-base">check_circle</span><span class="text-sm">Subscriber list management</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COLD EMAIL ===== -->
+    <section id="cold-email" class="py-20 md:py-28 bg-surface-dim">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="text-center mb-14 reveal">
+                <span class="font-label text-primary-container text-xs uppercase tracking-[0.2em] mb-3 block">Outreach at Scale</span>
+                <h2 class="font-headline text-4xl md:text-5xl font-black text-white tracking-tight section-title">Cold Email. Warm Results.</h2>
+                <p class="text-on-surface-variant max-w-xl mx-auto mt-3">Automate your entire outreach pipeline from first touch to closed deal.</p>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+                <div class="fcard glass p-5 rounded-xl border border-white/5 text-center reveal s1"><div class="w-14 h-14 mx-auto rounded-xl bg-primary-container/10 flex items-center justify-center mb-3"><span class="material-symbols-outlined text-primary-container text-2xl">edit_note</span></div><h4 class="font-bold text-white text-sm mb-1">Templates</h4><p class="text-on-surface-variant text-xs">Reusable templates with merge tags.</p></div>
+                <div class="fcard glass p-5 rounded-xl border border-white/5 text-center reveal s2"><div class="w-14 h-14 mx-auto rounded-xl bg-primary-container/10 flex items-center justify-center mb-3"><span class="material-symbols-outlined text-primary-container text-2xl">schedule_send</span></div><h4 class="font-bold text-white text-sm mb-1">Schedule</h4><p class="text-on-surface-variant text-xs">Send at optimal open times.</p></div>
+                <div class="fcard glass p-5 rounded-xl border border-white/5 text-center reveal s3"><div class="w-14 h-14 mx-auto rounded-xl bg-primary-container/10 flex items-center justify-center mb-3"><span class="material-symbols-outlined text-primary-container text-2xl">forward_to_inbox</span></div><h4 class="font-bold text-white text-sm mb-1">Follow-ups</h4><p class="text-on-surface-variant text-xs">Auto follow-up sequences.</p></div>
+                <div class="fcard glass p-5 rounded-xl border border-white/5 text-center reveal s4"><div class="w-14 h-14 mx-auto rounded-xl bg-primary-container/10 flex items-center justify-center mb-3"><span class="material-symbols-outlined text-primary-container text-2xl">monitoring</span></div><h4 class="font-bold text-white text-sm mb-1">Analytics</h4><p class="text-on-surface-variant text-xs">Real-time open/click tracking.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MULTI-ACCOUNT ===== -->
+    <section class="py-20 md:py-28 bg-surface-container-lowest">
+        <div class="max-w-7xl mx-auto px-5 md:px-8 text-center mb-12 reveal">
+            <h2 class="font-headline text-3xl md:text-4xl font-bold text-white section-title">Multi-Account Unified Inbox</h2>
+            <p class="text-on-surface-variant mt-3">Connect all accounts. One command center, zero context switching.</p>
+        </div>
+        <div class="max-w-3xl mx-auto flex flex-wrap justify-center gap-10 reveal">
+            <div class="flex flex-col items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-4xl">mail</span><span class="font-label text-[10px] tracking-widest uppercase">Gmail</span></div>
+            <div class="flex flex-col items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-4xl">cloud_queue</span><span class="font-label text-[10px] tracking-widest uppercase">Outlook</span></div>
+            <div class="flex flex-col items-center gap-3 text-primary-container"><span class="material-symbols-outlined text-4xl">terminal</span><span class="font-label text-[10px] tracking-widest uppercase">Custom IMAP</span></div>
+            <div class="flex flex-col items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-4xl">encrypted</span><span class="font-label text-[10px] tracking-widest uppercase">ProtonMail</span></div>
+            <div class="flex flex-col items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-4xl">dns</span><span class="font-label text-[10px] tracking-widest uppercase">Yahoo</span></div>
+        </div>
+    </section>
+
+    <!-- ===== SECURITY ===== -->
+    <section id="security" class="py-20 md:py-28 bg-surface">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="text-center mb-14 reveal">
+                <span class="font-label text-primary-container text-xs uppercase tracking-[0.2em] mb-3 block">Enterprise-Grade</span>
+                <h2 class="font-headline text-4xl md:text-5xl font-black text-white tracking-tight section-title">Security & Developer Tools</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="fcard glass p-6 rounded-xl border border-white/5 reveal s1"><span class="material-symbols-outlined text-primary-container text-2xl mb-3 block">shield_person</span><h3 class="font-bold text-white mb-1">Two-Factor Auth</h3><p class="text-on-surface-variant text-sm">TOTP-based 2FA with QR setup.</p></div>
+                <div class="fcard glass p-6 rounded-xl border border-white/5 reveal s2"><span class="material-symbols-outlined text-primary-container text-2xl mb-3 block">policy</span><h3 class="font-bold text-white mb-1">DLP & GDPR</h3><p class="text-on-surface-variant text-sm">Data loss prevention & compliance.</p></div>
+                <div class="fcard glass p-6 rounded-xl border border-white/5 reveal s3"><span class="material-symbols-outlined text-primary-container text-2xl mb-3 block">vpn_lock</span><h3 class="font-bold text-white mb-1">IP Whitelisting</h3><p class="text-on-surface-variant text-sm">Restrict to trusted IPs only.</p></div>
+                <div class="fcard glass p-6 rounded-xl border border-white/5 reveal s1"><span class="material-symbols-outlined text-primary-container text-2xl mb-3 block">code</span><h3 class="font-bold text-white mb-1">REST API</h3><p class="text-on-surface-variant text-sm">Full API with key management.</p></div>
+                <div class="fcard glass p-6 rounded-xl border border-white/5 reveal s2"><span class="material-symbols-outlined text-primary-container text-2xl mb-3 block">webhook</span><h3 class="font-bold text-white mb-1">Webhooks</h3><p class="text-on-surface-variant text-sm">Event-driven webhook triggers.</p></div>
+                <div class="fcard glass p-6 rounded-xl border border-white/5 reveal s3"><span class="material-symbols-outlined text-primary-container text-2xl mb-3 block">backup</span><h3 class="font-bold text-white mb-1">Backup & Export</h3><p class="text-on-surface-variant text-sm">Full data backup, your control.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="py-20 md:py-28 bg-surface-container-lowest">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <h2 class="font-headline text-3xl font-bold text-white mb-12 text-center reveal section-title">Trusted by Growth Teams</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-7 bg-surface-container rounded-xl reveal s1">
+                    <div class="flex gap-0.5 mb-3"><span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings:'FILL' 1">star</span></div>
+                    <p class="text-white font-light italic mb-5 leading-relaxed">"The AI insights reduced my inbox triage by 80%. The lead scraper alone paid for itself in the first week."</p>
+                    <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-gradient-to-br from-primary-container to-primary flex items-center justify-center text-xs font-bold text-white">JV</div><div><div class="text-sm font-bold text-white">Julian Vane</div><div class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest">CTO, Nexus Corp</div></div></div>
+                </div>
+                <div class="p-7 bg-surface-container rounded-xl reveal s2">
+                    <div class="flex gap-0.5 mb-3"><span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings:'FILL' 1">star</span></div>
+                    <p class="text-white font-light italic mb-5 leading-relaxed">"Best email UI I've used. Cold email + lead gen combo is a game changer for our sales pipeline."</p>
+                    <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-xs font-bold text-white">SC</div><div><div class="text-sm font-bold text-white">Sasha Chen</div><div class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest">Founder, Archetype Studio</div></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="py-28 md:py-36 relative bg-surface-dim">
+        <div class="absolute inset-0 dots opacity-15"></div>
+        <div class="max-w-4xl mx-auto px-5 text-center relative z-10 reveal">
+            <h2 class="font-headline text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tighter section-title">Ready to Scale Your Outreach?</h2>
+            <p class="text-on-surface-variant text-lg mb-10">Join thousands of founders using Eclatrecon AI Mail.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="signup.html" class="bg-primary-container text-white px-10 py-4 rounded-lg font-label uppercase tracking-[0.12em] font-bold hover:brightness-110 transition-all text-center">Start Free Trial</a>
+                <a href="login.html" class="border border-outline-variant hover:bg-white/5 text-on-surface px-10 py-4 rounded-lg font-label uppercase tracking-[0.12em] font-bold transition-all text-center">Log In</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-[#090909] border-t border-white/5">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-5 md:px-12 py-12 max-w-7xl mx-auto">
+            <div class="md:col-span-2">
+                <div class="flex items-center gap-2 mb-3"><img src="favicon.svg" alt="Eclatrecon" width="24" height="24" /><span class="text-base font-bold text-white uppercase tracking-tighter font-headline">Eclatrecon AI Mail</span></div>
+                <p class="text-neutral-500 text-sm leading-relaxed max-w-sm mb-3">AI-powered email with lead gen, bulk email, cold outreach, and campaign automation.</p>
+                <p class="text-neutral-600 font-label text-[10px] uppercase tracking-widest">© 2026 Eclatrecon AI Mail</p>
+            </div>
+            <div>
+                <h4 class="text-xs font-bold text-white mb-3 font-label uppercase tracking-widest">Product</h4>
+                <div class="space-y-1.5"><a class="text-neutral-500 hover:text-[#ec5b13] transition-colors text-sm block" href="#features">Features</a><a class="text-neutral-500 hover:text-[#ec5b13] transition-colors text-sm block" href="#ai-engine">AI Engine</a><a class="text-neutral-500 hover:text-[#ec5b13] transition-colors text-sm block" href="#lead-gen">Lead Generation</a><a class="text-neutral-500 hover:text-[#ec5b13] transition-colors text-sm block" href="#cold-email">Cold Email</a><a class="text-neutral-500 hover:text-[#ec5b13] transition-colors text-sm block" href="#security">Security</a></div>
+            </div>
+            <div>
+                <h4 class="text-xs font-bold text-white mb-3 font-label uppercase tracking-widest">Resources</h4>
+                <div class="space-y-1.5"><a class="text-neutral-500 hover:text-[#ec5b13] transition-colors text-sm block" href="/docs">API Docs</a><a class="text-neutral-500 hover:text-[#ec5b13] transition-colors text-sm block" href="login.html">Login</a><a class="text-neutral-500 hover:text-[#ec5b13] transition-colors text-sm block" href="signup.html">Sign Up</a><a class="text-neutral-500 hover:text-[#ec5b13] transition-colors text-sm block" href="#">Privacy</a><a class="text-neutral-500 hover:text-[#ec5b13] transition-colors text-sm block" href="#">Terms</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== OPTIMIZED JS — throttled, minimal ===== -->
+    <script>
+        // Intersection Observer — passive, efficient
+        const io = new IntersectionObserver((entries) => {
+            for (let i = 0; i < entries.length; i++) {
+                if (entries[i].isIntersecting) {
+                    entries[i].target.classList.add('visible');
+                    io.unobserve(entries[i].target); // Stop watching after reveal
+                }
+            }
+        }, { rootMargin: '0px 0px -60px 0px', threshold: 0.05 });
+
+        document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => io.observe(el));
+
+        // Nav scroll — RAF throttled
+        let ticking = false;
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    nav.classList.toggle('scrolled', window.scrollY > 40);
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // Smooth scroll anchors
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+
+</body>
+</html>

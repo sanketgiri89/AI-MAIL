@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <title>Eclatrecon AI Mail - Marketing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script>tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#ec5b13", "accent-red": "#ff3b30", "bg-dark": "#0a0a0a", "card-dark": "#111111", "border-dark": "rgba(255,255,255,0.07)" }, fontFamily: { display: ["Public Sans", "sans-serif"], mono: ["JetBrains Mono", "monospace"] } } } }</script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+        .mkt-tab { transition: all .15s }
+        .mkt-tab:hover, .mkt-tab.active { background: rgba(236,91,19,.08); color: #ec5b13; border-left: 2px solid #ec5b13 }
+        .stat-ring { width:80px; height:80px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700 }
+        #create-campaign-modal, #import-modal, #create-list-modal, #create-drip-modal, #add-step-modal { position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:50; display:none; align-items:center; justify-content:center }
+        #create-campaign-modal.active, #import-modal.active, #create-list-modal.active, #create-drip-modal.active, #add-step-modal.active { display:flex }
+        .merge-btn { cursor:pointer; transition:background .2s }
+        .merge-btn:hover { background:rgba(236,91,19,.15) }
+
+        /* Mobile header */
+        .mkt-mobile-header { display:none; position:sticky; top:0; z-index:40; background:#0a0a0a; border-bottom:1px solid rgba(255,255,255,.07); padding:0.4rem 0.75rem; align-items:center; gap:0.5rem }
+        .mkt-sidebar-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:38 }
+        .mkt-sidebar-overlay.active { display:block }
+        /* Mobile bottom tab bar */
+        .mkt-bottom-nav { display:none; position:fixed; bottom:0; left:0; right:0; background:rgba(10,10,10,.95); backdrop-filter:blur(20px); border-top:1px solid rgba(255,255,255,.08); z-index:35; padding:0.3rem 0; padding-bottom:env(safe-area-inset-bottom,0.3rem) }
+        .mkt-bottom-nav .nav-items { display:flex; justify-content:space-around; align-items:center }
+        .mkt-bottom-nav .nav-item { display:flex; flex-direction:column; align-items:center; gap:2px; padding:0.4rem 0.75rem; color:#64748b; font-size:0.6rem; font-weight:600; cursor:pointer; -webkit-tap-highlight-color:transparent; border-radius:0.5rem; transition:all .2s }
+        .mkt-bottom-nav .nav-item.active { color:#ec5b13 }
+        .mkt-bottom-nav .nav-item .material-symbols-outlined { font-size:22px }
+
+        @media (max-width:767px) {
+            .mkt-mobile-header { display:flex !important }
+            .mkt-bottom-nav { display:block }
+            .mkt-sidebar { position:fixed !important; left:-280px; top:0; bottom:0; width:260px !important; z-index:39; transition:left .3s cubic-bezier(.4,0,.2,1); box-shadow:4px 0 24px rgba(0,0,0,.5); padding-top:0.5rem !important }
+            .mkt-sidebar.open { left:0 }
+            .mkt-main { padding:1rem !important; padding-bottom:70px !important }
+            .mkt-main h2 { font-size:1.1rem !important }
+            /* Stack grids on mobile */
+            .grid-cols-2, .grid-cols-3, .grid-cols-6, .md\:grid-cols-2, .md\:grid-cols-3, .lg\:grid-cols-3, .lg\:grid-cols-6 { grid-template-columns:1fr !important }
+            /* Stats grid: 2 cols on mobile */
+            .mkt-stats-grid { grid-template-columns:repeat(2,1fr) !important }
+            .mkt-stats-grid-6 { grid-template-columns:repeat(3,1fr) !important }
+            /* Campaign action buttons */
+            .settings-card .flex.gap-2.flex-wrap { gap:0.375rem !important }
+            .settings-card .flex.gap-2.flex-wrap .btn-secondary { font-size:0.65rem !important; padding:0.35rem 0.5rem !important }
+            /* Modals - bottom sheet on mobile */
+            .auth-card { max-width:100% !important; margin:0 !important; border-radius:1rem 1rem 0 0 !important; max-height:90vh !important; position:fixed !important; bottom:0 !important; left:0 !important; right:0 !important; top:auto !important }
+            /* Forms */
+            .grid.grid-cols-2 { grid-template-columns:1fr !important }
+            .grid.grid-cols-3 { grid-template-columns:1fr !important }
+            /* Tables scroll */
+            table { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:nowrap; font-size:0.75rem }
+            body { padding-bottom:56px }
+        }
+
+        @media (max-width:479px) {
+            .mkt-main { padding:0.75rem !important }
+            .settings-card { padding:0.75rem !important }
+            .mkt-stats-grid-6 { grid-template-columns:repeat(2,1fr) !important }
+        }
+    </style>
+</head>
+
+<body class="bg-bg-dark font-display text-slate-200 h-screen overflow-hidden">
+    <!-- Mobile Header -->
+    <div class="mkt-mobile-header">
+        <button onclick="toggleMktSidebar()" class="p-1.5 rounded-full hover:bg-white/5 text-slate-400"><span class="material-symbols-outlined text-xl">menu</span></button>
+        <div class="flex items-center gap-2">
+            <div class="size-6 flex items-center justify-center bg-primary rounded-full"><span class="material-symbols-outlined text-white text-xs">campaign</span></div>
+            <span class="font-bold text-sm tracking-tight">Marketing</span>
+        </div>
+        <div class="flex-1"></div>
+        <a href="index.html" class="p-1.5 rounded-full hover:bg-white/5 text-slate-400"><span class="material-symbols-outlined text-lg">mail</span></a>
+    </div>
+
+    <div class="flex h-full">
+        <!-- Sidebar Overlay (mobile) -->
+        <div id="mkt-sidebar-overlay" class="mkt-sidebar-overlay" onclick="toggleMktSidebar()"></div>
+
+        <!-- Sidebar -->
+        <aside id="mkt-sidebar" class="mkt-sidebar w-56 border-r border-border-dark flex flex-col bg-bg-dark overflow-y-auto flex-shrink-0" style="background:#0a0a0a">
+            <div class="p-4 border-b border-border-dark">
+                <div class="flex items-center gap-2">
+                    <div class="size-7 flex items-center justify-center bg-primary rounded-full"><span class="material-symbols-outlined text-white text-sm">campaign</span></div>
+                    <span class="font-bold text-sm tracking-tight">Marketing</span>
+                </div>
+                <p class="text-[10px] text-slate-500 font-mono mt-1">BULK EMAIL & CAMPAIGNS</p>
+            </div>
+            <nav class="p-2 flex flex-col gap-0.5 text-[13px]">
+                <button data-tab="campaigns" class="mkt-tab active text-left px-3 py-2 rounded-lg text-slate-400 flex items-center gap-2" onclick="if(window.innerWidth<768)toggleMktSidebar()"><span class="material-symbols-outlined text-sm">send</span>Campaigns</button>
+                <button data-tab="lists" class="mkt-tab text-left px-3 py-2 rounded-lg text-slate-400 flex items-center gap-2" onclick="if(window.innerWidth<768)toggleMktSidebar()"><span class="material-symbols-outlined text-sm">groups</span>Lists</button>
+                <button data-tab="drips" class="mkt-tab text-left px-3 py-2 rounded-lg text-slate-400 flex items-center gap-2" onclick="if(window.innerWidth<768)toggleMktSidebar()"><span class="material-symbols-outlined text-sm">water_drop</span>Drip Sequences</button>
+                <button data-tab="analytics" class="mkt-tab text-left px-3 py-2 rounded-lg text-slate-400 flex items-center gap-2" onclick="if(window.innerWidth<768)toggleMktSidebar()"><span class="material-symbols-outlined text-sm">analytics</span>Analytics</button>
+            </nav>
+            <div class="mt-auto p-3 border-t border-border-dark flex flex-col gap-1">
+                <a href="index.html" class="text-xs text-slate-500 hover:text-primary flex items-center gap-1"><span class="material-symbols-outlined text-sm">mail</span> Back to Mail</a>
+                <a href="admin.html" class="text-xs text-slate-500 hover:text-primary flex items-center gap-1"><span class="material-symbols-outlined text-sm">admin_panel_settings</span> Admin Panel</a>
+                <a href="docs.html" class="text-xs text-slate-500 hover:text-primary flex items-center gap-1"><span class="material-symbols-outlined text-sm">description</span> API Docs</a>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="mkt-main flex-1 overflow-y-auto p-6">
+
+            <!-- ===== CAMPAIGNS TAB ===== -->
+            <div id="tab-campaigns" class="admin-tab">
+                <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+                    <div>
+                        <h2 class="text-xl font-bold">Campaigns</h2>
+                        <p class="text-xs text-slate-500">Create and manage email campaigns</p>
+                    </div>
+                    <button class="auth-btn text-sm flex items-center gap-1"
+                        onclick="showModal('create-campaign-modal')"><span
+                            class="material-symbols-outlined text-sm">add</span> New Campaign</button>
+                </div>
+                <div id="campaigns-list" class="flex flex-col gap-3">
+                    <p class="text-slate-500 text-sm">Loading...</p>
+                </div>
+            </div>
+
+            <!-- ===== LISTS TAB ===== -->
+            <div id="tab-lists" class="admin-tab" style="display:none">
+                <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+                    <div>
+                        <h2 class="text-xl font-bold">Subscriber Lists</h2>
+                        <p class="text-xs text-slate-500">Manage your mailing lists</p>
+                    </div>
+                    <div class="flex gap-2"><button class="auth-btn text-sm flex items-center gap-1"
+                            onclick="showModal('create-list-modal')"><span
+                                class="material-symbols-outlined text-sm">add</span> New List</button></div>
+                </div>
+                <div id="lists-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <p class="text-slate-500 text-sm">Loading...</p>
+                </div>
+                <div id="list-detail" style="display:none" class="mt-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold" id="list-detail-name"></h3>
+                        <div class="flex gap-2">
+                            <button class="btn-secondary text-xs" onclick="showAddSubForm()">+ Add Subscriber</button>
+                            <button class="btn-secondary text-xs" onclick="showModal('import-modal')">📥 Import CSV</button>
+                            <button class="btn-secondary text-xs" onclick="hideListDetail()">← Back</button>
+                        </div>
+                    </div>
+                    <div id="add-sub-form" style="display:none" class="settings-card mb-3 p-3">
+                        <h4 class="text-xs font-mono text-slate-400 mb-2">ADD SUBSCRIBER MANUALLY</h4>
+                        <div class="grid grid-cols-2 gap-2 mb-2">
+                            <input type="email" id="sub-email" class="compose-input" placeholder="Email *" />
+                            <input type="text" id="sub-fname" class="compose-input" placeholder="First Name" />
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mb-2">
+                            <input type="text" id="sub-lname" class="compose-input" placeholder="Last Name" />
+                            <input type="text" id="sub-company" class="compose-input" placeholder="Company" />
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="auth-btn text-xs py-1.5 px-3" onclick="addSubscriberManually()">Add</button>
+                            <button class="btn-secondary text-xs" onclick="document.getElementById('add-sub-form').style.display='none'">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="settings-card overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead>
+                                <tr class="text-xs text-slate-500 font-mono border-b border-white/5">
+                                    <th class="py-2 px-3">Email</th>
+                                    <th class="py-2 px-3">Name</th>
+                                    <th class="py-2 px-3">Company</th>
+                                    <th class="py-2 px-3">Status</th>
+                                    <th class="py-2 px-3">Added</th>
+                                    <th class="py-2 px-3"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="subscribers-tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== DRIPS TAB ===== -->
+            <div id="tab-drips" class="admin-tab" style="display:none">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold">Drip Sequences</h2>
+                        <p class="text-xs text-slate-500">Automated email series with delays</p>
+                    </div>
+                    <button class="auth-btn text-sm flex items-center gap-1"
+                        onclick="showModal('create-drip-modal')"><span
+                            class="material-symbols-outlined text-sm">add</span> New Sequence</button>
+                </div>
+                <div id="drips-list" class="flex flex-col gap-3">
+                    <p class="text-slate-500 text-sm">Loading...</p>
+                </div>
+            </div>
+
+            <!-- ===== ANALYTICS TAB ===== -->
+            <div id="tab-analytics" class="admin-tab" style="display:none">
+                <h2 class="text-xl font-bold mb-2">Campaign Analytics</h2>
+                <p class="text-xs text-slate-500 mb-6">Select a campaign to view performance</p>
+                <select id="analytics-campaign" class="form-select-custom mb-4" onchange="loadAnalytics(this.value)">
+                    <option value="">Select campaign...</option>
+                </select>
+                <div id="analytics-content"></div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ===== MODALS ===== -->
+    <!-- Create Campaign -->
+    <div id="create-campaign-modal">
+        <div class="auth-card" style="max-width:600px;max-height:90vh;overflow-y:auto">
+            <h3 class="text-lg font-bold mb-4 dot-matrix">NEW CAMPAIGN</h3>
+            <form onsubmit="createCampaign(event)">
+                <div class="grid grid-cols-2 gap-3 mb-3">
+                    <div><label class="text-xs text-slate-500">Campaign Name *</label><input id="c-name"
+                            class="compose-input" required /></div>
+                    <div><label class="text-xs text-slate-500">Subject Line *</label><input id="c-subject"
+                            class="compose-input" required /></div>
+                </div>
+                <div class="grid grid-cols-2 gap-3 mb-3">
+                    <div><label class="text-xs text-slate-500">Subscriber List</label><select id="c-list"
+                            class="form-select-custom"></select></div>
+                    <div><label class="text-xs text-slate-500">Send From (Account)</label><select id="c-account"
+                            class="form-select-custom"></select></div>
+                </div>
+                <div class="grid grid-cols-2 gap-3 mb-3">
+                    <div><label class="text-xs text-slate-500">From Name</label><input id="c-from-name"
+                            class="compose-input" /></div>
+                    <div><label class="text-xs text-slate-500">Reply-To</label><input id="c-reply-to"
+                            class="compose-input" type="email" /></div>
+                </div>
+                <div class="mb-2"><label class="text-xs text-slate-500">Merge Tags (click to insert)</label>
+                    <div class="flex flex-wrap gap-1 mt-1">
+                        <span class="merge-btn text-[10px] font-mono px-2 py-1 rounded bg-primary/10 text-primary"
+                            onclick="insertTag('first_name')">{{first_name}}</span>
+                        <span class="merge-btn text-[10px] font-mono px-2 py-1 rounded bg-primary/10 text-primary"
+                            onclick="insertTag('last_name')">{{last_name}}</span>
+                        <span class="merge-btn text-[10px] font-mono px-2 py-1 rounded bg-primary/10 text-primary"
+                            onclick="insertTag('email')">{{email}}</span>
+                        <span class="merge-btn text-[10px] font-mono px-2 py-1 rounded bg-primary/10 text-primary"
+                            onclick="insertTag('company')">{{company}}</span>
+                        <span class="merge-btn text-[10px] font-mono px-2 py-1 rounded bg-primary/10 text-primary"
+                            onclick="insertTag('name')">{{name}}</span>
+                    </div>
+                </div>
+                <div class="mb-3"><label class="text-xs text-slate-500">Email Body (HTML)</label>
+                    <div class="flex items-center gap-1 px-2 py-1 bg-white/[0.03] border border-white/5 rounded-t-lg">
+                        <button type="button" class="toolbar-btn" title="AI Writer" onclick="openCampaignAiWriter()"><span class="material-symbols-outlined text-lg text-primary">auto_awesome</span></button>
+                        <button type="button" class="toolbar-btn" title="Insert Signature" onclick="insertCampaignSignature()"><span class="material-symbols-outlined text-lg">draw</span></button>
+                        <div class="w-px h-4 bg-white/10"></div>
+                        <button type="button" class="toolbar-btn" title="Bold" onclick="insertHtmlTag('c-body','<b>','</b>')"><span class="material-symbols-outlined text-[16px]">format_bold</span></button>
+                        <button type="button" class="toolbar-btn" title="Italic" onclick="insertHtmlTag('c-body','<i>','</i>')"><span class="material-symbols-outlined text-[16px]">format_italic</span></button>
+                        <button type="button" class="toolbar-btn" title="Heading" onclick="insertHtmlTag('c-body','<h2>','</h2>')"><span class="material-symbols-outlined text-[16px]">title</span></button>
+                        <button type="button" class="toolbar-btn" title="Link" onclick="insertHtmlTag('c-body','<a href=&quot;&quot;>','</a>')"><span class="material-symbols-outlined text-[16px]">link</span></button>
+                        <button type="button" class="toolbar-btn" title="Paragraph" onclick="insertHtmlTag('c-body','<p>','</p>')"><span class="material-symbols-outlined text-[16px]">notes</span></button>
+                    </div>
+                    <textarea id="c-body" class="compose-input !rounded-t-none !border-t-0" rows="8"
+                        placeholder="<h1>Hello {{first_name|there}}!</h1><p>Your content here...</p>"></textarea></div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
+                    <div><label class="text-xs text-slate-500">Throttle/min</label><input id="c-throttle"
+                            class="compose-input" type="number" value="50" /></div>
+                    <label class="flex items-center gap-2 text-xs text-slate-400"><input type="checkbox"
+                            id="c-track-opens" checked /> Track Opens</label>
+                    <label class="flex items-center gap-2 text-xs text-slate-400"><input type="checkbox"
+                            id="c-track-clicks" checked /> Track Clicks</label>
+                    <label class="flex items-center gap-2 text-xs text-slate-400"><input type="checkbox"
+                            id="c-read-receipt" checked class="accent-primary" /> Read Receipt</label>
+                </div>
+                <div class="flex gap-2"><button type="submit" class="auth-btn flex-1">Create Campaign</button><button
+                        type="button" class="btn-secondary flex-1"
+                        onclick="hideModal('create-campaign-modal')">Cancel</button></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Create List -->
+    <div id="create-list-modal">
+        <div class="auth-card" style="max-width:400px">
+            <h3 class="text-lg font-bold mb-4 dot-matrix">NEW LIST</h3>
+            <form onsubmit="createList(event)">
+                <label class="text-xs text-slate-500">List Name *</label><input id="l-name" class="compose-input mb-3"
+                    required />
+                <label class="text-xs text-slate-500">Description</label><input id="l-desc"
+                    class="compose-input mb-4" />
+                <div class="flex gap-2"><button type="submit" class="auth-btn flex-1">Create</button><button
+                        type="button" class="btn-secondary flex-1"
+                        onclick="hideModal('create-list-modal')">Cancel</button></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Import CSV -->
+    <div id="import-modal">
+        <div class="auth-card" style="max-width:520px">
+            <h3 class="text-lg font-bold mb-1 dot-matrix">IMPORT CSV</h3>
+            <p class="text-xs text-slate-400 mb-1">Format: <code class="text-primary">email,first_name,last_name,company</code></p>
+            <div class="flex justify-between items-center mb-2">
+                <label class="text-[10px] text-slate-500 font-mono">PASTE CSV DATA</label>
+                <button class="text-[10px] text-primary underline" onclick="downloadExampleCsv()">⬇ Download Example CSV</button>
+            </div>
+            <textarea id="import-csv" class="compose-input mb-3" rows="5" placeholder="email,first_name,last_name,company
+john@example.com,John,Doe,Acme Corp
+jane@example.com,Jane,Smith,Tech Ltd"></textarea>
+            <p class="text-[10px] text-slate-500 font-mono mb-1">OR UPLOAD CSV FILE</p>
+            <div id="csv-drop-zone" class="border-2 border-dashed border-white/10 rounded-lg p-4 text-center mb-4 cursor-pointer hover:border-primary/40 transition-all" onclick="document.getElementById('csv-file-input').click()" ondragover="event.preventDefault();this.classList.add('border-primary/50')" ondragleave="this.classList.remove('border-primary/50')" ondrop="handleCsvDrop(event)">
+                <span class="material-symbols-outlined text-2xl text-slate-500 mb-1">upload_file</span>
+                <p class="text-xs text-slate-400">Drag & drop a .csv file, or <span class="text-primary">browse</span></p>
+                <p id="csv-file-name" class="text-[10px] text-emerald-400 mt-1"></p>
+            </div>
+            <input type="file" id="csv-file-input" accept=".csv,text/csv" style="display:none" onchange="handleCsvFile(this)" />
+            <div class="flex gap-2">
+                <button class="auth-btn flex-1" onclick="importCsv()">Import</button>
+                <button class="btn-secondary flex-1" onclick="hideModal('import-modal');document.getElementById('csv-file-name').textContent='';document.getElementById('import-csv').value=''">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Drip -->
+    <div id="create-drip-modal">
+        <div class="auth-card" style="max-width:400px">
+            <h3 class="text-lg font-bold mb-4 dot-matrix">NEW DRIP SEQUENCE</h3>
+            <form onsubmit="createDrip(event)">
+                <label class="text-xs text-slate-500">Name *</label><input id="d-name" class="compose-input mb-3"
+                    required />
+                <label class="text-xs text-slate-500">List</label><select id="d-list"
+                    class="form-select-custom mb-3"></select>
+                <label class="text-xs text-slate-500">Description</label><input id="d-desc"
+                    class="compose-input mb-4" />
+                <div class="flex gap-2"><button type="submit" class="auth-btn flex-1">Create</button><button
+                        type="button" class="btn-secondary flex-1"
+                        onclick="hideModal('create-drip-modal')">Cancel</button></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Drip Step -->
+    <div id="add-step-modal">
+        <div class="auth-card" style="max-width:500px">
+            <h3 class="text-lg font-bold mb-4 dot-matrix">ADD STEP</h3>
+            <form onsubmit="addDripStep(event)">
+                <input type="hidden" id="step-drip-id" />
+                <div class="grid grid-cols-2 gap-3 mb-3">
+                    <div><label class="text-xs text-slate-500">Subject *</label><input id="step-subject"
+                            class="compose-input" required /></div>
+                    <div><label class="text-xs text-slate-500">Delay (hours)</label><input id="step-delay"
+                            class="compose-input" type="number" value="24" /></div>
+                </div>
+                <label class="text-xs text-slate-500">Body (HTML)</label><textarea id="step-body"
+                    class="compose-input mb-4" rows="5"></textarea>
+                <div class="flex gap-2"><button type="submit" class="auth-btn flex-1">Add Step</button><button
+                        type="button" class="btn-secondary flex-1" onclick="hideModal('add-step-modal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API = window.location.origin + '/api'; const token = localStorage.getItem('nm_token');
+        if (!token) window.location.href = 'login.html';
+        const headers = { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
+        function showModal(id) { document.getElementById(id).classList.add('active') }
+        function hideModal(id) { document.getElementById(id).classList.remove('active') }
+        let currentListId = null;
+
+        // Nav
+        document.querySelectorAll('.mkt-tab').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.mkt-tab').forEach(b => { b.classList.remove('active') }); btn.classList.add('active');
+                document.querySelectorAll('.admin-tab').forEach(t => t.style.display = 'none');
+                document.getElementById('tab-' + btn.dataset.tab).style.display = '';
+                ({ campaigns: loadCampaigns, lists: loadLists, drips: loadDrips, analytics: loadAnalyticsList })[btn.dataset.tab]?.();
+            })
+        });
+
+        // ===== CAMPAIGNS =====
+        async function loadCampaigns() {
+            const d = await (await fetch(`${API}/campaigns`, { headers })).json();
+            loadListOptions(); loadAccountOptions();
+            document.getElementById('campaigns-list').innerHTML = d.campaigns.map(c => {
+                const statusColor = { draft: 'text-slate-500', sending: 'text-yellow-400', completed: 'text-emerald-400', paused: 'text-orange-400', scheduled: 'text-blue-400' }[c.status] || 'text-slate-500';
+                const pct = c.total_recipients > 0 ? Math.round(c.sent_count / c.total_recipients * 100) : 0;
+                return `<div class="settings-card flex flex-col gap-3">
+            <div class="flex items-center justify-between"><div><h3 class="text-sm font-bold text-slate-200">${c.name}</h3><p class="text-[10px] text-slate-500 font-mono mt-1">${c.list_name || 'No list'} · ${c.subject}</p></div>
+            <span class="text-xs font-mono ${statusColor} uppercase">${c.status}</span></div>
+            <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 text-center mkt-stats-grid-6">
+                <div><p class="text-lg font-bold text-slate-200">${c.total_recipients}</p><p class="text-[9px] text-slate-500 font-mono">TOTAL</p></div>
+                <div><p class="text-lg font-bold text-emerald-400">${c.sent_count}</p><p class="text-[9px] text-slate-500 font-mono">SENT</p></div>
+                <div><p class="text-lg font-bold text-blue-400">${c.open_count}</p><p class="text-[9px] text-slate-500 font-mono">OPENS</p></div>
+                <div><p class="text-lg font-bold text-primary">${c.click_count}</p><p class="text-[9px] text-slate-500 font-mono">CLICKS</p></div>
+                <div><p class="text-lg font-bold text-red-400">${c.bounce_count}</p><p class="text-[9px] text-slate-500 font-mono">BOUNCED</p></div>
+                <div><p class="text-lg font-bold text-yellow-400">${c.unsubscribe_count}</p><p class="text-[9px] text-slate-500 font-mono">UNSUB</p></div>
+            </div>
+            ${c.total_recipients > 0 ? `<div class="health-bar"><div class="health-bar-fill bg-primary" style="width:${pct}%"></div></div><p class="text-[10px] text-slate-500 text-right">${pct}% delivered</p>` : ''}
+            <div class="flex gap-2 flex-wrap">
+                ${c.status === 'draft' ? `<button class="btn-secondary text-xs" onclick="sendCampaign('${c.id}')">🚀 Send Now</button><button class="btn-secondary text-xs" onclick="scheduleCampaign('${c.id}')">⏰ Schedule</button><button class="btn-secondary text-xs" onclick="testCampaign('${c.id}')">🧪 Test</button>` : ''}
+                ${c.status === 'sending' ? `<button class="btn-secondary text-xs" onclick="pauseCampaign('${c.id}')">⏸ Pause</button>` : ''}
+                ${c.status === 'paused' ? `<button class="btn-secondary text-xs" onclick="resumeCampaign('${c.id}')">▶ Resume</button>` : ''}
+                <button class="btn-secondary text-xs" onclick="previewCampaign('${c.id}')">👁 Preview</button>
+                <button class="btn-secondary text-xs" onclick="viewAnalytics('${c.id}')">📊 Analytics</button>
+                ${c.status === 'completed' ? `<button class="btn-secondary text-xs" onclick="createFollowUp('${c.id}')">↩️ Follow-up</button>` : ''}
+                ${['draft', 'completed', 'paused'].includes(c.status) ? `<button class="btn-secondary text-xs" onclick="deleteCampaign('${c.id}')">🗑 Delete</button>` : ''}
+            </div></div>`;
+            }).join('') || '<p class="text-slate-500 text-sm">No campaigns yet. Create your first one!</p>';
+        }
+
+        async function createCampaign(e) {
+            e.preventDefault();
+            const body = { name: document.getElementById('c-name').value, subject: document.getElementById('c-subject').value, bodyHtml: document.getElementById('c-body').value, fromName: document.getElementById('c-from-name').value, replyTo: document.getElementById('c-reply-to').value, listId: document.getElementById('c-list').value || null, accountId: document.getElementById('c-account').value || null, throttlePerMinute: parseInt(document.getElementById('c-throttle').value), trackOpens: document.getElementById('c-track-opens').checked, trackClicks: document.getElementById('c-track-clicks').checked };
+            await fetch(`${API}/campaigns`, { method: 'POST', headers, body: JSON.stringify(body) }); hideModal('create-campaign-modal'); loadCampaigns();
+        }
+        async function sendCampaign(id) { if (!confirm('Send this campaign to all subscribers?')) return; const r = await (await fetch(`${API}/campaigns/${id}/send`, { method: 'POST', headers, body: '{}' })).json(); alert(r.message || r.error); loadCampaigns(); }
+        async function pauseCampaign(id) { await fetch(`${API}/campaigns/${id}/pause`, { method: 'POST', headers }); loadCampaigns(); }
+        async function resumeCampaign(id) { await fetch(`${API}/campaigns/${id}/resume`, { method: 'POST', headers, body: '{}' }); loadCampaigns(); }
+        async function scheduleCampaign(id) { const dt = prompt('Schedule datetime (ISO format):\ne.g. 2026-03-15T09:00:00Z'); if (!dt) return; await fetch(`${API}/campaigns/${id}/schedule`, { method: 'POST', headers, body: JSON.stringify({ scheduleAt: dt }) }); loadCampaigns(); }
+        async function testCampaign(id) { const email = prompt('Send test to email:'); if (!email) return; const r = await (await fetch(`${API}/campaigns/${id}/test`, { method: 'POST', headers, body: JSON.stringify({ testEmail: email }) })).json(); alert(r.message || r.error); }
+        async function previewCampaign(id) { const r = await (await fetch(`${API}/campaigns/${id}/preview`, { method: 'POST', headers, body: '{}' })).json(); const w = window.open('', 'Preview', 'width=700,height=600'); w.document.write(`<html><head><title>Preview: ${r.subject}</title></head><body style="background:#111;color:#ccc;font-family:system-ui;padding:20px"><h3 style="color:#ec5b13">Subject: ${r.subject}</h3><hr style="border-color:#333">${r.bodyHtml}</body></html>`); }
+        async function deleteCampaign(id) { if (!confirm('Delete this campaign?')) return; await fetch(`${API}/campaigns/${id}`, { method: 'DELETE', headers }); loadCampaigns(); }
+        function insertTag(tag) { const el = document.getElementById('c-body'); const t = `{{${tag}}}`; el.value = el.value.slice(0, el.selectionStart) + t + el.value.slice(el.selectionEnd); el.focus(); }
+
+        // ===== LISTS =====
+        async function loadLists() {
+            const d = await (await fetch(`${API}/campaigns/lists`, { headers })).json();
+            document.getElementById('lists-grid').innerHTML = d.lists.map(l => `
+        <div class="settings-card cursor-pointer hover:border-primary/20" onclick="showListDetail('${l.id}','${l.name}')">
+            <div class="flex items-center justify-between mb-2"><h3 class="text-sm font-bold text-slate-200">${l.name}</h3><button class="toolbar-btn" onclick="event.stopPropagation();deleteList('${l.id}')"><span class="material-symbols-outlined text-sm" style="color:rgba(255,59,48,0.7)">delete</span></button></div>
+            <p class="text-xs text-slate-500">${l.description || ''}</p>
+            <div class="flex gap-4 mt-3"><div><p class="text-lg font-bold text-primary">${l.active_count}</p><p class="text-[9px] text-slate-500 font-mono">ACTIVE</p></div><div><p class="text-lg font-bold text-slate-400">${l.total_count}</p><p class="text-[9px] text-slate-500 font-mono">TOTAL</p></div></div>
+        </div>`).join('') || '<p class="text-slate-500 text-sm">No lists yet.</p>';
+        }
+        async function createList(e) { e.preventDefault(); await fetch(`${API}/campaigns/lists`, { method: 'POST', headers, body: JSON.stringify({ name: document.getElementById('l-name').value, description: document.getElementById('l-desc').value }) }); hideModal('create-list-modal'); loadLists(); }
+        async function deleteList(id) { if (!confirm('Delete list and all subscribers?')) return; await fetch(`${API}/campaigns/lists/${id}`, { method: 'DELETE', headers }); loadLists(); }
+        async function showListDetail(id, name) { currentListId = id; document.getElementById('list-detail-name').textContent = name; document.getElementById('lists-grid').style.display = 'none'; document.getElementById('list-detail').style.display = ''; loadSubscribers(id); }
+        function hideListDetail() { document.getElementById('lists-grid').style.display = ''; document.getElementById('list-detail').style.display = 'none'; }
+        async function loadSubscribers(id) {
+            const d = await (await fetch(`${API}/campaigns/lists/${id}/subscribers`, { headers })).json();
+            document.getElementById('subscribers-tbody').innerHTML = d.subscribers.map(s => {
+                const sc = s.status === 'active' ? 'text-emerald-400' : s.status === 'unsubscribed' ? 'text-yellow-400' : 'text-red-400';
+                return `<tr class="border-b border-white/5"><td class="py-2 px-3 text-xs font-mono text-slate-300">${s.email}</td><td class="py-2 px-3 text-xs text-slate-400">${[s.first_name, s.last_name].filter(Boolean).join(' ') || '-'}</td><td class="py-2 px-3 text-xs text-slate-500">${s.company || '-'}</td><td class="py-2 px-3"><span class="text-[10px] font-mono ${sc}">${s.status}</span></td><td class="py-2 px-3 text-xs text-slate-500">${new Date(s.created_at).toLocaleDateString()}</td><td class="py-2 px-3"><button class="toolbar-btn" onclick="removeSub('${id}','${s.id}')"><span class="material-symbols-outlined text-sm" style="color:rgba(255,59,48,0.7)">close</span></button></td></tr>`;
+            }).join('') || '<tr><td colspan="6" class="py-4 text-center text-slate-500 text-sm">No subscribers. Import a CSV to get started.</td></tr>';
+        }
+        async function removeSub(listId, subId) {
+            await fetch(`${API}/campaigns/lists/${listId}/subscribers/${subId}`, { method: 'DELETE', headers });
+            loadSubscribers(listId);
+            loadLists(); // refresh counts
+        }
+
+        function showAddSubForm() {
+            const f = document.getElementById('add-sub-form');
+            f.style.display = f.style.display === 'none' ? '' : 'none';
+        }
+
+        async function addSubscriberManually() {
+            const email = document.getElementById('sub-email').value.trim();
+            const firstName = document.getElementById('sub-fname').value.trim();
+            const lastName = document.getElementById('sub-lname').value.trim();
+            const company = document.getElementById('sub-company').value.trim();
+            if (!email) { alert('Email is required'); return; }
+            const r = await (await fetch(`${API}/campaigns/lists/${currentListId}/subscribers`, { method: 'POST', headers, body: JSON.stringify({ email, firstName, lastName, company }) })).json();
+            if (r.error) { alert('❌ ' + r.error); return; }
+            // Clear fields
+            ['sub-email', 'sub-fname', 'sub-lname', 'sub-company'].forEach(id => document.getElementById(id).value = '');
+            document.getElementById('add-sub-form').style.display = 'none';
+            loadSubscribers(currentListId);
+            loadLists();
+        }
+
+        function handleCsvFile(input) {
+            const file = input.files[0];
+            if (!file) return;
+            document.getElementById('csv-file-name').textContent = '✅ ' + file.name;
+            const reader = new FileReader();
+            reader.onload = (e) => { document.getElementById('import-csv').value = e.target.result; };
+            reader.readAsText(file);
+        }
+
+        function handleCsvDrop(event) {
+            event.preventDefault();
+            document.getElementById('csv-drop-zone').classList.remove('border-primary/50');
+            const file = event.dataTransfer.files[0];
+            if (!file) return;
+            document.getElementById('csv-file-name').textContent = '✅ ' + file.name;
+            const reader = new FileReader();
+            reader.onload = (e) => { document.getElementById('import-csv').value = e.target.result; };
+            reader.readAsText(file);
+        }
+
+        function downloadExampleCsv() {
+            const csv = `email,first_name,last_name,company,phone\njohn@example.com,John,Doe,Acme Corp,+1-555-0001\njane@example.com,Jane,Smith,Tech Ltd,+1-555-0002\nbob@startup.io,Bob,Johnson,Startup Inc,+1-555-0003\nalice@agency.co,Alice,Brown,Creative Agency,+1-555-0004\n`;
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'leads_example.csv'; a.click();
+        }
+
+        async function importCsv() {
+            const csv = document.getElementById('import-csv').value;
+            if (!csv.trim()) { alert('Please paste CSV data or upload a CSV file first'); return; }
+            const r = await (await fetch(`${API}/campaigns/lists/${currentListId}/import`, { method: 'POST', headers, body: JSON.stringify({ csv }) })).json();
+            if (r.error) { alert('❌ ' + r.error); return; }
+            alert(`✅ Imported: ${r.imported}, Skipped: ${r.skipped}`);
+            hideModal('import-modal');
+            document.getElementById('csv-file-name').textContent = '';
+            document.getElementById('import-csv').value = '';
+            document.getElementById('csv-file-input').value = '';
+            loadSubscribers(currentListId);
+            loadLists();
+        }
+
+        // ===== DRIPS =====
+        async function loadDrips() {
+            const d = await (await fetch(`${API}/campaigns/drips`, { headers })).json();
+            document.getElementById('drips-list').innerHTML = d.drips.map(dr => {
+                const sc = { draft: 'text-slate-500', active: 'text-emerald-400', paused: 'text-yellow-400' }[dr.status] || 'text-slate-500';
+                return `<div class="settings-card"><div class="flex items-center justify-between mb-2"><div><h3 class="text-sm font-bold text-slate-200">${dr.name}</h3><p class="text-[10px] text-slate-500">${dr.list_name || 'No list'} · ${dr.step_count} steps · ${dr.active_enrollments} enrolled</p></div>
+            <span class="text-xs font-mono ${sc} uppercase">${dr.status}</span></div>
+            <div id="drip-steps-${dr.id}" class="mt-2"></div>
+            <div class="flex gap-2 mt-3"><button class="btn-secondary text-xs" onclick="loadDripSteps('${dr.id}')">View Steps</button>
+            <button class="btn-secondary text-xs" onclick="document.getElementById('step-drip-id').value='${dr.id}';showModal('add-step-modal')">+ Add Step</button>
+            ${dr.status === 'draft' ? `<button class="btn-secondary text-xs" onclick="startDrip('${dr.id}')">🚀 Start</button>` : ''}
+            <button class="btn-secondary text-xs" onclick="deleteDrip('${dr.id}')">🗑</button></div></div>`;
+            }).join('') || '<p class="text-slate-500 text-sm">No drip sequences yet.</p>';
+        }
+        async function createDrip(e) { e.preventDefault(); await fetch(`${API}/campaigns/drips`, { method: 'POST', headers, body: JSON.stringify({ name: document.getElementById('d-name').value, description: document.getElementById('d-desc').value, listId: document.getElementById('d-list').value || null }) }); hideModal('create-drip-modal'); loadDrips(); }
+        async function deleteDrip(id) { if (!confirm('Delete this drip sequence?')) return; await fetch(`${API}/campaigns/drips/${id}`, { method: 'DELETE', headers }); loadDrips(); }
+        async function startDrip(id) { if (!confirm('Start drip for all active subscribers?')) return; const r = await (await fetch(`${API}/campaigns/drips/${id}/start`, { method: 'POST', headers })).json(); alert(r.message || r.error); loadDrips(); }
+        async function loadDripSteps(id) {
+            const d = await (await fetch(`${API}/campaigns/drips/${id}/steps`, { headers })).json();
+            document.getElementById('drip-steps-' + id).innerHTML = d.steps.map((s, i) => `<div class="flex items-center gap-2 p-2 rounded bg-white/[0.02] border border-white/5 mb-1">
+        <span class="text-[10px] font-mono text-primary">Step ${s.step_order}</span><span class="text-xs text-slate-400 flex-1">${s.subject}</span><span class="text-[10px] text-slate-500">after ${s.delay_hours}h</span>
+        <button class="toolbar-btn" onclick="deleteDripStep('${id}','${s.id}')"><span class="material-symbols-outlined text-sm" style="color:rgba(255,59,48,0.5)">close</span></button></div>`).join('') || '<p class="text-[10px] text-slate-500">No steps yet</p>';
+        }
+        async function addDripStep(e) { e.preventDefault(); const id = document.getElementById('step-drip-id').value; await fetch(`${API}/campaigns/drips/${id}/steps`, { method: 'POST', headers, body: JSON.stringify({ subject: document.getElementById('step-subject').value, bodyHtml: document.getElementById('step-body').value, delayHours: parseInt(document.getElementById('step-delay').value) }) }); hideModal('add-step-modal'); loadDripSteps(id); }
+        async function deleteDripStep(dripId, stepId) { await fetch(`${API}/campaigns/drips/${dripId}/steps/${stepId}`, { method: 'DELETE', headers }); loadDripSteps(dripId); }
+
+        // ===== ANALYTICS =====
+        async function loadAnalyticsList() {
+            const d = await (await fetch(`${API}/campaigns`, { headers })).json();
+            document.getElementById('analytics-campaign').innerHTML = '<option value="">Select campaign...</option>' + d.campaigns.map(c => `<option value="${c.id}">${c.name} (${c.status})</option>`).join('');
+        }
+        async function loadAnalytics(id) {
+            if (!id) { document.getElementById('analytics-content').innerHTML = ''; return; }
+            const d = await (await fetch(`${API}/campaigns/${id}/analytics`, { headers })).json();
+            document.getElementById('analytics-content').innerHTML = `
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-6 mkt-stats-grid">
+            <div class="settings-card text-center"><p class="text-2xl font-bold text-slate-200">${d.stats.total}</p><p class="text-[9px] text-slate-500 font-mono">RECIPIENTS</p></div>
+            <div class="settings-card text-center"><p class="text-2xl font-bold text-emerald-400">${d.stats.sent}</p><p class="text-[9px] text-slate-500 font-mono">DELIVERED</p></div>
+            <div class="settings-card text-center"><p class="text-2xl font-bold text-blue-400">${d.stats.openRate}</p><p class="text-[9px] text-slate-500 font-mono">OPEN RATE</p></div>
+            <div class="settings-card text-center"><p class="text-2xl font-bold text-primary">${d.stats.clickRate}</p><p class="text-[9px] text-slate-500 font-mono">CLICK RATE</p></div>
+            <div class="settings-card text-center"><p class="text-2xl font-bold text-red-400">${d.stats.bounceRate}</p><p class="text-[9px] text-slate-500 font-mono">BOUNCE RATE</p></div>
+            <div class="settings-card text-center"><p class="text-2xl font-bold text-yellow-400">${d.stats.unsubscribed}</p><p class="text-[9px] text-slate-500 font-mono">UNSUBS</p></div>
+        </div>
+        ${d.variants.length ? `<div class="settings-card mb-4"><h4 class="text-sm font-bold text-slate-300 mb-3 dot-matrix">A/B TEST RESULTS</h4>
+            <div class="grid grid-cols-${d.variants.length} gap-3">${d.variants.map(v => `<div class="p-3 rounded bg-white/[0.02] border border-white/5 ${v.is_winner ? 'border-emerald-400/30' : ''}"><p class="text-xs font-mono text-primary mb-1">Variant ${v.variant} ${v.is_winner ? '👑' : ''}</p><p class="text-xs text-slate-400 truncate mb-2">${v.subject}</p>
+                <div class="grid grid-cols-3 gap-1 text-center"><div><p class="text-sm font-bold text-slate-200">${v.sent_count}</p><p class="text-[8px] text-slate-500">SENT</p></div><div><p class="text-sm font-bold text-blue-400">${v.open_count}</p><p class="text-[8px] text-slate-500">OPENS</p></div><div><p class="text-sm font-bold text-primary">${v.click_count}</p><p class="text-[8px] text-slate-500">CLICKS</p></div></div></div>`).join('')}</div></div>` : ''}
+        ${d.links.length ? `<div class="settings-card mb-4"><h4 class="text-sm font-bold text-slate-300 mb-3 dot-matrix">LINK PERFORMANCE</h4>
+            ${d.links.map(l => `<div class="flex items-center justify-between p-2 rounded bg-white/[0.02] border border-white/5 mb-1"><span class="text-xs text-slate-400 truncate flex-1">${l.original_url}</span><div class="flex gap-3"><span class="text-xs font-mono text-primary">${l.click_count} clicks</span><span class="text-xs font-mono text-slate-500">${l.unique_clicks} unique</span></div></div>`).join('')}</div>` : ''}
+        ${d.recentOpens.length ? `<div class="settings-card"><h4 class="text-sm font-bold text-slate-300 mb-3 dot-matrix">RECENT OPENS</h4>
+            ${d.recentOpens.slice(0, 10).map(o => `<div class="flex justify-between text-xs py-1 border-b border-white/5"><span class="text-slate-400">${o.first_name || ''} &lt;${o.email}&gt;</span><span class="text-slate-500">${new Date(o.opened_at).toLocaleString()}</span></div>`).join('')}</div>` : ''}
+        <div class="settings-card mt-4"><h4 class="text-sm font-bold text-slate-300 mb-3 dot-matrix">STATUS BREAKDOWN</h4>
+            <div class="flex gap-3">${d.recipientBreakdown.map(r => { const c = { sent: 'text-emerald-400', pending: 'text-slate-400', bounced: 'text-red-400', failed: 'text-red-500', unsubscribed: 'text-yellow-400' }[r.status] || 'text-slate-400'; return `<div class="text-center"><p class="text-lg font-bold ${c}">${r.count}</p><p class="text-[9px] text-slate-500 font-mono uppercase">${r.status}</p></div>` }).join('')}</div></div>`;
+        }
+        function viewAnalytics(id) { document.querySelector('[data-tab="analytics"]').click(); setTimeout(() => { document.getElementById('analytics-campaign').value = id; loadAnalytics(id); }, 200); }
+
+        // ===== AI WRITER FOR CAMPAIGNS =====
+        async function openCampaignAiWriter() {
+            const prompt = window.prompt('✨ Describe the marketing email you want to write:\n\nExample: "Write a product launch email for our new AI tool, include a call-to-action button"');
+            if (!prompt) return;
+            const bodyEl = document.getElementById('c-body');
+            const origVal = bodyEl.value;
+            bodyEl.value = '✨ AI is writing your email...';
+            try {
+                const res = await fetch(`${API}/ai/compose`, {
+                    method: 'POST', headers: { ...headers, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: `Write a marketing/campaign email. The user wants: ${prompt}. Use HTML formatting with tags like <h1>, <p>, <a>, <strong>. Include merge tags like {{first_name}} and {{company}} where appropriate. Make it professional and engaging.`, userId: null })
+                });
+                const data = await res.json();
+                const content = data.result || data.text || data.email || data.content || '';
+                bodyEl.value = content;
+                showToast('✨ AI email generated!', 'success');
+            } catch (err) {
+                showToast('AI generation failed: ' + err.message, 'error');
+                bodyEl.value = origVal;
+            }
+        }
+
+        // ===== SIGNATURE INSERT =====
+        async function insertCampaignSignature() {
+            try {
+                const res = await fetch(`${API}/signatures`, { headers });
+                const data = await res.json();
+                const sigs = data.signatures || [];
+                const defaultSig = sigs.find(s => s.is_default) || sigs[0];
+                if (!defaultSig) { showToast('No signature found. Create one in Settings → Signatures', 'error'); return; }
+                const bodyEl = document.getElementById('c-body');
+                bodyEl.value += '\n\n' + (defaultSig.content || defaultSig.body || '');
+                showToast('✍️ Signature inserted!', 'success');
+            } catch (err) { showToast('Failed to load signature', 'error'); }
+        }
+
+        // ===== HTML TAG HELPER =====
+        function insertHtmlTag(textareaId, openTag, closeTag) {
+            const ta = document.getElementById(textareaId);
+            if (!ta) return;
+            const start = ta.selectionStart;
+            const end = ta.selectionEnd;
+            const selected = ta.value.substring(start, end);
+            const replacement = openTag + (selected || 'text') + closeTag;
+            ta.value = ta.value.substring(0, start) + replacement + ta.value.substring(end);
+            ta.focus();
+            ta.setSelectionRange(start + openTag.length, start + openTag.length + (selected || 'text').length);
+        }
+
+        // ===== FOLLOW-UP CAMPAIGN =====
+        async function createFollowUp(campaignId) {
+            const subject = window.prompt('Follow-up subject line (leave blank to use "Re: original subject"):');
+            const bodyHtml = window.prompt('Follow-up body HTML (leave blank to reuse original body):');
+            try {
+                const res = await fetch(`${API}/campaigns/${campaignId}/follow-up`, {
+                    method: 'POST', headers: { ...headers, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ subject: subject || undefined, bodyHtml: bodyHtml || undefined })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    showToast(`✅ ${data.message}`, 'success');
+                    loadCampaigns();
+                } else {
+                    showToast(data.error || 'Failed', 'error');
+                }
+            } catch (err) { showToast('Follow-up failed: ' + err.message, 'error'); }
+        }
+
+        // ===== HELPERS =====
+        async function loadListOptions() {
+            const d = await (await fetch(`${API}/campaigns/lists`, { headers })).json();
+            const opts = d.lists.map(l => `<option value="${l.id}">${l.name} (${l.active_count})</option>`).join('');
+            document.getElementById('c-list').innerHTML = '<option value="">Select list...</option>' + opts;
+            document.getElementById('d-list').innerHTML = '<option value="">Select list...</option>' + opts;
+        }
+        async function loadAccountOptions() {
+            try {
+                const d = await (await fetch(`${API}/accounts`, { headers })).json();
+                document.getElementById('c-account').innerHTML = '<option value="">Default account</option>' + (d.accounts || []).map(a => `<option value="${a.id}">${a.email} (${a.label})</option>`).join('');
+            } catch (e) { }
+        }
+
+        // Mobile sidebar toggle
+        function toggleMktSidebar() {
+            document.getElementById('mkt-sidebar').classList.toggle('open');
+            document.getElementById('mkt-sidebar-overlay').classList.toggle('active');
+        }
+
+        // Init
+        loadCampaigns();
+    </script>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="mkt-bottom-nav">
+        <div class="nav-items">
+            <div class="nav-item active" onclick="document.querySelector('[data-tab=campaigns]').click();document.querySelectorAll('.mkt-bottom-nav .nav-item').forEach(n=>n.classList.remove('active'));this.classList.add('active')">
+                <span class="material-symbols-outlined">send</span>
+                <span>Campaigns</span>
+            </div>
+            <div class="nav-item" onclick="document.querySelector('[data-tab=lists]').click();document.querySelectorAll('.mkt-bottom-nav .nav-item').forEach(n=>n.classList.remove('active'));this.classList.add('active')">
+                <span class="material-symbols-outlined">groups</span>
+                <span>Lists</span>
+            </div>
+            <div class="nav-item" onclick="document.querySelector('[data-tab=drips]').click();document.querySelectorAll('.mkt-bottom-nav .nav-item').forEach(n=>n.classList.remove('active'));this.classList.add('active')">
+                <span class="material-symbols-outlined">water_drop</span>
+                <span>Drips</span>
+            </div>
+            <div class="nav-item" onclick="document.querySelector('[data-tab=analytics]').click();document.querySelectorAll('.mkt-bottom-nav .nav-item').forEach(n=>n.classList.remove('active'));this.classList.add('active')">
+                <span class="material-symbols-outlined">analytics</span>
+                <span>Analytics</span>
+            </div>
+            <a href="index.html" class="nav-item" style="text-decoration:none">
+                <span class="material-symbols-outlined">mail</span>
+                <span>Mail</span>
+            </a>
+        </div>
+    </nav>
+</body>
+
+</html>
