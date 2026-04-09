@@ -1,358 +1,426 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.3.0-ec5b13?style=for-the-badge&labelColor=0a0a0a" alt="Version 1.3.0" />
-  <img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge&labelColor=0a0a0a" alt="MIT License" />
-  <img src="https://img.shields.io/badge/node-%3E%3D18.0.0-339933?style=for-the-badge&logo=node.js&labelColor=0a0a0a" alt="Node.js" />
-  <img src="https://img.shields.io/badge/PostgreSQL-14+-336791?style=for-the-badge&logo=postgresql&labelColor=0a0a0a" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/PRs-welcome-ec5b13?style=for-the-badge&labelColor=0a0a0a" alt="PRs Welcome" />
-</p>
-
-<h1 align="center">
-  <br />
-  Eclatrecon AI Mail
-  <br />
-  <sub>Self-Hosted AI-Powered Email Platform</sub>
-</h1>
-
-<p align="center">
-  A production-ready, self-hosted email client and marketing platform with AI capabilities, team collaboration, campaign management, and a full developer API — all deployable on a single VPS.
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0a0a,50:ec5b13,100:ff8c42&height=220&section=header&text=Eclatrecon%20AI%20Mail&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Self-Hosted%20AI-Powered%20Email%20Platform&descSize=18&descAlignY=55&descColor=ffffff" width="100%" />
 </p>
 
 <p align="center">
-  <a href="#-features">Features</a> •
-  <a href="#-tech-stack">Tech Stack</a> •
+  <a href="https://mail.eclatrecon.in">
+    <img src="https://img.shields.io/badge/🌐_Live_Demo-mail.eclatrecon.in-ec5b13?style=for-the-badge&labelColor=0a0a0a" alt="Live Demo" />
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=EC5B13&center=true&vCenter=true&multiline=true&repeat=true&width=700&height=100&lines=📬+Unified+Inbox+with+Multi-Account+IMAP+Sync;🤖+AI-Powered+Email+Analysis+%26+Smart+Replies;📢+Campaign+Management+%26+Drip+Sequences;🔒+Enterprise+Security+with+2FA+%26+DLP+Rules;🛠️+Full+REST+API+for+Developers" alt="Typing SVG" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/version-1.3.0-ec5b13?style=flat-square&labelColor=0a0a0a" alt="Version" />
+  <img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square&labelColor=0a0a0a" alt="License" />
+  <img src="https://img.shields.io/badge/node-%3E%3D18.0-339933?style=flat-square&logo=node.js&labelColor=0a0a0a" alt="Node" />
+  <img src="https://img.shields.io/badge/PostgreSQL-14+-336791?style=flat-square&logo=postgresql&logoColor=white&labelColor=0a0a0a" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/Socket.IO-4.7-010101?style=flat-square&logo=socketdotio&labelColor=0a0a0a" alt="Socket.IO" />
+  <img src="https://img.shields.io/badge/Express-4.18-000000?style=flat-square&logo=express&labelColor=0a0a0a" alt="Express" />
+  <img src="https://img.shields.io/badge/PRs-welcome-ec5b13?style=flat-square&labelColor=0a0a0a" alt="PRs Welcome" />
+</p>
+
+<p align="center">
+  <a href="https://mail.eclatrecon.in">Live Demo</a> •
   <a href="#-quick-start">Quick Start</a> •
+  <a href="#-features">Features</a> •
   <a href="#-installation">Installation</a> •
-  <a href="#-configuration">Configuration</a> •
-  <a href="#-architecture">Architecture</a> •
-  <a href="#-api-reference">API</a> •
-  <a href="#-contributing">Contributing</a> •
-  <a href="#-license">License</a>
+  <a href="#-api-reference">API Docs</a> •
+  <a href="#-contributing">Contributing</a>
 </p>
 
 ---
 
-## 📖 Overview
+<br/>
 
-Eclatrecon AI Mail is a comprehensive, open-source email platform built for individuals and teams who want full control over their email infrastructure. It replaces the need for separate tools like Gmail, Mailchimp, Calendly, and Trello by unifying email, marketing, productivity, and AI-driven insights into a single self-hosted application.
+## 🎯 What is Eclatrecon AI Mail?
 
-**Who is this for?**
-- Developers who want to self-host their email client
-- Small teams that need shared mailboxes and collaboration
-- Marketers who need campaign management with subscriber lists
-- Businesses that require audit trails, DLP rules, and GDPR compliance
-- Anyone who values data sovereignty over SaaS lock-in
+**Eclatrecon AI Mail** is a production-ready, self-hosted email platform that combines a modern email client with AI-powered insights, marketing campaign tools, team collaboration, and a full developer API — deployable on any VPS in under 10 minutes.
+
+> **Think of it as:** Gmail + Mailchimp + Trello + AI — self-hosted, open source, and under your control.
+
+<br/>
+
+<table>
+<tr>
+<td width="50%">
+
+### 🚀 Why Eclatrecon AI Mail?
+
+- **Full Data Ownership** — Your emails, your server, your rules
+- **Zero SaaS Lock-in** — No monthly fees to third-party providers
+- **All-in-One** — Email, marketing, CRM, tasks, and AI in one platform
+- **Developer-Friendly** — Full REST API with webhook integrations
+- **Lightweight** — Runs on a $5/month VPS (1 CPU, 1GB RAM)
+
+</td>
+<td width="50%">
+
+### 📊 By the Numbers
+
+| Metric | Value |
+|--------|-------|
+| Database Tables | **55** |
+| API Endpoints | **80+** |
+| Route Modules | **16** |
+| Background Workers | **6** |
+| Lines of Backend Code | **15,000+** |
+| IMAP Auto-Sync | **Every 5 min** |
+
+</td>
+</tr>
+</table>
+
+<br/>
+
+> 🌐 **Try the live demo:** [mail.eclatrecon.in](https://mail.eclatrecon.in)
+
+<br/>
 
 ---
+
+<br/>
 
 ## ✨ Features
 
+<table>
+<tr>
+<td align="center" width="33%">
+<h3>📬 Smart Inbox</h3>
+<p>Multi-account IMAP sync with unified inbox, email threading, full-text search, and real-time push notifications via Socket.IO</p>
+</td>
+<td align="center" width="33%">
+<h3>🤖 AI Engine</h3>
+<p>AI-powered email analysis, smart reply drafts, auto-categorization, meeting extraction, and action item detection</p>
+</td>
+<td align="center" width="33%">
+<h3>📢 Campaigns</h3>
+<p>Bulk email campaigns with A/B testing, drip sequences, open & click tracking, merge tags, and subscriber management</p>
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+<h3>👥 Team Collab</h3>
+<p>Shared mailboxes, email delegation, internal comments, shared labels, and real-time collision detection</p>
+</td>
+<td align="center" width="33%">
+<h3>📅 Productivity</h3>
+<p>Calendar with iCal, Kanban tasks, notes, reminders, email snooze, scheduled send, templates, and signatures</p>
+</td>
+<td align="center" width="33%">
+<h3>🔒 Security</h3>
+<p>Two-factor auth (TOTP), DLP rules, IP whitelisting, audit trail, GDPR compliance, and self-destructing emails</p>
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+<h3>🔌 Developer API</h3>
+<p>Full REST API with key-based auth, webhooks, n8n/Zapier integration, Slack & Discord notifications</p>
+</td>
+<td align="center" width="33%">
+<h3>🎯 Lead Scraper</h3>
+<p>Apify-powered lead generation from Google Maps, LinkedIn, Twitter, Instagram with auto-import to subscriber lists</p>
+</td>
+<td align="center" width="33%">
+<h3>🎨 Modern UI</h3>
+<p>Dark mode with glassmorphism, mobile-responsive bottom nav, three-column desktop layout, real-time updates</p>
+</td>
+</tr>
+</table>
+
+<br/>
+
+<details>
+<summary><b>📋 Full Feature List (click to expand)</b></summary>
+
+<br/>
+
 ### 📬 Core Email
-| Feature | Description |
-|---------|-------------|
-| **Multi-Account Inbox** | Connect unlimited IMAP/SMTP accounts with a unified inbox view |
-| **Email Threading** | Conversation-grouped email threads with smart date formatting |
-| **Compose & Send** | Rich text editor with To/CC/BCC, file attachments, and draft saving |
-| **IMAP Auto-Sync** | Background sync every 5 minutes with real-time push via Socket.IO |
-| **Full-Text Search** | PostgreSQL-powered search across subject, body, and sender fields |
-| **Folder Management** | Inbox, Sent, Drafts, Spam, Trash, Starred, and custom folders |
-| **Email Rules** | Auto-sort, auto-label, and auto-forward rules |
+- Multi-account IMAP/SMTP support with unified inbox
+- Email threading and conversation view
+- Rich text compose with To/CC/BCC and attachments
+- IMAP auto-sync every 5 minutes
+- PostgreSQL full-text search across subject, body, and sender
+- Folder management (Inbox, Sent, Drafts, Spam, Trash, custom)
+- Email rules for auto-sort, auto-label, and auto-forward
+- Star, archive, move, mark read/unread
 
 ### 🤖 AI-Powered
-| Feature | Description |
-|---------|-------------|
-| **AI Email Analysis** | Analyze email content for sentiment, urgency, and action items |
-| **Smart Reply Drafts** | AI-generated reply suggestions based on email context |
-| **Auto-Categorization** | Automatic email labeling (Work, Priority, Newsletter, etc.) |
-| **Meeting Extraction** | Detect and extract meeting requests from email content |
+- Email content sentiment and urgency analysis
+- AI-generated reply suggestions
+- Automatic email categorization (Work, Priority, Newsletter)
+- Meeting request detection and extraction
 
 ### 📢 Marketing & Campaigns
-| Feature | Description |
-|---------|-------------|
-| **Campaign Builder** | Create and schedule bulk email campaigns with merge tags |
-| **Subscriber Management** | Import, segment, and manage subscriber lists |
-| **A/B Testing** | Split-test subject lines and content with auto-winner selection |
-| **Drip Sequences** | Multi-step automated email workflows with configurable delays |
-| **Open & Click Tracking** | Per-recipient tracking with real-time analytics |
-| **Lead Scraper** | Apify-powered lead generation from Google Maps, LinkedIn, and more |
+- Campaign builder with scheduling and merge tags
+- Subscriber list import, segmentation, and management
+- A/B testing with auto-winner selection
+- Multi-step drip sequences with configurable delays
+- Per-recipient open and click tracking
+- Apify-powered lead scraping from 8+ platforms
+- CSV export of leads and subscribers
 
-### 📅 Productivity Suite
-| Feature | Description |
-|---------|-------------|
-| **Calendar** | Event management with iCal import/export and attendee tracking |
-| **Tasks (Kanban)** | Todo/In-Progress/Done task boards |
-| **Notes** | Quick note-taking with pin and search |
-| **Reminders** | Time-based reminders with recurring schedule support |
-| **Email Snooze** | Temporarily hide emails and resurface them at a set time |
-| **Scheduled Send** | Queue emails to be sent at a future date and time |
-| **Email Templates** | Create and reuse email templates |
-| **Signatures** | Multiple signature management per account |
+### 📅 Productivity
+- Calendar with iCal import/export and attendee tracking
+- Kanban task boards (Todo / In Progress / Done)
+- Quick notes with pin and search
+- Time-based reminders with recurring support
+- Email snooze with auto-resurface
+- Scheduled send queue
+- Reusable email templates
+- Multiple signature management per account
 
 ### 👥 Team Collaboration
-| Feature | Description |
-|---------|-------------|
-| **Shared Mailboxes** | Team-shared inboxes with role-based access |
-| **Email Delegation** | Delegate send-as permissions to team members |
-| **Internal Comments** | Add private comments on email threads for team context |
-| **Real-Time Collision Detection** | Socket.IO alerts when two teammates reply to the same thread |
-| **Shared Labels** | Team-wide label taxonomy |
+- Shared team mailboxes with role-based access
+- Send-as delegation permissions
+- Private internal comments on email threads
+- Real-time collision alerts via Socket.IO
+- Team-wide shared labels
 
 ### 🔒 Security & Compliance
-| Feature | Description |
-|---------|-------------|
-| **Two-Factor Auth (2FA)** | TOTP-based two-factor authentication with QR code setup |
-| **DLP Rules** | Data Loss Prevention — block sensitive content from leaving |
-| **IP Whitelisting** | Restrict account access to approved IP addresses |
-| **Audit Trail** | Full audit log of every account action |
-| **GDPR Compliance** | Data export and deletion request handling |
-| **Email Expiry** | Self-destructing messages with configurable TTL |
-| **JWT Sessions** | Stateless, token-based authentication with configurable expiry |
+- TOTP-based 2FA with QR code setup
+- Data Loss Prevention (DLP) rules
+- IP address whitelisting
+- Full audit trail logging
+- GDPR data export and deletion requests
+- Self-destructing messages with configurable TTL
+- JWT-based stateless authentication
 
 ### 🔌 Developer & Integration
-| Feature | Description |
-|---------|-------------|
-| **REST API** | Full public API with API key authentication |
-| **Webhooks** | Event-driven webhook system for external integrations |
-| **n8n / Zapier** | Automation platform connectors via webhook triggers |
-| **Slack & Discord** | Push email notifications to team channels |
-| **Data Export** | JSON and MBOX export for migration and backup |
-| **API Documentation** | Built-in interactive API docs page |
+- Full REST API with API key authentication
+- Event-driven webhook system
+- n8n / Zapier automation connectors
+- Slack & Discord notification channels
+- JSON and MBOX data export
+- Built-in interactive API documentation
 
 ### 🎨 UI/UX
-| Feature | Description |
-|---------|-------------|
-| **Dark Mode** | Premium dark theme with glassmorphism effects (default) |
-| **Light Mode** | Full light theme support via toggle |
-| **Mobile-Responsive** | Bottom navigation bar, slide-out sidebar, touch-optimized lists |
-| **Desktop Layout** | Three-column Outlook-style layout with collapsible panels |
-| **Real-Time Updates** | Socket.IO push notifications for new emails and events |
+- Premium dark theme with glassmorphism (default)
+- Light mode via toggle
+- Mobile-responsive with bottom navigation
+- Three-column Outlook-style desktop layout
+- Real-time Socket.IO push notifications
+- Material Symbols icons + Public Sans typography
+
+</details>
+
+<br/>
 
 ---
+
+<br/>
 
 ## 🛠 Tech Stack
 
-### Backend
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=nodejs,express,postgresql,js,html,css,nginx&theme=dark" alt="Tech Stack Icons" />
+</p>
 
-| Technology | Purpose | Version |
-|------------|---------|---------|
-| **Node.js** | Runtime environment | ≥ 18.x |
-| **Express.js** | HTTP framework and routing | 4.18.x |
-| **PostgreSQL** | Primary database (55 tables) | ≥ 14.x |
-| **Socket.IO** | Real-time bidirectional communication | 4.7.x |
-| **ImapFlow** | IMAP protocol client for email sync | 1.0.x |
-| **Nodemailer** | SMTP email sending | 6.9.x |
-| **Mailparser** | Email message parsing (MIME) | 3.6.x |
-| **jsonwebtoken** | JWT-based authentication | 9.0.x |
-| **bcryptjs** | Password hashing (bcrypt) | 2.4.x |
-| **speakeasy** | TOTP-based 2FA generation and verification | 2.0.x |
-| **qrcode** | QR code generation for 2FA setup | 1.5.x |
-| **multer** | Multipart file upload handling | 1.4.x |
-| **pg** | PostgreSQL native driver for Node.js | 8.20.x |
-| **node-fetch** | HTTP client for external API calls | 2.7.x |
-| **uuid** | RFC4122 UUID generation | 9.0.x |
-| **dotenv** | Environment variable management | 16.4.x |
-| **PM2** | Production process manager | Latest |
+<br/>
 
-### Frontend
+<table>
+<tr>
+<td width="50%">
 
+### ⚙️ Backend
 | Technology | Purpose |
 |------------|---------|
-| **HTML5** | Document structure and semantics |
-| **Vanilla JavaScript** | Client-side logic (SPA architecture) |
-| **CSS3** | Styling with custom properties and glassmorphism |
-| **Material Symbols** | Google's icon system |
-| **Public Sans** | Primary typeface (Google Fonts) |
-| **Hash Router** | Client-side SPA routing (`router.js`) |
+| **Node.js** `≥18` | Runtime environment |
+| **Express.js** `4.18` | HTTP framework |
+| **PostgreSQL** `≥14` | Database (55 tables) |
+| **Socket.IO** `4.7` | Real-time communication |
+| **ImapFlow** `1.0` | IMAP email sync |
+| **Nodemailer** `6.9` | SMTP sending |
+| **Mailparser** `3.6` | MIME parsing |
+| **jsonwebtoken** `9.0` | JWT authentication |
+| **bcryptjs** `2.4` | Password hashing |
+| **speakeasy** `2.0` | TOTP 2FA |
+| **pg** `8.20` | PostgreSQL driver |
+| **PM2** | Process management |
 
-### Infrastructure
+</td>
+<td width="50%">
 
+### 🎨 Frontend
+| Technology | Purpose |
+|------------|---------|
+| **HTML5** | Structure & semantics |
+| **Vanilla JS** | SPA logic (no framework) |
+| **CSS3** | Glassmorphism styling |
+| **Material Symbols** | Icon system |
+| **Public Sans** | Typography |
+| **Hash Router** | Client-side routing |
+
+### 🏗️ Infrastructure
 | Component | Role |
 |-----------|------|
-| **Nginx** | Reverse proxy and SSL termination |
-| **PM2** | Process management with auto-restart |
-| **Let's Encrypt** | Free SSL certificate provisioning |
-| **Cron** | Automated database backup scheduling |
+| **Nginx** | Reverse proxy + SSL |
+| **PM2** | Process + auto-restart |
+| **Let's Encrypt** | SSL certificates |
+| **Cron** | Automated backups |
+
+</td>
+</tr>
+</table>
+
+<br/>
 
 ---
+
+<br/>
 
 ## ⚡ Quick Start
 
-Get the platform running in under 5 minutes on a machine with Node.js and PostgreSQL installed:
+Get running in **under 5 minutes** with Node.js and PostgreSQL installed:
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/sanketgiri89/ai-mail.git
-cd ai-mail
+# Clone
+git clone https://github.com/sanketgiri89/AI-MAIL.git
+cd AI-MAIL
 
-# 2. Install dependencies
+# Install
 cd server && npm install
 
-# 3. Configure environment
+# Configure
 cp .env.example .env
-# Edit .env with your PostgreSQL credentials and SMTP settings
+# Edit .env with your PostgreSQL and SMTP credentials
 
-# 4. Set up the database
-node src/config/migrate.js
-node src/config/seed-admin.js
+# Database
+node src/config/migrate.js      # Creates all 55 tables
+node src/config/seed-admin.js   # Seeds admin user + defaults
 
-# 5. Start the server
+# Launch
 npm start
 ```
 
-Open `http://localhost:3001` in your browser. Login with the credentials displayed after seeding.
+> 🌐 Open **http://localhost:3001** and login with the credentials shown after seeding.
+
+<br/>
 
 ---
+
+<br/>
 
 ## 📦 Installation
 
 ### Prerequisites
 
-| Software | Minimum Version | Check |
-|----------|----------------|-------|
-| Node.js | 18.0.0 | `node -v` |
-| npm | 9.0.0 | `npm -v` |
-| PostgreSQL | 14.0 | `psql --version` |
-| Git | 2.x | `git --version` |
+| Software | Version | Verify |
+|----------|---------|--------|
+| Node.js | `≥ 18.0` | `node -v` |
+| npm | `≥ 9.0` | `npm -v` |
+| PostgreSQL | `≥ 14.0` | `psql --version` |
+| Git | `≥ 2.x` | `git --version` |
 
-### Step 1 — Clone the Repository
+### Step-by-Step
+
+<details>
+<summary><b>1️⃣ Clone the Repository</b></summary>
 
 ```bash
-git clone https://github.com/sanketgiri89/ai-mail.git
-cd ai-mail
+git clone https://github.com/sanketgiri89/AI-MAIL.git
+cd AI-MAIL
 ```
 
-### Step 2 — Install Dependencies
+</details>
+
+<details>
+<summary><b>2️⃣ Install Dependencies</b></summary>
 
 ```bash
 cd server
 npm install
 ```
 
-### Step 3 — Create the PostgreSQL Database
+</details>
+
+<details>
+<summary><b>3️⃣ Create PostgreSQL Database</b></summary>
 
 ```bash
-# Connect as the postgres superuser
 sudo -u postgres psql
+```
 
-# Inside the psql prompt:
-CREATE USER eclatrecon_mail WITH PASSWORD 'your_strong_password_here';
+```sql
+CREATE USER eclatrecon_mail WITH PASSWORD 'your_strong_password';
 CREATE DATABASE eclatrecon_mail OWNER eclatrecon_mail;
 GRANT ALL PRIVILEGES ON DATABASE eclatrecon_mail TO eclatrecon_mail;
 \q
 ```
 
-Ensure your `pg_hba.conf` allows local password connections:
-
+Add to `pg_hba.conf`:
 ```
-# Add this line if not present:
 host    eclatrecon_mail  eclatrecon_mail    127.0.0.1/32    md5
 ```
-
-Restart PostgreSQL after editing:
 
 ```bash
 sudo systemctl restart postgresql
 ```
 
-### Step 4 — Configure Environment Variables
+</details>
+
+<details>
+<summary><b>4️⃣ Configure Environment</b></summary>
 
 ```bash
 cp .env.example .env
-nano .env   # or use your preferred editor
+nano .env
 ```
-
-See [Configuration](#-configuration) for all available options.
-
-### Step 5 — Run Database Migration
-
-```bash
-# Creates all 55 tables with correct schema
-node src/config/migrate.js
-
-# Seeds admin user, default folders, labels, and billing plans
-node src/config/seed-admin.js
-```
-
-### Step 6 — Start the Server
-
-**Development:**
-
-```bash
-npm run dev
-# Uses --watch for auto-restart on file changes
-```
-
-**Production (with PM2):**
-
-```bash
-npx pm2 start src/index.js --name eclatrecon-mail
-npx pm2 save
-npx pm2 startup   # Enable auto-start on system reboot
-```
-
-### Step 7 — Access the Application
-
-| URL | Page |
-|-----|------|
-| `http://localhost:3001` | Landing page |
-| `http://localhost:3001/login` | Login |
-| `http://localhost:3001/app` | Email client |
-| `http://localhost:3001/admin` | Admin panel |
-| `http://localhost:3001/marketing` | Campaign dashboard |
-| `http://localhost:3001/docs` | API documentation |
-
----
-
-## ⚙️ Configuration
-
-### Environment Variables
-
-Create a `.env` file in the `server/` directory:
 
 ```env
-# ──────────────────────── Server ────────────────────────
-PORT=3001                          # HTTP port
-NODE_ENV=production                # production | development
-
-# ──────────────────────── Authentication ────────────────
-JWT_SECRET=your-64-char-random-string-here
-JWT_EXPIRES_IN=7d                  # Token lifetime
-
-# ──────────────────────── PostgreSQL ────────────────────
+PORT=3001
+NODE_ENV=production
+JWT_SECRET=your-64-char-random-secret
 PG_HOST=127.0.0.1
 PG_PORT=5432
 PG_DATABASE=eclatrecon_mail
 PG_USER=eclatrecon_mail
 PG_PASSWORD=your_db_password
-
-# ──────────────────────── Platform SMTP ─────────────────
-# Used for system emails (password resets, welcome emails)
 PLATFORM_SMTP_HOST=smtp.yourdomain.com
 PLATFORM_SMTP_PORT=465
 PLATFORM_SMTP_USER=noreply@yourdomain.com
 PLATFORM_SMTP_PASS=your_smtp_password
-PLATFORM_SMTP_FROM="App Name <noreply@yourdomain.com>"
-
-# ──────────────────────── Domain ────────────────────────
 APP_DOMAIN=https://mail.yourdomain.com
 FRONTEND_URL=https://mail.yourdomain.com
-
-# ──────────────────────── File Upload ───────────────────
-UPLOAD_DIR=./uploads
-MAX_ATTACHMENT_SIZE=25000000       # 25MB in bytes
-
-# ──────────────────────── AI (Optional) ─────────────────
-OPENROUTER_API_KEY=                # Your OpenRouter API key
-OPENROUTER_DEFAULT_MODEL=meta-llama/llama-3.1-8b-instruct:free
 ```
 
-### Nginx Reverse Proxy (Production)
+</details>
+
+<details>
+<summary><b>5️⃣ Initialize Database</b></summary>
+
+```bash
+node src/config/migrate.js      # Creates all 55 tables
+node src/config/seed-admin.js   # Seeds admin + plans + folders
+```
+
+</details>
+
+<details>
+<summary><b>6️⃣ Start the Server</b></summary>
+
+**Development:**
+```bash
+npm run dev
+```
+
+**Production (PM2):**
+```bash
+npx pm2 start src/index.js --name eclatrecon-mail
+npx pm2 save && npx pm2 startup
+```
+
+</details>
+
+<details>
+<summary><b>7️⃣ Set Up Nginx (Production)</b></summary>
 
 ```nginx
 server {
     listen 80;
     server_name mail.yourdomain.com;
-
-    # Redirect HTTP to HTTPS
     return 301 https://$server_name$request_uri;
 }
 
@@ -372,454 +440,330 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_cache_bypass $http_upgrade;
         client_max_body_size 50M;
     }
 }
 ```
 
+</details>
+
+<br/>
+
 ---
+
+<br/>
 
 ## 🏗 Architecture
 
 ```
-┌──────────────┐          ┌────────────────────────────────────┐
-│   Browser    │◄────────▶│          Nginx (443/80)            │
-│  (Frontend)  │  HTTPS   │       Reverse Proxy + SSL          │
-└──────────────┘          └──────────────┬─────────────────────┘
-                                         │
-                                         ▼
-                          ┌──────────────────────────────────┐
-                          │        Express.js (:3001)         │
-                          │                                   │
-                          │  ┌──────────┐  ┌──────────────┐  │
-                          │  │ REST API │  │  Socket.IO   │  │
-                          │  │ 16 route │  │  (real-time) │  │
-                          │  │  modules │  │              │  │
-                          │  └────┬─────┘  └──────┬───────┘  │
-                          │       │               │          │
-                          │  ┌────▼───────────────▼───────┐  │
-                          │  │     Service Layer           │  │
-                          │  │  IMAP · SMTP · AI · Bulk   │  │
-                          │  └────────────┬───────────────┘  │
-                          │               │                  │
-                          └───────────────┼──────────────────┘
-                                          │
-                          ┌───────────────▼──────────────────┐
-                          │       PostgreSQL (55 tables)      │
-                          │    Users · Emails · Campaigns     │
-                          │    Tasks · Events · Webhooks      │
-                          └──────────────────────────────────┘
+┌──────────────┐          ┌──────────────────────┐          ┌──────────────────┐
+│              │          │                      │          │                  │
+│   Browser    │◄────────▶│   Nginx (443/80)     │◄────────▶│  Express :3001   │
+│   Frontend   │  HTTPS   │   Reverse Proxy      │   HTTP   │                  │
+│              │          │   + SSL              │          │  ┌────────────┐  │
+└──────────────┘          └──────────────────────┘          │  │ REST API   │  │
+                                                            │  │ 16 modules │  │
+                                                            │  ├────────────┤  │
+                                                            │  │ Socket.IO  │  │
+                                                            │  │ Real-time  │  │
+                                                            │  ├────────────┤  │
+                                                            │  │ Services   │  │
+                                                            │  │ IMAP SMTP  │  │
+                                                            │  │ AI  Bulk   │  │
+                                                            │  ├────────────┤  │
+                                                            │  │ Workers    │  │
+                                                            │  │ 6 bg jobs  │  │
+                                                            │  └─────┬──────┘  │
+                                                            │        │         │
+                                                            └────────┼─────────┘
+                                                                     │
+                                                            ┌────────▼─────────┐
+                                                            │   PostgreSQL     │
+                                                            │   55 Tables      │
+                                                            └──────────────────┘
 ```
 
-### Key Design Decisions
+### Background Workers (every 60s)
 
-1. **Vanilla Frontend** — No build step, no bundler, no React. The entire frontend is vanilla HTML/CSS/JS with a custom SPA router. This makes the project trivially deployable with zero toolchain configuration.
+| Worker | Purpose |
+|--------|---------|
+| ⏰ Scheduled Sender | Sends emails at their `send_at` time |
+| 📢 Campaign Scheduler | Auto-starts scheduled campaigns |
+| 💧 Drip Worker | Processes drip sequence steps |
+| 😴 Snooze Restorer | Resurfaces snoozed emails |
+| 🔔 Reminder Notifier | Fires reminder notifications |
+| 💀 Expiry Cleaner | Deletes expired self-destructing emails |
 
-2. **Supabase-Compatible Query Layer** — The backend uses a custom wrapper (`database.js`) that mimics the Supabase JS client API (`.from().select().eq().order()`). This means route files written for Supabase work against local PostgreSQL without modification.
-
-3. **Single-Process Architecture** — The Express server, Socket.IO handler, IMAP sync engine, and all background workers run in a single Node.js process managed by PM2. This simplifies deployment while leveraging Node.js's event loop for concurrent I/O.
-
-4. **Background Workers** — Six background workers run on a 60-second interval within the main process, handling scheduled emails, campaign dispatch, drip sequences, snooze management, reminders, and email expiry.
-
-5. **IMAP Auto-Sync** — On server boot, the IMAP service queries all sync-enabled `mail_accounts` records and syncs them every 5 minutes, independent of user Socket.IO connections.
+<br/>
 
 ---
+
+<br/>
 
 ## 📊 Database Schema
 
-The application uses **55 PostgreSQL tables** organized into the following domains:
-
 <details>
-<summary><b>Core (6 tables)</b></summary>
+<summary><b>55 Tables organized into 8 domains (click to expand)</b></summary>
 
-| Table | Description |
-|-------|-------------|
-| `users` | User accounts with authentication data |
-| `sessions` | Active login sessions |
-| `password_resets` | Password reset tokens with expiry |
-| `login_history` | Login attempt audit log |
-| `user_preferences` | UI and notification preferences |
-| `audit_logs` | System-wide audit log |
+<br/>
+
+### 🔐 Core (6 tables)
+`users` · `sessions` · `password_resets` · `login_history` · `user_preferences` · `audit_logs`
+
+### 📬 Email (10 tables)
+`mail_accounts` · `emails` · `attachments` · `folders` · `labels` · `email_labels` · `email_rules` · `auto_replies` · `forwarding_rules` · `scheduled_emails`
+
+### 📢 Marketing (9 tables)
+`subscriber_lists` · `subscribers` · `campaigns` · `campaign_recipients` · `campaign_links` · `ab_tests` · `drip_sequences` · `drip_steps` · `drip_enrollments`
+
+### 📅 Productivity (7 tables)
+`calendar_events` · `event_attendees` · `tasks` · `notes` · `reminders` · `snoozed_emails` · `email_expiry`
+
+### 👥 Collaboration (6 tables)
+`contacts` · `contact_groups` · `contact_group_members` · `shared_mailboxes` · `shared_mailbox_members` · `email_delegations`
+
+### 🔒 Security (5 tables)
+`dlp_rules` · `ip_whitelist` · `audit_trail` · `gdpr_requests` · `email_comments`
+
+### 🔌 Developer (6 tables)
+`api_keys` · `webhooks` · `webhook_logs` · `integrations` · `plans` · `subscriptions`
+
+### 🎯 Lead Generation (4 tables)
+`apify_settings` · `apify_scrape_jobs` · `apify_scraped_leads` · `email_templates`
 
 </details>
 
-<details>
-<summary><b>Email (10 tables)</b></summary>
-
-| Table | Description |
-|-------|-------------|
-| `mail_accounts` | IMAP/SMTP account configurations |
-| `emails` | All email messages |
-| `attachments` | Email file attachments |
-| `folders` | Email folders (system and custom) |
-| `labels` | User-created labels |
-| `email_labels` | Email-to-label associations |
-| `email_rules` | Inbox auto-sort rules |
-| `auto_replies` | Vacation auto-responder configs |
-| `forwarding_rules` | Email forwarding rules |
-| `scheduled_emails` | Queued future-send emails |
-
-</details>
-
-<details>
-<summary><b>Marketing (9 tables)</b></summary>
-
-| Table | Description |
-|-------|-------------|
-| `subscriber_lists` | Subscriber list definitions |
-| `subscribers` | Individual subscriber records |
-| `campaigns` | Bulk email campaign definitions |
-| `campaign_recipients` | Per-recipient delivery tracking |
-| `campaign_links` | Click tracking per link |
-| `ab_tests` | A/B test variant configurations |
-| `drip_sequences` | Automated email sequence definitions |
-| `drip_steps` | Individual steps within sequences |
-| `drip_enrollments` | Subscriber enrollment tracking |
-
-</details>
-
-<details>
-<summary><b>Productivity (7 tables)</b></summary>
-
-| Table | Description |
-|-------|-------------|
-| `calendar_events` | Calendar events |
-| `event_attendees` | Event attendee records |
-| `tasks` | Task items with status tracking |
-| `notes` | Quick notes |
-| `reminders` | Time-based reminders |
-| `snoozed_emails` | Snoozed email records |
-| `email_expiry` | Email auto-delete timers |
-
-</details>
-
-<details>
-<summary><b>Collaboration (6 tables)</b></summary>
-
-| Table | Description |
-|-------|-------------|
-| `contacts` | Address book entries |
-| `contact_groups` | Contact group definitions |
-| `contact_group_members` | Group membership |
-| `shared_mailboxes` | Shared team mailboxes |
-| `shared_mailbox_members` | Mailbox access control |
-| `email_delegations` | Send-as delegation permissions |
-
-</details>
-
-<details>
-<summary><b>Security (5 tables)</b></summary>
-
-| Table | Description |
-|-------|-------------|
-| `dlp_rules` | Data Loss Prevention policies |
-| `ip_whitelist` | Approved IP addresses |
-| `audit_trail` | Detailed change tracking |
-| `gdpr_requests` | GDPR data requests |
-| `email_comments` | Internal team comments |
-
-</details>
-
-<details>
-<summary><b>Developer (6 tables)</b></summary>
-
-| Table | Description |
-|-------|-------------|
-| `api_keys` | Public API authentication keys |
-| `webhooks` | Outgoing webhook configurations |
-| `webhook_logs` | Webhook delivery logs |
-| `integrations` | Third-party integration configs |
-| `plans` | Billing plan definitions |
-| `subscriptions` | User plan subscriptions |
-
-</details>
-
-<details>
-<summary><b>Lead Generation (4 tables)</b></summary>
-
-| Table | Description |
-|-------|-------------|
-| `apify_settings` | Per-user Apify API configuration |
-| `apify_scrape_jobs` | Scraping job records |
-| `apify_scraped_leads` | Extracted lead data |
-| `email_templates` | Reusable email templates |
-
-</details>
-
-### Database Commands
-
-```bash
-# Run full migration (creates all tables)
-node src/config/migrate.js
-
-# Seed admin user and default data
-node src/config/seed-admin.js
-
-# Connect to database directly
-psql -h 127.0.0.1 -U eclatrecon_mail -d eclatrecon_mail
-
-# Backup database
-pg_dump -h 127.0.0.1 -U eclatrecon_mail eclatrecon_mail > backup.sql
-
-# Restore from backup
-psql -h 127.0.0.1 -U eclatrecon_mail -d eclatrecon_mail < backup.sql
-```
+<br/>
 
 ---
+
+<br/>
 
 ## 📡 API Reference
 
-All API endpoints require JWT authentication unless marked as public.
+> Full interactive documentation available at [`/docs`](https://mail.eclatrecon.in/docs) when running.
 
-**Authentication header:** `Authorization: Bearer <token>`
+Authentication: `Authorization: Bearer <jwt_token>`
 
-### Auth
-
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| `POST` | `/api/auth/signup` | — | Create a new account |
-| `POST` | `/api/auth/login` | — | Login and receive JWT |
-| `GET` | `/api/auth/me` | JWT | Get current user info |
-| `PUT` | `/api/auth/profile` | JWT | Update user profile |
-| `POST` | `/api/auth/forgot-password` | — | Request password reset |
-| `POST` | `/api/auth/reset-password` | — | Reset password with token |
-| `POST` | `/api/auth/2fa/setup` | JWT | Enable 2FA (returns QR code) |
-| `POST` | `/api/auth/2fa/verify` | JWT | Verify 2FA code |
-
-### Email
+<details>
+<summary><b>🔐 Auth Endpoints</b></summary>
 
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| `GET` | `/api/emails?folder=inbox` | JWT | List emails with optional folder filter |
-| `GET` | `/api/emails/:id` | JWT | Get single email with full body |
-| `POST` | `/api/emails/send` | JWT | Send email via SMTP |
-| `POST` | `/api/emails/sync` | JWT | Trigger manual IMAP sync |
-| `POST` | `/api/emails/search` | JWT | Full-text search across emails |
-| `GET` | `/api/emails/counts` | JWT | Get unread counts per folder |
-| `PUT` | `/api/emails/:id` | JWT | Update email (read/star/folder) |
-| `DELETE` | `/api/emails/:id` | JWT | Delete email |
+| `POST` | `/api/auth/signup` | — | Create account |
+| `POST` | `/api/auth/login` | — | Login → JWT |
+| `GET` | `/api/auth/me` | JWT | Current user |
+| `PUT` | `/api/auth/profile` | JWT | Update profile |
+| `POST` | `/api/auth/forgot-password` | — | Request reset |
+| `POST` | `/api/auth/2fa/setup` | JWT | Enable 2FA |
 
-### Accounts
+</details>
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| `GET` | `/api/accounts` | JWT | List connected email accounts |
-| `POST` | `/api/accounts` | JWT | Add new IMAP/SMTP account |
-| `PUT` | `/api/accounts/:id` | JWT | Update account settings |
-| `DELETE` | `/api/accounts/:id` | JWT | Remove connected account |
-
-### Campaigns
+<details>
+<summary><b>📬 Email Endpoints</b></summary>
 
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| `GET` | `/api/campaigns` | JWT | List all campaigns |
+| `GET` | `/api/emails?folder=inbox` | JWT | List emails |
+| `GET` | `/api/emails/:id` | JWT | Get email |
+| `POST` | `/api/emails/send` | JWT | Send email |
+| `POST` | `/api/emails/sync` | JWT | Manual sync |
+| `POST` | `/api/emails/search` | JWT | Full-text search |
+| `GET` | `/api/emails/counts` | JWT | Folder counts |
+
+</details>
+
+<details>
+<summary><b>📢 Campaign Endpoints</b></summary>
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| `GET` | `/api/campaigns` | JWT | List campaigns |
 | `POST` | `/api/campaigns` | JWT | Create campaign |
-| `POST` | `/api/campaigns/:id/send` | JWT | Start sending campaign |
-| `GET` | `/api/campaigns/:id/stats` | JWT | Get campaign analytics |
+| `POST` | `/api/campaigns/:id/send` | JWT | Start sending |
+| `GET` | `/api/campaigns/:id/stats` | JWT | Get analytics |
 
-### Public API (API Key Auth)
+</details>
+
+<details>
+<summary><b>🔑 Public API (API Key Auth)</b></summary>
 
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| `GET` | `/api/v1/emails` | API Key | List emails programmatically |
-| `POST` | `/api/v1/send` | API Key | Send email via API |
-| `GET` | `/api/v1/contacts` | API Key | Access contact list |
+| `GET` | `/api/v1/emails` | API Key | List emails |
+| `POST` | `/api/v1/send` | API Key | Send email |
+| `GET` | `/api/v1/contacts` | API Key | Get contacts |
 
-Full API documentation is available at `/docs` when the server is running.
+</details>
+
+<br/>
+
+---
+
+<br/>
+
+## 🧰 Essential Commands
+
+```bash
+# ─────────── Application ───────────
+npm run dev                              # Development (auto-reload)
+npm start                                # Production
+npx pm2 start src/index.js --name app    # PM2 production
+npx pm2 logs app --lines 50             # View logs
+npx pm2 monit                           # Resource monitor
+
+# ─────────── Database ────────────
+node src/config/migrate.js               # Create/reset tables
+node src/config/seed-admin.js            # Seed admin + data
+pg_dump -U user dbname > backup.sql      # Backup
+psql -U user dbname < backup.sql         # Restore
+
+# ─────────── Troubleshooting ─────
+fuser -k 3001/tcp                        # Kill port
+df -h /                                  # Check disk
+npx pm2 flush                            # Clear logs
+sudo systemctl restart postgresql        # Restart DB
+```
+
+<br/>
 
 ---
 
-## 🧰 CLI Commands Reference
-
-### Application
-
-```bash
-# Start (development with auto-reload)
-npm run dev
-
-# Start (production)
-npm start
-
-# Start with PM2 (production, recommended)
-npx pm2 start src/index.js --name eclatrecon-mail
-npx pm2 save && npx pm2 startup
-
-# Restart
-npx pm2 restart eclatrecon-mail
-
-# View logs
-npx pm2 logs eclatrecon-mail --lines 50
-
-# Monitor resources
-npx pm2 monit
-
-# Stop
-npx pm2 stop eclatrecon-mail
-```
-
-### Database
-
-```bash
-# Create/reset all tables (⚠️ destructive)
-node src/config/migrate.js
-
-# Seed admin + defaults
-node src/config/seed-admin.js
-
-# Backup
-pg_dump -U eclatrecon_mail eclatrecon_mail > backup_$(date +%Y%m%d).sql
-
-# Restore
-psql -U eclatrecon_mail eclatrecon_mail < backup_YYYYMMDD.sql
-
-# Add a column without data loss
-psql -U eclatrecon_mail -d eclatrecon_mail \
-  -c "ALTER TABLE table_name ADD COLUMN IF NOT EXISTS column_name TEXT DEFAULT '';"
-```
-
-### Troubleshooting
-
-```bash
-# Port already in use
-fuser -k 3001/tcp && sleep 2 && npx pm2 restart eclatrecon-mail
-
-# Disk space issues
-df -h / && rm -rf /tmp/* && npx pm2 flush
-
-# PostgreSQL not responding
-sudo systemctl restart postgresql
-# or: pg_ctl restart -D /path/to/data
-
-# Check database connectivity
-pg_isready -h 127.0.0.1 -p 5432
-```
-
----
+<br/>
 
 ## ✅ Pros & Cons
 
-### Pros
+<table>
+<tr>
+<td width="50%">
 
-| Advantage | Detail |
-|-----------|--------|
-| **Full Data Ownership** | All data stays on your server — no third-party SaaS dependency |
-| **Zero Build Step** | Vanilla JS frontend requires no bundler, no Webpack, no npm build |
-| **Single Binary Deploy** | One Node.js process handles API, WebSocket, IMAP sync, and workers |
-| **55-Table Schema** | Production-grade relational schema covering email, CRM, marketing, and productivity |
-| **AI-Ready** | Pluggable AI via OpenRouter — use any LLM model without vendor lock-in |
-| **Real-Time** | Socket.IO provides instant email notifications and team collaboration |
-| **Multi-Account** | Unified inbox across multiple IMAP/SMTP providers |
-| **Marketing Built-In** | Campaign management, subscriber lists, A/B testing, and drip sequences |
-| **API-First** | Full REST API with key-based auth for programmatic access |
-| **Low Resource** | Runs comfortably on a $5/month VPS (1 CPU, 1GB RAM) |
+### ✅ Pros
+- 🏠 Full data sovereignty
+- 🚫 Zero SaaS subscription fees
+- ⚡ Zero build step (vanilla JS)
+- 📦 Single-process deployment
+- 🗄️ 55-table production schema
+- 🤖 Pluggable AI (any LLM via OpenRouter)
+- 📡 Real-time via Socket.IO
+- 📬 Unlimited IMAP/SMTP accounts
+- 📢 Built-in marketing suite
+- 🔌 Full REST API
+- 💸 Runs on $5/month VPS
 
-### Cons
+</td>
+<td width="50%">
 
-| Limitation | Detail |
-|------------|--------|
-| **No TypeScript** | Backend is plain JavaScript — no static type checking |
-| **Single-Process** | All services run in one process; no horizontal scaling without custom setup |
-| **No E2E Tests** | Test suite not included in v1.3 — manual testing recommended |
-| **IMAP-Only Sync** | Pull-based sync via IMAP; no native push notification protocol (JMAP) |
-| **No OAuth Login** | Authentication is email/password only — no Google/GitHub SSO |
-| **Self-Managed** | You handle server maintenance, backups, and security patches |
-| **No Docker Image** | Docker support not yet available (planned for v1.4) |
+### ⚠️ Cons
+- No TypeScript (plain JS)
+- Single-process (no horizontal scaling)
+- No E2E test suite yet
+- IMAP pull-based (no JMAP push)
+- Email/password auth only (no OAuth SSO)
+- Self-managed infrastructure
+- No Docker image yet (planned v1.4)
+
+</td>
+</tr>
+</table>
+
+<br/>
 
 ---
+
+<br/>
 
 ## 🗺️ Roadmap
 
-| Version | Status | Features |
-|---------|--------|----------|
-| **v1.0** | ✅ Released | Core email, auth, compose, folder management |
-| **v1.1** | ✅ Released | Campaigns, teams, productivity, security |
-| **v1.2** | ✅ Released | Lead scraper, integrations, billing, analytics |
-| **v1.3** | ✅ Current | PostgreSQL migration, IMAP auto-sync, full schema alignment |
-| **v1.4** | 🔜 Planned | Docker support, OAuth2 login, JMAP protocol |
-| **v1.5** | 🔜 Planned | Plugin system, theme marketplace, mobile PWA |
-| **v2.0** | 🔜 Planned | TypeScript rewrite, horizontal scaling, E2E test suite |
+| Version | Status | Highlights |
+|---------|--------|------------|
+| `v1.0` | ✅ Released | Core email, auth, compose, folders |
+| `v1.1` | ✅ Released | Campaigns, teams, productivity, security |
+| `v1.2` | ✅ Released | Lead scraper, integrations, billing, analytics |
+| `v1.3` | ✅ **Current** | PostgreSQL migration, IMAP auto-sync, schema alignment |
+| `v1.4` | 🔜 Planned | Docker support, OAuth2 login, JMAP protocol |
+| `v1.5` | 🔜 Planned | Plugin system, theme marketplace, PWA |
+| `v2.0` | 🔜 Planned | TypeScript rewrite, horizontal scaling, E2E tests |
+
+<br/>
 
 ---
+
+<br/>
 
 ## 🤝 Contributing
 
-Contributions are welcome and appreciated. Here's how to get started:
-
-### Development Setup
+Contributions are welcome! Here's how:
 
 ```bash
-# Fork and clone the repository
-git clone https://github.com/sanketgiri89/ai-mail.git
-cd ai-mail/server
-
-# Install dependencies
-npm install
-
-# Copy environment template
-cp .env.example .env
-# Edit .env with your local PostgreSQL credentials
-
-# Initialize database
-node src/config/migrate.js
-node src/config/seed-admin.js
-
-# Start in development mode
-npm run dev
+# Fork → Clone → Branch
+git clone https://github.com/sanketgiri89/AI-MAIL.git
+cd AI-MAIL/server && npm install
+cp .env.example .env       # Configure your local DB
+node src/config/migrate.js  # Set up tables
+npm run dev                 # Start developing
 ```
 
-### Contribution Guidelines
+**Guidelines:**
+- One feature per PR
+- Test against `migrate.js` (ensure clean run)
+- Follow code style (2-space indent, single quotes, async/await)
+- Document new endpoints
 
-1. **Fork** the repository and create your branch from `main`
-2. **Focus** each PR on a single feature or fix
-3. **Test** your changes against the migration script (ensure `node src/config/migrate.js` runs clean)
-4. **Document** new API endpoints in the route file header comments
-5. **Follow** the existing code style (2-space indentation, single quotes, async/await)
-
-### Areas Where Help Is Needed
-
-- [ ] Docker and Docker Compose configuration
-- [ ] Unit and integration test suite
-- [ ] OAuth2 / Google SSO login
+**Help Wanted:**
+- [ ] Docker & Docker Compose
+- [ ] Unit & integration tests
+- [ ] OAuth2 / Google SSO
 - [ ] JMAP protocol support
-- [ ] Internationalization (i18n)
-- [ ] Accessibility audit (WCAG compliance)
+- [ ] i18n (internationalization)
+- [ ] WCAG accessibility audit
 - [ ] Mobile PWA enhancements
 
+<br/>
+
 ---
+
+<br/>
 
 ## 📄 License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
 
-You are free to use, modify, and distribute this software for personal and commercial purposes.
+Free to use for personal and commercial projects.
+
+<br/>
 
 ---
+
+<br/>
 
 ## 👤 Author
 
-**Sanket Giri**
-- GitHub: [@sanketgiri89](https://github.com/sanketgiri89)
-- Organization: [Eclatrecon Solutions LLP](https://eclatrecon.in)
-- Email: sanket@eclatrecon.in
+<table>
+<tr>
+<td align="center">
+<b>Sanket Giri</b>
+<br/>
+<a href="https://github.com/sanketgiri89">GitHub</a> •
+<a href="https://eclatrecon.in">Eclatrecon Solutions LLP</a> •
+<a href="mailto:sanket@eclatrecon.in">sanket@eclatrecon.in</a>
+</td>
+</tr>
+</table>
+
+<br/>
 
 ---
 
-## 🙏 Acknowledgments
-
-- [ImapFlow](https://github.com/postalsys/imapflow) — IMAP client for Node.js
-- [Nodemailer](https://nodemailer.com/) — Email sending for Node.js
-- [Socket.IO](https://socket.io/) — Real-time bidirectional communication
-- [Express.js](https://expressjs.com/) — Fast, unopinionated web framework
-- [PostgreSQL](https://www.postgresql.org/) — The world's most advanced open source database
-- [PM2](https://pm2.keymetrics.io/) — Production process manager for Node.js
-- [OpenRouter](https://openrouter.ai/) — Unified API for LLM access
-- [Apify](https://apify.com/) — Web scraping and automation platform
-
----
+<br/>
 
 <p align="center">
-  <sub>Built with ❤️ by <a href="https://eclatrecon.in">Eclatrecon Solutions LLP</a></sub>
-  <br />
-  <sub>If this project helps you, consider giving it a ⭐ on GitHub</sub>
+  <b>If this project helps you, please give it a ⭐</b>
+  <br/><br/>
+  <a href="https://mail.eclatrecon.in">
+    <img src="https://img.shields.io/badge/Try_the_Live_Demo-mail.eclatrecon.in-ec5b13?style=for-the-badge&labelColor=0a0a0a" alt="Live Demo" />
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0a0a,50:ec5b13,100:ff8c42&height=120&section=footer" width="100%" />
 </p>
