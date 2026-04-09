@@ -5,9 +5,9 @@ const bcrypt = require('bcryptjs');
 const { pool } = require('./database');
 
 async function createAdmin() {
-    const email = 'sanket@eclatrecon.in';
-    const password = 'Sanket620@';
-    const name = 'Sanket Giri';
+    const email = 'admin@gmail.com';
+    const password = 'admin123@';
+    const name = 'admin';
 
     try {
         const hash = await bcrypt.hash(password, 12);
